@@ -1,51 +1,51 @@
 :root {
-  color-scheme: dark;
-  --ink: #090909;
-  --paper: #f4f2ea;
-  --signal: #ff4f00;
-  --signal-on-paper: #b83200;
-  --muted: #bcb9b0;
-  --line: #343434;
-  --max-width: 88rem;
-  --edge: clamp(1.25rem, 4vw, 4.5rem);
-  --space-section: clamp(5rem, 11vw, 10rem);
-  --radius: 0.35rem;
-  --type-display: clamp(4rem, 13vw, 11.5rem);
-  --type-section: clamp(2.7rem, 7vw, 6.5rem);
+  color-scheme: light;
+  --paper: #faf9f6;
+  --surface: #ffffff;
+  --ink: #18171c;
+  --muted: #66636d;
+  --accent: #5548e7;
+  --accent-deep: #4034c6;
+  --accent-soft: #efedff;
+  --line: #dedbe7;
+  --success: #176c54;
+  --max-width: 78rem;
+  --edge: clamp(1.25rem, 4vw, 4rem);
+  --space-section: clamp(5rem, 10vw, 9rem);
+  --radius-control: 0.7rem;
+  --radius-card: 1.75rem;
+  --shadow-card: 0 1.5rem 4rem rgb(52 42 112 / 0.12);
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
 html {
   scroll-behavior: smooth;
-  background: var(--ink);
+  background: var(--paper);
+  -webkit-text-size-adjust: none;
 }
 
 body {
   margin: 0;
-  color: var(--paper);
-  background: var(--ink);
+  color: var(--ink);
+  background: var(--paper);
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1rem;
-  line-height: 1.45;
+  line-height: 1.5;
   text-rendering: optimizeLegibility;
-}
-
-main {
-  overflow: hidden;
-}
-
-a {
-  color: inherit;
 }
 
 p,
 h1,
 h2,
 h3,
-ol {
+ol,
+dl,
+dd {
   margin-block: 0;
 }
 
@@ -53,80 +53,64 @@ h1,
 h2,
 h3,
 strong {
-  font-weight: 900;
-  letter-spacing: -0.06em;
+  font-weight: 800;
+  letter-spacing: -0.05em;
 }
 
 h1,
-h2 {
-  line-height: 0.86;
+h2,
+h3 {
+  line-height: 0.98;
+}
+
+a {
+  color: inherit;
 }
 
 button,
-input,
-select,
-textarea {
+input {
+  min-height: 3.35rem;
   font: inherit;
-}
-
-button,
-a.primary {
-  min-height: 3.5rem;
 }
 
 :is(button, a).primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: fit-content;
-  border: 0.14rem solid var(--signal);
-  border-radius: var(--radius);
-  padding: 0.9rem 1.35rem;
-  color: var(--ink);
-  background: var(--signal);
-  font-size: clamp(1rem, 2vw, 1.25rem);
-  font-weight: 900;
-  letter-spacing: -0.03em;
+  border: 0.1rem solid var(--accent);
+  border-radius: var(--radius-control);
+  padding: 0.8rem 1.15rem;
+  color: #ffffff;
+  background: var(--accent);
+  font-weight: 800;
+  letter-spacing: -0.02em;
   text-decoration: none;
-  text-transform: uppercase;
   cursor: pointer;
   transition:
-    color 120ms ease,
-    background 120ms ease,
-    transform 120ms ease;
+    background 150ms ease,
+    border-color 150ms ease,
+    transform 80ms ease;
 }
 
 :is(button, a).primary:hover {
-  color: var(--signal);
-  background: transparent;
-  transform: translateY(-0.14rem);
+  border-color: var(--accent-deep);
+  background: var(--accent-deep);
 }
 
-button.secondary {
-  border: 0;
-  border-bottom: 0.12rem solid currentColor;
-  padding: 0.75rem 0;
-  color: var(--paper);
-  background: transparent;
-  font-weight: 800;
-  cursor: pointer;
+:is(button, a).primary:active {
+  transform: scale(0.98);
 }
 
-:is(a, button, input, select, textarea):focus-visible {
-  outline: 0.2rem solid var(--signal);
-  outline-offset: 0.25rem;
+:is(a, button, input):focus-visible {
+  outline: 0.18rem solid var(--accent);
+  outline-offset: 0.22rem;
 }
 
 .site-header,
 .site-footer,
 .hero,
-.manifesto,
-.contract,
-.process,
-.meeting-request,
-.request-confirmation,
-.agency,
-.closing {
+.experience,
+.signal {
   width: min(100%, var(--max-width));
   margin-inline: auto;
   padding-inline: var(--edge);
@@ -137,52 +121,48 @@ button.secondary {
   align-items: center;
   justify-content: space-between;
   min-height: 5rem;
-  border-bottom: 0.1rem solid var(--line);
 }
 
 .site-header a {
-  font-size: 1.4rem;
-  font-weight: 900;
-  letter-spacing: -0.06em;
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.05em;
   text-decoration: none;
 }
 
 .site-header a span {
-  color: var(--signal);
+  color: var(--accent);
 }
 
 .site-header p,
 .site-footer p {
   color: var(--muted);
-  font-size: 0.76rem;
-  font-weight: 800;
+  font-size: 0.75rem;
+  font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 3fr) minmax(16rem, 1fr);
-  gap: clamp(2rem, 7vw, 7rem);
-  align-items: end;
+  grid-template-columns: minmax(0, 1.15fr) minmax(20rem, 0.85fr);
+  gap: clamp(3rem, 8vw, 8rem);
+  align-items: center;
   min-height: calc(100svh - 5rem);
-  padding-block: clamp(4rem, 8vw, 8rem);
+  padding-block: clamp(3rem, 7vw, 6rem);
 }
 
-.eyebrow,
-.section-label {
-  color: var(--signal);
+.eyebrow {
+  color: var(--accent);
   font-size: 0.78rem;
-  font-weight: 900;
-  letter-spacing: 0.11em;
+  font-weight: 800;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
 .hero h1 {
-  max-width: 11ch;
-  margin-block: clamp(1.5rem, 4vw, 3rem);
-  font-size: var(--type-display);
-  text-transform: uppercase;
+  margin-block: 1.5rem 2rem;
+  font-size: clamp(4rem, 8.4vw, 7.7rem);
 }
 
 .hero h1 span {
@@ -190,496 +170,347 @@ button.secondary {
 }
 
 .hero h1 span:last-child {
-  color: var(--signal);
+  color: var(--accent);
 }
 
 .lede {
-  max-width: 42rem;
-  margin-bottom: 2rem;
-  font-size: clamp(1.25rem, 2.2vw, 1.8rem);
-  line-height: 1.25;
-  letter-spacing: -0.035em;
+  max-width: 38rem;
+  color: #34313a;
+  font-size: clamp(1.25rem, 2.2vw, 1.65rem);
+  line-height: 1.35;
+  letter-spacing: -0.03em;
 }
 
-.trust-line {
-  margin-top: 1.1rem;
-  color: var(--muted);
-  font-size: 0.78rem;
+.launch-signup,
+.signup-confirmation {
+  max-width: 42rem;
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+  border: 0.1rem solid #d5d0ff;
+  border-radius: 1.15rem;
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  background: var(--accent-soft);
+}
+
+.launch-signup header h2,
+.signup-confirmation h2 {
+  font-size: clamp(1.45rem, 3vw, 2rem);
+}
+
+.launch-signup header p,
+.signup-confirmation > p {
+  margin-top: 0.45rem;
+  color: #4b465b;
+}
+
+.launch-signup > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.6rem;
+  margin-top: 1.25rem;
+}
+
+.launch-signup label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.launch-signup input {
+  width: 100%;
+  border: 0.1rem solid #aaa3d3;
+  border-radius: var(--radius-control);
+  padding: 0.75rem 0.9rem;
+  color: var(--ink);
+  background: var(--surface);
+}
+
+.launch-signup input::placeholder {
+  color: #76717f;
+}
+
+.launch-signup small,
+.signup-confirmation small {
+  display: block;
+  margin-top: 0.85rem;
+  color: #625d70;
+  font-size: 0.75rem;
+  line-height: 1.45;
+}
+
+.signup-confirmation {
+  border-color: #b7decf;
+  background: #edf8f4;
+}
+
+.signup-confirmation .eyebrow {
+  color: var(--success);
+}
+
+.date-card {
+  position: relative;
+  padding: clamp(1.4rem, 3vw, 2rem);
+  overflow: hidden;
+  border: 0.1rem solid var(--line);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  box-shadow: var(--shadow-card);
+  transform: rotate(1.2deg);
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.date-card:hover {
+  transform: rotate(0);
+}
+
+.date-card::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 0.55rem;
+  background: var(--accent);
+  content: "";
+}
+
+.date-card header,
+.date-card footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.date-card header {
+  padding-block: 0.5rem 2.5rem;
+}
+
+.date-card header p,
+.date-card header strong {
+  font-size: 0.72rem;
   font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.date-card header strong {
+  color: var(--success);
+  letter-spacing: 0.03em;
+}
+
+.date-card > div > p,
+.date-card dt {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 700;
   letter-spacing: 0.07em;
   text-transform: uppercase;
 }
 
-.meeting-stamp {
-  border-top: 0.65rem solid var(--signal);
-  border-bottom: 0.1rem solid var(--paper);
-  padding-block: 1.25rem 1.7rem;
-}
-
-.meeting-stamp p {
-  margin-bottom: 1.5rem;
-  color: var(--muted);
-  font-size: 0.75rem;
+.date-card time {
+  display: block;
+  margin-top: 0.5rem;
+  color: var(--accent);
+  font-size: clamp(1.25rem, 2.5vw, 1.6rem);
   font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
 }
 
-.meeting-stamp strong {
-  display: block;
-  font-size: clamp(2rem, 4vw, 4rem);
-  line-height: 0.95;
+.date-card h2 {
+  margin-block: 0.25rem 2.5rem;
+  font-size: clamp(2.5rem, 5vw, 4.2rem);
 }
 
-.manifesto {
-  padding-block: var(--space-section);
-  background: var(--paper);
-  box-shadow: 0 0 0 100vmax var(--paper);
-  clip-path: inset(0 -100vmax);
-  color: var(--ink);
-}
-
-.manifesto header,
-.contract header,
-.process header {
+.date-card dl {
   display: grid;
-  grid-template-columns: minmax(10rem, 1fr) minmax(0, 3fr);
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  padding-block: 1.25rem;
+  border-block: 0.1rem solid var(--line);
+}
+
+.date-card dd {
+  margin-top: 0.25rem;
+  font-weight: 700;
+}
+
+.date-card footer {
+  justify-content: flex-start;
+  padding-top: 1.35rem;
+  color: #45414b;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.date-card footer span {
+  display: inline-grid;
+  width: 1.5rem;
+  height: 1.5rem;
+  place-items: center;
+  border-radius: 50%;
+  color: #ffffff;
+  background: var(--success);
+}
+
+.experience {
+  padding-block: var(--space-section);
+}
+
+.experience header {
+  display: grid;
+  grid-template-columns: minmax(9rem, 0.6fr) minmax(0, 1.4fr);
   gap: 2rem;
-  align-items: start;
 }
 
-.manifesto h2,
-.contract h2,
-.process h2,
-.agency h2,
-.closing h2,
-.request-confirmation h2 {
-  max-width: 12ch;
-  font-size: var(--type-section);
-  text-transform: uppercase;
+.experience h2,
+.signal h2 {
+  max-width: 13ch;
+  font-size: clamp(2.7rem, 6vw, 5.5rem);
 }
 
-.manifesto .section-label,
-.manifesto .replacement,
-.meeting-request .section-label,
-.meeting-request legend span,
-.request-confirmation .section-label {
-  color: var(--signal-on-paper);
-}
-
-.dead-loop {
-  display: grid;
-  gap: 0;
-  margin-block: clamp(4rem, 8vw, 8rem) 1rem;
-  padding: 0;
-  list-style: none;
-  counter-reset: none;
-}
-
-.dead-loop li {
-  position: relative;
-  width: fit-content;
-  color: #6e6b64;
-  font-size: clamp(3.2rem, 10vw, 9rem);
-  font-weight: 900;
-  letter-spacing: -0.07em;
-  line-height: 0.86;
-  text-transform: uppercase;
-}
-
-.dead-loop li::after {
-  position: absolute;
-  top: 52%;
-  right: -0.2em;
-  left: -0.08em;
-  height: 0.09em;
-  background: var(--signal);
-  content: "";
-  transform: scaleX(0);
-  transform-origin: left;
-  animation: strike 350ms ease-out forwards;
-}
-
-.dead-loop li:nth-child(2)::after {
-  animation-delay: 180ms;
-}
-
-.dead-loop li:nth-child(3)::after {
-  animation-delay: 360ms;
-}
-
-.dead-loop li:nth-child(4)::after {
-  animation-delay: 540ms;
-}
-
-.replacement {
-  color: var(--signal);
-  font-size: clamp(5rem, 18vw, 16rem);
-  font-weight: 900;
-  letter-spacing: -0.09em;
-  line-height: 0.8;
-  text-align: right;
-  text-transform: uppercase;
-}
-
-.manifesto-copy {
-  max-width: 46rem;
-  margin-top: clamp(3rem, 7vw, 6rem);
-  margin-left: auto;
-  font-size: clamp(1.3rem, 3vw, 2.25rem);
-  letter-spacing: -0.04em;
-  line-height: 1.15;
-}
-
-.contract,
-.process,
-.agency,
-.closing {
-  padding-block: var(--space-section);
-  border-bottom: 0.1rem solid var(--line);
-}
-
-.contract {
-  display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(16rem, 1fr);
-  gap: clamp(3rem, 9vw, 9rem);
-  align-items: end;
-}
-
-.contract header {
-  display: block;
-}
-
-.contract h2 {
-  margin-top: 1.5rem;
-}
-
-.contract > div {
-  border-top: 0.55rem solid var(--signal);
-  padding-top: 1.25rem;
-}
-
-.contract > div p {
-  font-size: clamp(1.1rem, 2vw, 1.4rem);
-}
-
-.contract > div p + p {
-  margin-top: 1.5rem;
-}
-
-.process ol {
+.experience ol {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0;
-  margin-top: clamp(4rem, 8vw, 7rem);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  margin-top: clamp(3.5rem, 7vw, 6rem);
   padding: 0;
-  border-top: 0.1rem solid var(--line);
+  border-top: 0.12rem solid var(--line);
   list-style: none;
 }
 
-.process li {
-  min-height: 20rem;
-  padding: 1.25rem;
-  border-right: 0.1rem solid var(--line);
+.experience li {
+  padding-top: 0;
 }
 
-.process li:first-child {
-  border-left: 0.1rem solid var(--line);
+.experience li > span {
+  display: inline-grid;
+  width: 2rem;
+  height: 2rem;
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+  place-items: center;
+  border-radius: 50%;
+  color: #ffffff;
+  background: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 800;
+  transform: translateY(-50%);
 }
 
-.process li > span,
-.meeting-request legend span {
-  display: block;
-  margin-bottom: 5rem;
-  color: var(--signal);
-  font-size: 0.8rem;
-  font-weight: 900;
-  letter-spacing: 0.09em;
+.experience h3 {
+  font-size: clamp(1.65rem, 3vw, 2.4rem);
 }
 
-.process h3 {
-  margin-bottom: 1rem;
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  text-transform: uppercase;
-}
-
-.process li p {
-  max-width: 18rem;
+.experience li p {
+  margin-top: 0.85rem;
   color: var(--muted);
 }
 
-.meeting-request,
-.request-confirmation {
-  margin-block: var(--space-section);
-  padding-block: clamp(3rem, 7vw, 6rem);
-  color: var(--ink);
-  background: var(--paper);
+.signal {
+  margin-bottom: var(--space-section);
+  border-radius: var(--radius-card);
+  padding-block: clamp(4rem, 8vw, 7rem);
+  color: #ffffff;
+  background: var(--accent);
+  text-align: center;
 }
 
-.meeting-request > header {
-  display: grid;
-  grid-template-columns: minmax(10rem, 1fr) minmax(0, 2fr);
-  gap: 1.5rem 2rem;
-  margin-bottom: clamp(4rem, 8vw, 7rem);
+.signal .eyebrow {
+  color: #dcd8ff;
 }
 
-.meeting-request > header .section-label {
-  grid-row: 1 / 3;
+.signal h2 {
+  margin: 1.5rem auto;
 }
 
-.meeting-request > header h2 {
-  max-width: 12ch;
-  font-size: clamp(3rem, 7vw, 6.5rem);
-  letter-spacing: -0.065em;
-  line-height: 0.88;
-  text-transform: uppercase;
+.signal > p:not(.eyebrow) {
+  max-width: 42rem;
+  margin-inline: auto;
+  color: #efedff;
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
 }
 
-.meeting-request > header p:last-child {
-  max-width: 36rem;
-  font-size: 1.2rem;
+.signal a.primary {
+  margin-top: 2rem;
+  border-color: #ffffff;
+  color: var(--accent-deep);
+  background: #ffffff;
 }
 
-.meeting-request fieldset {
-  display: grid;
-  grid-template-columns: minmax(12rem, 1fr) minmax(0, 2fr);
-  gap: 2rem;
-  margin: 0;
-  border: 0;
-  border-top: 0.12rem solid var(--ink);
-  padding: 2rem 0 4rem;
-}
-
-.meeting-request legend {
-  float: left;
-  width: 100%;
-  padding: 0;
-  font-size: clamp(1.4rem, 3vw, 2.2rem);
-  font-weight: 900;
-  letter-spacing: -0.045em;
-}
-
-.meeting-request legend span {
-  margin-bottom: 1.25rem;
-}
-
-.meeting-request label {
-  display: grid;
-  gap: 0.55rem;
-  grid-column: 2;
-  color: #242424;
-  font-size: 0.8rem;
-  font-weight: 900;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-.meeting-request input,
-.meeting-request select,
-.meeting-request textarea {
-  width: 100%;
-  min-height: 3.5rem;
-  border: 0.12rem solid var(--ink);
-  border-radius: 0;
-  padding: 0.85rem 0.95rem;
-  color: var(--ink);
-  background: var(--paper);
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: 0;
-  text-transform: none;
-}
-
-.meeting-request textarea {
-  min-height: 8rem;
-  resize: vertical;
-}
-
-.meeting-request input::placeholder,
-.meeting-request textarea::placeholder {
-  color: #68655f;
-}
-
-.field-grid {
-  display: grid;
-  grid-column: 2;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
-}
-
-.field-grid label {
-  grid-column: auto;
-}
-
-.meeting-request label.consent {
-  display: flex;
-  align-items: flex-start;
-  font-size: 0.85rem;
-  line-height: 1.35;
-  text-transform: none;
-}
-
-.meeting-request label.consent input {
-  flex: 0 0 1.3rem;
-  width: 1.3rem;
-  min-height: 1.3rem;
-  margin: 0.08rem 0 0;
-}
-
-.meeting-request > footer {
-  display: grid;
-  grid-template-columns: minmax(12rem, 1fr) minmax(0, 2fr);
-  gap: 2rem;
-  align-items: center;
-  padding-top: 1rem;
-}
-
-.meeting-request > footer .primary {
-  grid-column: 2;
-  width: 100%;
-  min-height: 5rem;
-  font-size: clamp(1.1rem, 2.5vw, 1.55rem);
-}
-
-.meeting-request > footer p {
-  grid-column: 2;
-  color: #5a5751;
-  font-size: 0.8rem;
-}
-
-.request-confirmation {
-  min-height: 32rem;
-}
-
-.request-confirmation h2 {
-  margin-block: 1.5rem 2rem;
-}
-
-.request-confirmation > p:not(.section-label) {
-  max-width: 38rem;
-  margin-bottom: 2rem;
-  font-size: 1.2rem;
-}
-
-.request-confirmation button.secondary {
-  color: var(--ink);
-}
-
-.agency {
-  display: grid;
-  grid-template-columns: minmax(10rem, 1fr) minmax(0, 2fr);
-  gap: 2rem;
-}
-
-.agency h2 {
-  color: var(--signal);
-}
-
-.agency > p:last-child {
-  grid-column: 2;
-  max-width: 44rem;
-  font-size: clamp(1.15rem, 2vw, 1.5rem);
-}
-
-.closing {
-  min-height: 80svh;
-}
-
-.closing h2 {
-  max-width: 14ch;
-  margin-block: clamp(2rem, 5vw, 4rem);
+.signal a.primary:hover {
+  color: #ffffff;
+  background: transparent;
 }
 
 .site-footer {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
+  border-top: 0.1rem solid var(--line);
   padding-block: 2rem;
 }
 
-@keyframes strike {
-  to {
-    transform: scaleX(1);
-  }
-}
-
 @media (max-width: 54rem) {
-  .hero,
-  .contract {
-    grid-template-columns: 1fr;
-  }
-
   .hero {
-    min-height: auto;
-  }
-
-  .meeting-stamp {
-    max-width: 28rem;
-  }
-
-  .manifesto header,
-  .process header,
-  .meeting-request > header,
-  .meeting-request fieldset,
-  .meeting-request > footer,
-  .agency {
     grid-template-columns: 1fr;
   }
 
-  .meeting-request > header .section-label,
-  .meeting-request label,
-  .field-grid,
-  .meeting-request > footer .primary,
-  .meeting-request > footer p,
-  .agency > p:last-child {
-    grid-column: 1;
+  .hero-copy {
+    max-width: 44rem;
   }
 
-  .meeting-request > header .section-label {
-    grid-row: auto;
+  .date-card {
+    max-width: 34rem;
+    transform: none;
   }
 
-  .meeting-request fieldset {
-    gap: 2rem;
+  .experience header {
+    grid-template-columns: 1fr;
   }
 }
 
-@media (max-width: 40rem) {
+@media (max-width: 42rem) {
   :root {
     --edge: 1rem;
     --space-section: 4.5rem;
   }
 
   .site-header p {
-    font-size: 0.62rem;
+    font-size: 0.65rem;
+  }
+
+  .hero {
+    gap: 4rem;
   }
 
   .hero h1 {
-    font-size: clamp(3.7rem, 20vw, 6.5rem);
+    font-size: clamp(3.75rem, 18vw, 5.5rem);
   }
 
-  .process ol,
-  .field-grid {
+  .launch-signup > div,
+  .experience ol {
     grid-template-columns: 1fr;
   }
 
-  .process li {
-    min-height: 15rem;
-    border-right: 0.1rem solid var(--line);
-    border-bottom: 0.1rem solid var(--line);
-    border-left: 0.1rem solid var(--line);
+  .launch-signup button.primary {
+    width: 100%;
   }
 
-  .process li > span {
-    margin-bottom: 3rem;
+  .date-card dl {
+    grid-template-columns: 1fr;
   }
 
-  .replacement {
-    text-align: left;
+  .experience li > span {
+    margin-bottom: 1.75rem;
+  }
+
+  .signal {
+    border-radius: 0;
   }
 
   .site-footer {
-    align-items: flex-start;
     flex-direction: column;
   }
 }

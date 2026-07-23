@@ -1,8 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
-  <rect width="1200" height="630" fill="#090909"/>
-  <rect x="0" y="0" width="22" height="630" fill="#ff4f00"/>
-  <text x="78" y="86" fill="#ff4f00" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" letter-spacing="4">TOGETHER / LONDON</text>
-  <text x="68" y="285" fill="#f4f2ea" font-family="Arial, Helvetica, sans-serif" font-size="122" font-weight="900" letter-spacing="-9">A MEETING.</text>
-  <text x="68" y="430" fill="#ff4f00" font-family="Arial, Helvetica, sans-serif" font-size="122" font-weight="900" letter-spacing="-9">NOT A MATCH.</text>
-  <text x="76" y="548" fill="#bcb9b0" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">A face-to-face meeting service for London.</text>
+  <rect width="1200" height="630" fill="#faf9f6"/>
+  <rect x="852" y="52" width="296" height="526" rx="36" fill="#5548e7"/>
+  <text x="68" y="86" fill="#5548e7" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" letter-spacing="4">TOGETHER / LONDON</text>
+  <text x="62" y="285" fill="#18171c" font-family="Arial, Helvetica, sans-serif" font-size="112" font-weight="800" letter-spacing="-8">A MEETING.</text>
+  <text x="62" y="420" fill="#5548e7" font-family="Arial, Helvetica, sans-serif" font-size="112" font-weight="800" letter-spacing="-8">NOT A MATCH.</text>
+  <text x="68" y="530" fill="#66636d" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700">Choose when. Together arranges the date.</text>
+  <text x="900" y="126" fill="#dcd8ff" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" letter-spacing="2">CONFIRMED</text>
+  <text x="900" y="236" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">THURSDAY</text>
+  <text x="900" y="284" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="800">7:00 PM</text>
+  <line x1="900" y1="334" x2="1100" y2="334" stroke="#8f86f4" stroke-width="2"/>
+  <text x="900" y="396" fill="#dcd8ff" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">LONDON</text>
+  <text x="900" y="446" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="800">PLACE + TIME</text>
+  <text x="900" y="480" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="800">ARRANGED</text>
 </svg>

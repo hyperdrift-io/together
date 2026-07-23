@@ -9,15 +9,15 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <>
       <meta
         name="description"
-        content="Together turns a meeting request into a confirmed face-to-face meeting in London."
+        content="Choose when you are free. Together finds someone compatible and arranges the person, place and time for a real date in London."
       />
-      <meta name="theme-color" content="#ff4f00" />
+      <meta name="theme-color" content="#faf9f6" />
       <meta property="og:type" content="website" />
       <meta property="og:site_name" content="Together" />
       <meta property="og:title" content="A meeting. Not a match." />
       <meta
         property="og:description"
-        content="Skip the matching, messaging, and waiting. Put a real meeting in the calendar."
+        content="Choose when you are free. Together arranges the person, place and time."
       />
       <meta
         property="og:image"
@@ -30,7 +30,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <meta name="twitter:title" content="A meeting. Not a match." />
       <meta
         name="twitter:description"
-        content="A face-to-face meeting service for London."
+        content="Face-to-face dating, arranged for London."
       />
       <meta
         name="twitter:image"

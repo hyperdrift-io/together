@@ -16,14 +16,15 @@ The approved direction is:
 - Optimise for fast, measurable learning and early growth
 - Host public surfaces through Hyperdrift
 - Lead with “A meeting. Not a match.” and a bold London-first category break
+- Treat the landing page as a subscription-based demand test, not as the app
 
 Read `MISSION.md`, `docs/VALIDATION_PLAN.md`, `docs/LANDING_PAGE.md`, and
 `docs/SOURCE_REVIEW.md` before changing product scope or user-facing copy.
 
 ## Mission
 
-Get Londoners out of matching-and-messaging loops and into a confirmed
-face-to-face meeting with someone who has chosen to be there.
+Turn one availability choice into a mutually accepted, fully arranged
+face-to-face date in London.
 
 The fuller wording and all open operating decisions live in `MISSION.md`.
 
@@ -57,8 +58,8 @@ If Together becomes a standalone Hyperdrift app, use the own-stack:
 - No new dependency without explicit approval
 
 The first public slice should contain only the measured landing proposition,
-short intent intake, required trust copy, metadata, analytics, sitemap, robots,
-and social preview.
+one email registration, required consent copy, metadata, analytics, sitemap,
+robots, and social preview.
 
 ## Prototype validation
 
@@ -72,7 +73,7 @@ Hyperdrift infra and follow the workspace asynchronous handoff rule.
 
 ## Data and safety
 
-- Collect the minimum data needed for one connection cycle.
+- During appetite validation, collect only consented launch email registration.
 - Never send contact details, free-text intents, dating preferences,
   accessibility information, or safety reports to analytics.
 - Do not share participant contact details before explicit mutual permission.
@@ -86,14 +87,16 @@ Hyperdrift infra and follow the workspace asynchronous handoff rule.
 
 ## Measurement
 
-The landing page optimises for `meeting_request_submitted`, not generic
-waitlist registration. The product outcome is a successful connection cycle:
+The landing page optimises for `launch_interest_confirmed`. It is explicitly a
+demand test and does not imitate the later product flow. The product outcome,
+if built, remains a successful connection cycle:
 
 `meeting request → mutual opt-in → meeting confirmed → meeting attended → would repeat`
 
-Together does not count likes, matches, profile views, or messages as the core
-outcome. Guarantee language may ship only after the guarantee eligibility,
-remedy, response time, and responsible operator are approved and operational.
+The build gate is 500 qualified London visits, 100 confirmed registrations, and
+15% confirmed conversion across at least three independent sources. Together
+does not count likes, matches, profile views, or messages as the eventual
+product outcome.
 
 ## Domain references
 

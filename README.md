@@ -2,9 +2,9 @@
 
 > A meeting. Not a match.
 
-Together is a London-first, face-to-face meeting service in product discovery.
-It exists to replace matching, messaging, and waiting with a mutually accepted
-meeting at an agreed place and time.
+Together is a London-first, face-to-face dating concept in product discovery.
+Choose when you are free; Together curates a mutually accepted introduction and
+arranges the person, place, and time.
 
 ## Project documents
 
@@ -15,7 +15,8 @@ meeting at an agreed place and time.
 
 ## Status
 
-The first own-stack web prototype is being built for local founder review. Its
-form demonstrates the appetite flow but does not transmit or store personal
-data. No remote repository, production domain, durable intake, or deployment is
-approved yet.
+The first own-stack web prototype is a minimalist demand test for local founder
+review. Its email form demonstrates launch registration but does not transmit
+or store personal data. The actual product is deliberately not being built
+until London demand is significant. No remote repository, production domain,
+durable intake, or deployment is approved yet.

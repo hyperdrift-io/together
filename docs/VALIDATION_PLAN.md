@@ -1,216 +1,120 @@
 # Together — Appetite Validation Plan
 
-**Status:** London-first direction approved; operating details in discovery  
-**Experiment:** Meeting-request smoke test followed by a manual concierge pilot
+**Status:** London-first subscription test approved; durable intake pending
+**Experiment:** Minimalist AIDA landing page before product development
 
-## What this phase must learn
+## Decision this experiment controls
 
-The landing page is not a generic waitlist. It tests whether a London adult will
-request a face-to-face meeting, provide near-term availability, and give
-Together permission to propose someone compatible.
+Together will not build the product because the concept sounds attractive. It
+will build only if enough qualified Londoners make a measurable commitment to
+try it.
 
-The experiment should be able to disprove the idea. A large number of page
-views or email addresses without qualified meeting requests does not validate
-Together.
+The landing page is therefore not the app, product onboarding, or a concierge
+pilot. Its job is to answer:
 
-## Riskiest assumptions, in order
+> After understanding Together's distinct arranged-date promise, will a London
+> adult register to help bring it into existence?
 
-1. Londoners in the initial community will request a near-term meeting.
-2. Enough compatible people will be available at the same time and place.
-3. Participants will accept a curated introduction without an open browsing
-   feed.
-4. Accepted introductions will become attended meetings.
-5. A comfortable meeting will create repeat use or a trusted invitation.
-6. Repeated value will support payment.
+## Proposition under test
 
-The first landing page tests assumption 1. Manual operation tests assumptions
-2–5. Payment should be tested only after participants have experienced the
-service.
-
-## Audience
-
-Use one or two dense, reachable London communities for the first cycle.
-“London” alone is not a cohort; the city contains many disconnected networks.
-
-The chosen cohort needs:
-
-- At least 30 reachable adults
-- Geographic overlap that makes a meeting practical
-- A trusted invitation channel
-- Enough availability during the same two-week window
-- An identified operator who can make introductions and follow up
-
-## Landing-page promise
-
-### Proposed headline
+### Headline
 
 **A meeting. Not a match.**
 
-### Proposed supporting copy
+### Mechanism
 
-Life happens face to face. Together skips the matching, messaging, and waiting.
-We arrange a real meeting in London with someone who has already chosen to be
-there.
+Choose when you are free. Together finds someone compatible, checks the
+interest is mutual, and arranges the date—person, place and time.
 
-### Primary action
+### Commitment
 
-**Get me a meeting**
+One email address to join the London launch list.
 
-Do not use “Join the waitlist” as the primary action. It measures curiosity
-while avoiding the behaviour the product depends on.
+The first registration must remain easy. Optional qualification belongs after
+email confirmation, not before it.
 
-### Proposed trust line
+## Audience
 
-**London. 18+. Mutual yes. Meeting confirmed.**
+Recruit London adults interested in meeting someone romantically face to face.
+Use at least three independent traffic sources so one friendly community cannot
+create a false positive.
 
-### Guarantee boundary
+Examples:
 
-The landing page may say Together guarantees the service outcome only after the
-pilot selects and can honour a written guarantee.
+- London community or interest groups
+- Founder and participant referrals
+- A small, clearly targeted social campaign after measurement is verified
 
-Recommended initial wording:
-
-> **The Together promise:** We do not count a like or message as success. When
-> we confirm a meeting, everyone has chosen it and the plan is agreed. If it
-> falls through, we arrange another.
-
-Do not say “we guarantee everyone a meeting” until eligibility, service area,
-time window, available supply, cancellation terms, and remedy are explicit.
-Never imply that Together can prevent another adult from cancelling.
-
-## Minimum intake
-
-The first form should take approximately one minute.
-
-1. When can you meet?
-2. Which London area works for you?
-3. What kind of first meeting feels right?
-4. What matters when choosing someone for you to meet?
-5. How may Together contact you about the proposal?
-6. Required confirmation of adult eligibility, pilot participation, privacy
-   notice, and code of conduct
-
-Optional planning needs belong after initial intent or against a specific
-proposed plan. Do not collect a general medical or disability profile.
+Report conversion separately by source and device.
 
 ## Funnel and events
 
 | Stage | Event | Meaning |
 |---|---|---|
-| Exposure | `landing_viewed` | Visitor saw the appetite proposition |
-| Engagement | `meeting_request_started` | Visitor began the London meeting request |
-| Appetite | `meeting_request_submitted` | Valid availability, London area, practical preferences, contact permission, and consent submitted |
-| Qualification | `meeting_followup_accepted` | Participant replied to concierge follow-up |
-| Activation | `introduction_accepted` | All proposed participants opted in |
-| Coordination | `meeting_confirmed` | Time and place agreed |
-| Value | `meeting_attended` | Meeting happened |
-| Quality | `meeting_would_repeat` | Participant would use Together again |
-| Retention | `repeat_meeting_requested` | Participant requested another meeting within 30 days |
-| Growth | `trusted_invitation_joined` | A participant’s invited contact submitted a valid meeting request |
-| Guarantee | `meeting_guarantee_invoked` | A confirmed meeting failed and the participant requested the promised remedy |
-| Remedy | `meeting_guarantee_resolved` | Rebooking, introduction, refund, or credit was completed |
+| Exposure | `landing_viewed` | Visitor saw variant `aida_arranged_date` |
+| Engagement | `launch_interest_started` | Visitor focused the email field |
+| Appetite | `launch_interest_submitted` | Visitor submitted a valid email |
+| Quality | `launch_interest_confirmed` | Visitor confirmed the registration |
+| Qualification | `launch_profile_completed` | Visitor optionally confirmed London, 18+, and essential cohort information |
+| Advocacy | `launch_interest_shared` | Confirmed registrant shared the launch |
 
-Every event needs `cohort`, `city`, `source`, and a non-sensitive cycle
-identifier where applicable. Do not send contact details, access needs, free
-text, or sensitive preferences to analytics.
+Every event needs `variant`, `city`, `source`, and campaign where available.
+Analytics must never receive the email address.
 
-## Working decision thresholds
+## Pre-committed decision threshold
 
-These are proposed pre-commitments for a small first cohort and should be
-approved before traffic begins.
+Judge the idea only after at least 500 qualified London landing visits from
+three independent sources. Bot, accidental, and clearly irrelevant traffic
+does not enter the denominator.
 
-| Checkpoint | Continue | Rework | Stop or change wedge |
-|---|---:|---:|---:|
-| Qualified visitors submitting a meeting request | at least 20% | 8–19% | below 8% |
-| Submitted participants accepting concierge follow-up | at least 60% | 30–59% | below 30% |
-| Complete proposed groups reaching mutual opt-in | at least 50% | 25–49% | below 25% |
-| Confirmed meetings that are attended | at least 70% | 40–69% | below 40% |
-| Attendees choosing repeat use within 30 days | at least 40% | 15–39% | below 15% |
-| Invoked guarantees resolved within the promised time | 100% | below 100% pauses new confirmations | unresolved guarantees stop the pilot |
+| Outcome | Evidence | Decision |
+|---|---|---|
+| Build the first product slice | At least 100 confirmed registrations and at least 15% confirmed-registration conversion overall, with no single source supplying more than 60% | Proceed to product planning |
+| Rework the proposition or audience | 50–99 confirmed registrations or 8–14.9% conversion | Run one materially different positioning test |
+| Stop or change the wedge | Fewer than 50 confirmed registrations or below 8% conversion | Do not build the proposed product |
 
-Small samples are directional. Record denominators and verbatim context; do not
-present percentages without counts.
+Raw email submissions are diagnostic. Confirmed registrations are the decision
+signal. Always report counts with percentages.
 
-## Growth loop
+## Why this is a credible test
 
-The initial engine is trusted, local invitation—not SEO or paid acquisition.
+- **Low friction:** one field measures desire without product-onboarding burden.
+- **Real commitment:** email confirmation is stronger than a CTA click.
+- **Falsifiable:** the thresholds specify when not to build.
+- **Competition-relative:** visitors see the unique arranged-date outcome,
+  rather than a generic “better dating” claim.
+- **Local density:** London is the explicit launch market and network boundary.
 
-1. Invite a specific London community to request real meetings.
-2. Deliver a comfortable, mutually accepted meeting.
-3. Ask successful participants whether they want another meeting.
-4. Offer an optional invitation for one person they already trust.
-5. Measure whether the invited person submits a valid intent.
+## Optional post-confirmation qualification
 
-Do not add referral rewards before the underlying experience earns a natural
-recommendation.
+After confirmation, ask at most three optional questions:
 
-## Manual concierge workflow
+1. Are you 18 or over and based in London?
+2. Which broad London area is easiest for you?
+3. Who would you hope to meet?
 
-1. Review the meeting request and confirm the participant is eligible.
-2. Clarify only information needed for this plan.
-3. Identify compatible availability and preferences.
-4. Ask each person separately whether they want the proposed introduction.
-5. Share contact details only after explicit mutual permission.
-6. Confirm time, place, cost expectations, access needs, cancellation path, and
-   conduct expectations.
-7. Follow up after the planned meeting.
-8. Record attendance, comfort, repeat intent, and any safety issue separately
-   from product analytics.
+This step qualifies network density without reducing the primary registration
+rate. Sensitive dating preferences require a documented storage and deletion
+policy before collection.
 
-## Trust and safety gate
+## Technical slice
 
-The pilot must define these before the first introduction:
-
-- Adult eligibility
-- Operator identity and contact route
-- Mutual opt-in and contact-sharing rules
-- Code of conduct
-- Cancellation and no-show handling
-- Reporting, blocking, and removal process
-- Emergency disclaimer and local emergency guidance
-- Data access, retention, deletion, and spreadsheet permissions
-- Handling of dating preferences and accessibility information
-- Guarantee eligibility, exclusions, remedy, response time, and responsible
-  operator
-
-The landing page may collect appetite before all operational detail is
-implemented, but it must not promise or arrange introductions until this gate is
-complete.
-
-## Technical slices
-
-### Slice A — measured appetite page
-
-- Responsive web page
+- Static responsive own-stack landing page
 - Full metadata, social preview, robots, sitemap, and canonical URL
-- GA4 installed before traffic
-- `landing_viewed`, `meeting_request_started`, and
-  `meeting_request_submitted` measurement
-- One short form
-- Privacy, eligibility, and pilot-expectation copy
-- No account, feed, messaging, profile store, matching engine, or AI
-
-### Slice B — manual operations
-
-- Restricted intent view or spreadsheet
-- Stable connection-cycle identifiers
-- Explicit status tracking for follow-up, opt-in, confirmation, attendance, and
-  repeat
-- Separate restricted process for safety reports
-
-### Slice C — first product automation
-
-Build only after the manual pilot identifies repeated operator work and the
-signals that genuinely predict successful meetings.
+- GA4 and PostHog before public traffic
+- One email registration field
+- Durable consented subscription storage
+- Confirmation email and `launch_interest_confirmed`
+- No accounts, profile store, matching, messaging, availability form, or
+  meeting operations
 
 ## Launch sequence
 
-1. Approve mission, wedge, cohort, eligibility, operator, URL, and data path.
-2. Approve the guarantee definition and remedy or remove guarantee language.
-3. Build Slice A on the Hyperdrift own-stack if it is a standalone app.
-4. Review locally or on a development deployment.
-5. Approve the current slice for production.
-6. Deploy through `infra/` and run launch readiness.
-7. Invite the first cohort through a specific trusted channel.
-8. Review the funnel daily while the cohort is active.
-9. Decide continue, rework, or change wedge from the pre-agreed thresholds.
+1. Approve the AIDA page locally.
+2. Select the public URL.
+3. Implement durable consented intake and confirmation.
+4. Verify analytics routing and privacy boundaries.
+5. Approve the slice for production.
+6. Deploy through Hyperdrift infra and run launch readiness.
+7. Acquire 500 qualified London visits across three sources.
+8. Apply the pre-committed build, rework, or stop decision.

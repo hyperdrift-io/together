@@ -16,7 +16,7 @@ These files are research inputs, not an approved specification.
 ### From the initial plan
 
 - Prove the connection mechanic manually before automating it.
-- Treat a responsive web experience as the first software surface.
+- Treat a responsive landing page as the first validation surface.
 - Measure specific intents, mutual acceptance, attended meetings, and repeat
   behaviour.
 - Use manual matching to learn which compatibility signals matter.
@@ -145,7 +145,8 @@ Specific issues in the current forms:
   outcome evidence
 
 The landing page should make one honest promise and describe exactly what
-happens after submission.
+happens after registration: the signal counts toward the London build decision
+and confirmed registrants receive first access if Together is built.
 
 ## Live market check: meeting versus engagement
 
@@ -171,11 +172,10 @@ selection, or a fixed event:
 
 Together therefore cannot differentiate merely through IRL meetings, no
 swiping, activity choice, or a human concierge. The sharper distinction is an
-outcome contract:
+arranged-date outcome:
 
-> The participant names the intent; Together takes responsibility for turning a
-> mutually accepted introduction into a confirmed meeting and for remedying a
-> failed confirmation.
+> The participant chooses when; Together curates a mutually accepted person and
+> arranges the place and time.
 
 This claim becomes credible only when the operating terms, density, and
 guarantee remedy are real. Until then, it is a hypothesis to test, not market
@@ -188,7 +188,8 @@ Replace the exhaustive feature catalogue with a living evidence ledger:
 
 | Question | Evidence needed |
 |---|---|
-| Will people express timely, specific intents? | Landing and cohort submission behaviour |
+| Will people register for this distinct product? | Confirmed London launch registrations by source |
+| Will registrants later express timely, specific intents? | Product or manual-pilot submission behaviour |
 | Can one community supply compatible availability? | Manual matching attempts and unmatched reasons |
 | Will people accept curated introductions? | Mutual opt-in rate |
 | Can Together reliably make meetings happen? | Confirmation, cancellation, no-show, and attendance data |

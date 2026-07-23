@@ -5,13 +5,13 @@
 
 ## Mission
 
-Together gets Londoners out of matching-and-messaging loops and into a
-confirmed face-to-face meeting with someone who has chosen to be there.
+Together turns one availability choice into a mutually accepted, fully arranged
+face-to-face date in London.
 
 ## The user outcome
 
-A participant leaves with a real meeting in the calendar—not another profile,
-match, or conversation to manage.
+A participant receives a person, place, and time they have chosen to meet in
+one confirmed plan.
 
 The product succeeds when the meeting happens and the participant chooses to do
 it again. Signups, matches, messages, and time in the product are supporting
@@ -108,7 +108,7 @@ A successful meeting cycle is:
 
 | Hypothesis | Earliest behavioural evidence |
 |---|---|
-| Londoners will request a real meeting | A qualified visitor submits availability, practical preferences, contact permission, and adult consent |
+| Londoners want this product enough to register | At least 100 confirmed registrations from 500 qualified London visits across three independent sources |
 | Curation is more useful than open browsing | A participant accepts a proposed introduction without needing a public feed |
 | Coordination is a meaningful source of value | Accepted introductions become confirmed plans and attended meetings |
 | Inclusive planning improves trust and attendance | Participants use optional planning preferences and report feeling comfortable |
@@ -134,8 +134,8 @@ A successful meeting cycle is:
 2. Who operates the concierge, introductions, safety follow-up, and removals?
 3. Does the landing page launch at `together.hyperdrift.io` or
    `hyperdrift.io/together`?
-4. Should the first intake use a shortened Google Form or a native Together
-   form with durable server-side storage?
+4. Which durable email subscription and confirmation path should the appetite
+   page use?
 5. Which guarantee can the pilot operationally honour?
    - **Confirmation guarantee:** every confirmed meeting has mutual opt-in and
      an agreed plan; if it falls through, Together makes it right.
@@ -153,8 +153,21 @@ A successful meeting cycle is:
 **Decision:** Validate appetite with a landing page before building the broader
 product.
 
-**Reason:** The highest-risk assumption is that Londoners will request a real
-meeting and trust Together to progress it without an open-ended digital courtship.
+**Reason:** The highest-risk assumption is that Londoners want the distinct
+arranged-date product enough for a dense launch cohort to exist.
+
+### Registration before product intake
+
+**Decision status:** Approved.
+
+**Decision:** The landing page is a minimalist subscription test, not the app.
+It asks only for an email registration and does not collect availability,
+meeting preferences, or profile information.
+
+**Reason:** Product-style onboarding adds friction and tests willingness to
+complete a speculative form rather than appetite for Together. Confirmed
+registration is the earliest credible commitment; significant demand controls
+whether the product is built.
 
 ### Web before native
 
@@ -175,14 +188,14 @@ confirmed and attended real-world meetings.
 keep participants inside an interaction loop that has not produced the result
 they came for.
 
-### Bold category break
+### Distinct category position
 
 **Decision status:** Approved.
 
-**Decision:** Together will present itself as a face-to-face meeting service,
-not a softer dating app. Public copy is punchy, direct, and explicit about
-bypassing the match-message-wait loop. The visual system uses radical clarity
-rather than warm lifestyle imagery.
+**Decision:** Together will present itself as face-to-face dating, arranged.
+Public copy is punchy, direct, and positive about the unique service: choose
+when, mutually choose the person, receive the place and time. The visual system
+uses calm, confident reduction.
 
-**Reason:** A familiar dating-app surface would weaken the outcome contract and
-make Together look like another participant in the model it is replacing.
+**Reason:** Disruption comes from a proposition competitors do not own, not
+aggressive design or extended criticism of existing products.
