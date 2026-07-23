@@ -1,6 +1,6 @@
 # Together — Product Design Exploration
 
-**Status:** Directional concepts, not approved product screens  
+**Status:** Deferred future-app concepts, not approved product screens
 **Created:** 2026-07-23
 
 These images explore the eventual app only. They are not assets for the
