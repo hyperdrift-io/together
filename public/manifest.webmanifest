@@ -1,0 +1,17 @@
+{
+  "name": "Together",
+  "short_name": "Together",
+  "description": "A face-to-face meeting service for London.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#090909",
+  "theme_color": "#ff4f00",
+  "icons": [
+    {
+      "src": "/images/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,0 +1,700 @@
+:root {
+  color-scheme: dark;
+  --ink: #090909;
+  --paper: #f4f2ea;
+  --signal: #ff4f00;
+  --signal-on-paper: #b83200;
+  --muted: #bcb9b0;
+  --line: #343434;
+  --max-width: 88rem;
+  --edge: clamp(1.25rem, 4vw, 4.5rem);
+  --space-section: clamp(5rem, 11vw, 10rem);
+  --radius: 0.35rem;
+  --type-display: clamp(4rem, 13vw, 11.5rem);
+  --type-section: clamp(2.7rem, 7vw, 6.5rem);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--ink);
+}
+
+body {
+  margin: 0;
+  color: var(--paper);
+  background: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  line-height: 1.45;
+  text-rendering: optimizeLegibility;
+}
+
+main {
+  overflow: hidden;
+}
+
+a {
+  color: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+ol {
+  margin-block: 0;
+}
+
+h1,
+h2,
+h3,
+strong {
+  font-weight: 900;
+  letter-spacing: -0.06em;
+}
+
+h1,
+h2 {
+  line-height: 0.86;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button,
+a.primary {
+  min-height: 3.5rem;
+}
+
+:is(button, a).primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  border: 0.14rem solid var(--signal);
+  border-radius: var(--radius);
+  padding: 0.9rem 1.35rem;
+  color: var(--ink);
+  background: var(--signal);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    color 120ms ease,
+    background 120ms ease,
+    transform 120ms ease;
+}
+
+:is(button, a).primary:hover {
+  color: var(--signal);
+  background: transparent;
+  transform: translateY(-0.14rem);
+}
+
+button.secondary {
+  border: 0;
+  border-bottom: 0.12rem solid currentColor;
+  padding: 0.75rem 0;
+  color: var(--paper);
+  background: transparent;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+:is(a, button, input, select, textarea):focus-visible {
+  outline: 0.2rem solid var(--signal);
+  outline-offset: 0.25rem;
+}
+
+.site-header,
+.site-footer,
+.hero,
+.manifesto,
+.contract,
+.process,
+.meeting-request,
+.request-confirmation,
+.agency,
+.closing {
+  width: min(100%, var(--max-width));
+  margin-inline: auto;
+  padding-inline: var(--edge);
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 5rem;
+  border-bottom: 0.1rem solid var(--line);
+}
+
+.site-header a {
+  font-size: 1.4rem;
+  font-weight: 900;
+  letter-spacing: -0.06em;
+  text-decoration: none;
+}
+
+.site-header a span {
+  color: var(--signal);
+}
+
+.site-header p,
+.site-footer p {
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(16rem, 1fr);
+  gap: clamp(2rem, 7vw, 7rem);
+  align-items: end;
+  min-height: calc(100svh - 5rem);
+  padding-block: clamp(4rem, 8vw, 8rem);
+}
+
+.eyebrow,
+.section-label {
+  color: var(--signal);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  max-width: 11ch;
+  margin-block: clamp(1.5rem, 4vw, 3rem);
+  font-size: var(--type-display);
+  text-transform: uppercase;
+}
+
+.hero h1 span {
+  display: block;
+}
+
+.hero h1 span:last-child {
+  color: var(--signal);
+}
+
+.lede {
+  max-width: 42rem;
+  margin-bottom: 2rem;
+  font-size: clamp(1.25rem, 2.2vw, 1.8rem);
+  line-height: 1.25;
+  letter-spacing: -0.035em;
+}
+
+.trust-line {
+  margin-top: 1.1rem;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.meeting-stamp {
+  border-top: 0.65rem solid var(--signal);
+  border-bottom: 0.1rem solid var(--paper);
+  padding-block: 1.25rem 1.7rem;
+}
+
+.meeting-stamp p {
+  margin-bottom: 1.5rem;
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.meeting-stamp strong {
+  display: block;
+  font-size: clamp(2rem, 4vw, 4rem);
+  line-height: 0.95;
+}
+
+.manifesto {
+  padding-block: var(--space-section);
+  background: var(--paper);
+  box-shadow: 0 0 0 100vmax var(--paper);
+  clip-path: inset(0 -100vmax);
+  color: var(--ink);
+}
+
+.manifesto header,
+.contract header,
+.process header {
+  display: grid;
+  grid-template-columns: minmax(10rem, 1fr) minmax(0, 3fr);
+  gap: 2rem;
+  align-items: start;
+}
+
+.manifesto h2,
+.contract h2,
+.process h2,
+.agency h2,
+.closing h2,
+.request-confirmation h2 {
+  max-width: 12ch;
+  font-size: var(--type-section);
+  text-transform: uppercase;
+}
+
+.manifesto .section-label,
+.manifesto .replacement,
+.meeting-request .section-label,
+.meeting-request legend span,
+.request-confirmation .section-label {
+  color: var(--signal-on-paper);
+}
+
+.dead-loop {
+  display: grid;
+  gap: 0;
+  margin-block: clamp(4rem, 8vw, 8rem) 1rem;
+  padding: 0;
+  list-style: none;
+  counter-reset: none;
+}
+
+.dead-loop li {
+  position: relative;
+  width: fit-content;
+  color: #6e6b64;
+  font-size: clamp(3.2rem, 10vw, 9rem);
+  font-weight: 900;
+  letter-spacing: -0.07em;
+  line-height: 0.86;
+  text-transform: uppercase;
+}
+
+.dead-loop li::after {
+  position: absolute;
+  top: 52%;
+  right: -0.2em;
+  left: -0.08em;
+  height: 0.09em;
+  background: var(--signal);
+  content: "";
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: strike 350ms ease-out forwards;
+}
+
+.dead-loop li:nth-child(2)::after {
+  animation-delay: 180ms;
+}
+
+.dead-loop li:nth-child(3)::after {
+  animation-delay: 360ms;
+}
+
+.dead-loop li:nth-child(4)::after {
+  animation-delay: 540ms;
+}
+
+.replacement {
+  color: var(--signal);
+  font-size: clamp(5rem, 18vw, 16rem);
+  font-weight: 900;
+  letter-spacing: -0.09em;
+  line-height: 0.8;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.manifesto-copy {
+  max-width: 46rem;
+  margin-top: clamp(3rem, 7vw, 6rem);
+  margin-left: auto;
+  font-size: clamp(1.3rem, 3vw, 2.25rem);
+  letter-spacing: -0.04em;
+  line-height: 1.15;
+}
+
+.contract,
+.process,
+.agency,
+.closing {
+  padding-block: var(--space-section);
+  border-bottom: 0.1rem solid var(--line);
+}
+
+.contract {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(16rem, 1fr);
+  gap: clamp(3rem, 9vw, 9rem);
+  align-items: end;
+}
+
+.contract header {
+  display: block;
+}
+
+.contract h2 {
+  margin-top: 1.5rem;
+}
+
+.contract > div {
+  border-top: 0.55rem solid var(--signal);
+  padding-top: 1.25rem;
+}
+
+.contract > div p {
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+}
+
+.contract > div p + p {
+  margin-top: 1.5rem;
+}
+
+.process ol {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  margin-top: clamp(4rem, 8vw, 7rem);
+  padding: 0;
+  border-top: 0.1rem solid var(--line);
+  list-style: none;
+}
+
+.process li {
+  min-height: 20rem;
+  padding: 1.25rem;
+  border-right: 0.1rem solid var(--line);
+}
+
+.process li:first-child {
+  border-left: 0.1rem solid var(--line);
+}
+
+.process li > span,
+.meeting-request legend span {
+  display: block;
+  margin-bottom: 5rem;
+  color: var(--signal);
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 0.09em;
+}
+
+.process h3 {
+  margin-bottom: 1rem;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  text-transform: uppercase;
+}
+
+.process li p {
+  max-width: 18rem;
+  color: var(--muted);
+}
+
+.meeting-request,
+.request-confirmation {
+  margin-block: var(--space-section);
+  padding-block: clamp(3rem, 7vw, 6rem);
+  color: var(--ink);
+  background: var(--paper);
+}
+
+.meeting-request > header {
+  display: grid;
+  grid-template-columns: minmax(10rem, 1fr) minmax(0, 2fr);
+  gap: 1.5rem 2rem;
+  margin-bottom: clamp(4rem, 8vw, 7rem);
+}
+
+.meeting-request > header .section-label {
+  grid-row: 1 / 3;
+}
+
+.meeting-request > header h2 {
+  max-width: 12ch;
+  font-size: clamp(3rem, 7vw, 6.5rem);
+  letter-spacing: -0.065em;
+  line-height: 0.88;
+  text-transform: uppercase;
+}
+
+.meeting-request > header p:last-child {
+  max-width: 36rem;
+  font-size: 1.2rem;
+}
+
+.meeting-request fieldset {
+  display: grid;
+  grid-template-columns: minmax(12rem, 1fr) minmax(0, 2fr);
+  gap: 2rem;
+  margin: 0;
+  border: 0;
+  border-top: 0.12rem solid var(--ink);
+  padding: 2rem 0 4rem;
+}
+
+.meeting-request legend {
+  float: left;
+  width: 100%;
+  padding: 0;
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  font-weight: 900;
+  letter-spacing: -0.045em;
+}
+
+.meeting-request legend span {
+  margin-bottom: 1.25rem;
+}
+
+.meeting-request label {
+  display: grid;
+  gap: 0.55rem;
+  grid-column: 2;
+  color: #242424;
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.meeting-request input,
+.meeting-request select,
+.meeting-request textarea {
+  width: 100%;
+  min-height: 3.5rem;
+  border: 0.12rem solid var(--ink);
+  border-radius: 0;
+  padding: 0.85rem 0.95rem;
+  color: var(--ink);
+  background: var(--paper);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.meeting-request textarea {
+  min-height: 8rem;
+  resize: vertical;
+}
+
+.meeting-request input::placeholder,
+.meeting-request textarea::placeholder {
+  color: #68655f;
+}
+
+.field-grid {
+  display: grid;
+  grid-column: 2;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.field-grid label {
+  grid-column: auto;
+}
+
+.meeting-request label.consent {
+  display: flex;
+  align-items: flex-start;
+  font-size: 0.85rem;
+  line-height: 1.35;
+  text-transform: none;
+}
+
+.meeting-request label.consent input {
+  flex: 0 0 1.3rem;
+  width: 1.3rem;
+  min-height: 1.3rem;
+  margin: 0.08rem 0 0;
+}
+
+.meeting-request > footer {
+  display: grid;
+  grid-template-columns: minmax(12rem, 1fr) minmax(0, 2fr);
+  gap: 2rem;
+  align-items: center;
+  padding-top: 1rem;
+}
+
+.meeting-request > footer .primary {
+  grid-column: 2;
+  width: 100%;
+  min-height: 5rem;
+  font-size: clamp(1.1rem, 2.5vw, 1.55rem);
+}
+
+.meeting-request > footer p {
+  grid-column: 2;
+  color: #5a5751;
+  font-size: 0.8rem;
+}
+
+.request-confirmation {
+  min-height: 32rem;
+}
+
+.request-confirmation h2 {
+  margin-block: 1.5rem 2rem;
+}
+
+.request-confirmation > p:not(.section-label) {
+  max-width: 38rem;
+  margin-bottom: 2rem;
+  font-size: 1.2rem;
+}
+
+.request-confirmation button.secondary {
+  color: var(--ink);
+}
+
+.agency {
+  display: grid;
+  grid-template-columns: minmax(10rem, 1fr) minmax(0, 2fr);
+  gap: 2rem;
+}
+
+.agency h2 {
+  color: var(--signal);
+}
+
+.agency > p:last-child {
+  grid-column: 2;
+  max-width: 44rem;
+  font-size: clamp(1.15rem, 2vw, 1.5rem);
+}
+
+.closing {
+  min-height: 80svh;
+}
+
+.closing h2 {
+  max-width: 14ch;
+  margin-block: clamp(2rem, 5vw, 4rem);
+}
+
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 2rem;
+}
+
+@keyframes strike {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@media (max-width: 54rem) {
+  .hero,
+  .contract {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    min-height: auto;
+  }
+
+  .meeting-stamp {
+    max-width: 28rem;
+  }
+
+  .manifesto header,
+  .process header,
+  .meeting-request > header,
+  .meeting-request fieldset,
+  .meeting-request > footer,
+  .agency {
+    grid-template-columns: 1fr;
+  }
+
+  .meeting-request > header .section-label,
+  .meeting-request label,
+  .field-grid,
+  .meeting-request > footer .primary,
+  .meeting-request > footer p,
+  .agency > p:last-child {
+    grid-column: 1;
+  }
+
+  .meeting-request > header .section-label {
+    grid-row: auto;
+  }
+
+  .meeting-request fieldset {
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 40rem) {
+  :root {
+    --edge: 1rem;
+    --space-section: 4.5rem;
+  }
+
+  .site-header p {
+    font-size: 0.62rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(3.7rem, 20vw, 6.5rem);
+  }
+
+  .process ol,
+  .field-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .process li {
+    min-height: 15rem;
+    border-right: 0.1rem solid var(--line);
+    border-bottom: 0.1rem solid var(--line);
+    border-left: 0.1rem solid var(--line);
+  }
+
+  .process li > span {
+    margin-bottom: 3rem;
+  }
+
+  .replacement {
+    text-align: left;
+  }
+
+  .site-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#090909"/>
+  <rect x="0" y="0" width="22" height="630" fill="#ff4f00"/>
+  <text x="78" y="86" fill="#ff4f00" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" letter-spacing="4">TOGETHER / LONDON</text>
+  <text x="68" y="285" fill="#f4f2ea" font-family="Arial, Helvetica, sans-serif" font-size="122" font-weight="900" letter-spacing="-9">A MEETING.</text>
+  <text x="68" y="430" fill="#ff4f00" font-family="Arial, Helvetica, sans-serif" font-size="122" font-weight="900" letter-spacing="-9">NOT A MATCH.</text>
+  <text x="76" y="548" fill="#bcb9b0" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">A face-to-face meeting service for London.</text>
+</svg>

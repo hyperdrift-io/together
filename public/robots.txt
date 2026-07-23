@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://together.hyperdrift.io/sitemap.xml
