@@ -1,119 +1,298 @@
 # Together — Landing Page Experience
 
-**Status:** AIDA appetite direction approved for local validation
+**Status:** Approved direction implemented for local validation; production
+email and deployment remain unapproved
 **Purpose:** Make the Together experience desirable enough that Londoners
 register to bring it into existence
-**Primary event:** `launch_interest_submitted`
-**Variant:** `aida_arranged_date`
+**Primary event:** `launch_interest_confirmed`
+**Variant:** `mutual_hello`
+
+## Visual approval gate
+
+Before UI implementation, generate three comparable concept boards using the
+same proposition, content scope, desktop viewport, and mobile viewport. The
+user selects or revises one direction. Record the selected image here before
+changing HTML, JSX, CSS, components, or production assets.
+
+**Selected direction:** Passing Glance
+
+**Approved image:** [`2026-07-24-passing-glance-come-spark-connect.png`](design/approved/2026-07-24-passing-glance-come-spark-connect.png)
+
+**Approval date:** 2026-07-24
+
+**Production hero:** [`together-passing-glance.jpg`](../public/images/together-passing-glance.jpg)
+
+The production hero was derived from the approved board as a clean,
+text-free bitmap so the page typography, form, responsive layout, and
+accessibility remain native HTML and CSS. Its generation prompt is recorded in
+[`2026-07-24-production-hero-prompt.md`](design/approved/2026-07-24-production-hero-prompt.md).
+
+## Approved visual brief
+
+The eye enters on an immense, warm-gold **Together.** against midnight blue.
+Two independent people remain inside a real social atmosphere; a small shared
+point of light makes their mutual recognition legible without pretending that
+Together creates the connection. The page explains the role plainly: Together
+makes the hello easier when the feeling is mutual. The emotional tone is warm,
+public, and immediate—not a staged date or a romance-film promise. The closing
+line is **Come. Spark. Connect.**; it replaces numbered steps so the hero reads
+as one emotional invitation, not an onboarding funnel.
+
+Use the approved hero as the one stable first impression. Do not auto-rotate
+hero imagery: a carousel would dilute the visual promise and make the page feel
+less decisive. The archived images may inform seasonal creative, campaign
+creative, or a manually selected alternative after evidence supports it.
+
+### Communication psychology variants
+
+These variants keep the approved Passing Glance visual fixed and test three
+ethical persuasion frames. They use vivid present-tense imagery, contrast, and
+processing fluency without fabricated scarcity or social proof.
+
+1. **Look up. They're here.** — makes the face-to-face possibility immediately
+   imaginable. Strongest desire and present-tense energy; risk: the support copy
+   must make mutuality and the launch-list status explicit.
+   [`01-look-up-theyre-here.png`](design/archive/2026-07-24-connection-explorations/communication-psychology-variants/01-look-up-theyre-here.png)
+2. **Not a match. A meeting.** — the strongest category contrast and clearest
+   statement of the job Together exists to perform. Risk: it begins with the
+   incumbent category and **Get up close** may feel overly physical.
+   [`02-not-a-match-a-meeting.png`](design/archive/2026-07-24-connection-explorations/communication-psychology-variants/02-not-a-match-a-meeting.png)
+3. **Less matching. More meeting.** — easiest to understand for someone arriving
+   from dating apps. Risk: it reads as an incremental improvement rather than a
+   disruptive new behaviour.
+   [`03-less-matching-more-meeting.png`](design/archive/2026-07-24-connection-explorations/communication-psychology-variants/03-less-matching-more-meeting.png)
+
+The recommended synthesis is the emotional hook from variant 1 with explicit
+face-to-face product clarity and an honest launch-list CTA.
+
+### Concept boards
+
+The current round contains five directions by explicit user request. Each uses
+the same proposition, waitlist-only action, desktop scope, and mobile scope.
+They are landing-page decision artifacts, not app or production assets.
+
+1. **The Contract** — severe, outcome-owned, and minimal.
+   [`docs/design/2026-07-23-disruptive-landing/01-the-contract.png`](design/2026-07-23-disruptive-landing/01-the-contract.png)
+2. **The Red Thread** — emotionally charged and culturally distinctive.
+   [`docs/design/2026-07-23-disruptive-landing/02-the-red-thread.png`](design/2026-07-23-disruptive-landing/02-the-red-thread.png)
+3. **The Empty Table** — blunt, physical, and intentionally polarising.
+   [`docs/design/2026-07-23-disruptive-landing/03-the-empty-table.png`](design/2026-07-23-disruptive-landing/03-the-empty-table.png)
+4. **The Convergence** — abstract, premium, and ownable.
+   [`docs/design/2026-07-23-disruptive-landing/04-the-convergence.png`](design/2026-07-23-disruptive-landing/04-the-convergence.png)
+5. **The Yes Wall** — public, energetic, and launch-movement led.
+   [`docs/design/2026-07-23-disruptive-landing/05-the-yes-wall.png`](design/2026-07-23-disruptive-landing/05-the-yes-wall.png)
+
+The earlier calm, ticket, and London-signal round under
+`docs/design/2026-07-23-landing/` is superseded. Its ticket direction was
+rejected because the visual language resembled a budget airline.
+
+### Shared-place landing direction
+
+The product premise has been corrected for the next visual round: Together is
+about a possible mutual introduction between people who are already in the
+same public place. The landing page must sell that immediate possibility, not
+an arranged future date, a city launch, a reservation, or a conventional dating
+app. It intentionally leaves operating mechanics out of scope.
+
+1. **The Café** — ordinary life, warm daylight, and two people already sharing
+   a room. Most human and legible; risk: it can look like editorial lifestyle
+   advertising rather than a distinctive category.
+   [`docs/design/2026-07-23-shared-place-landing/01-the-cafe.png`](design/2026-07-23-shared-place-landing/01-the-cafe.png)
+2. **The Same Room** — a public gallery and one stark red line between two
+   people looking at the same work. The clearest visual expression of proximity
+   and mutual possibility; risk: the venue can feel culturally narrow.
+   [`docs/design/2026-07-23-shared-place-landing/02-the-same-room.png`](design/2026-07-23-shared-place-landing/02-the-same-room.png)
+3. **The Shared Light** — a public reading hall with a luminous shared space at
+   its centre. Most cinematic and ownable; risk: the scale can feel too grand
+   for an everyday product.
+   [`docs/design/2026-07-23-shared-place-landing/03-the-shared-light.png`](design/2026-07-23-shared-place-landing/03-the-shared-light.png)
+
+No direction is approved. The visual choice should be based on the feeling of
+an immediate, voluntary hello in a place both people already share.
+
+#### Public-table variants
+
+This refinement retains the strong, efficient visual grammar of the original
+Empty Table: a single table, two places, and one immediate implication. The
+asset must now show a lived-in public place and independent presence, rather
+than a future reservation.
+
+1. **The Already Here Table** — close, sunny, and visibly public. The setting
+   is clearest, but the subjects risk looking like they have already begun a
+   date.
+   [`docs/design/2026-07-23-public-table-variants/01-the-already-here-table.png`](design/2026-07-23-public-table-variants/01-the-already-here-table.png)
+2. **The Long Table** — two people independently occupy the same communal
+   table. It preserves the original typographic force while making shared
+   presence clear; the strongest direction in this set.
+   [`docs/design/2026-07-23-public-table-variants/02-the-long-table.png`](design/2026-07-23-public-table-variants/02-the-long-table.png)
+3. **The Table Was Already There** — the most forceful poster image, set in a
+   busy public atrium. Its immediate visual tension is strong, but the two
+   people still risk reading as an already-arranged meeting.
+   [`docs/design/2026-07-23-public-table-variants/03-the-table-was-already-there.png`](design/2026-07-23-public-table-variants/03-the-table-was-already-there.png)
+
+#### Connection-poster variants
+
+This branch keeps the Empty Table's hierarchy—one central visual, a concise
+description, email registration, and three steps—but makes the connection the
+hero. Social presence is intentionally abstract so the image does not prescribe
+the eventual meeting situation.
+
+1. **The Mutual Moment** — two people inside a softened social atmosphere and
+   one shared point of light. Emotionally immediate, but it risks feeling too
+   close to a conventional love-at-first-sight campaign.
+   [`docs/design/2026-07-23-connection-poster-variants/01-the-mutual-moment.png`](design/2026-07-23-connection-poster-variants/01-the-mutual-moment.png)
+2. **The Third Form** — two complete sculptural forms make a third vivid space
+   between them. Most abstract and ownable, but it needs a more human gesture
+   before it can carry the proposition alone.
+   [`docs/design/2026-07-23-connection-poster-variants/02-the-third-form.png`](design/2026-07-23-connection-poster-variants/02-the-third-form.png)
+3. **Make the Moment Mutual** — two paths converge inside an abstract crowd.
+   It most closely retains the original poster's clarity and app description,
+   but the visual may be read as wayfinding rather than connection.
+   [`docs/design/2026-07-23-connection-poster-variants/03-make-the-moment-mutual.png`](design/2026-07-23-connection-poster-variants/03-make-the-moment-mutual.png)
+
+##### Mutual Moment refinements
+
+These variants retain the emotional force of **The Mutual Moment** while
+testing ways to make connection immediate without prescribing a particular
+venue, meeting situation, or romance-film narrative.
+
+1. **Tactile Folds** — independent blue and ivory folds converge at a vivid
+   shared point against an abstract crowd. Most instantly striking and least
+   literal; risk: it may read as a radiant paper fan before the app copy is
+   absorbed.
+   [`docs/design/2026-07-24-mutual-moment-variants/01-tactile-folds.png`](design/2026-07-24-mutual-moment-variants/01-tactile-folds.png)
+2. **Human Recognition** — two people remain independent inside a warm social
+   atmosphere, connected by a subtle shared point. Most human; risk: the
+   fingertip gesture makes it feel too much like a staged romantic scene.
+   [`docs/design/2026-07-24-mutual-moment-variants/02-human-recognition.png`](design/2026-07-24-mutual-moment-variants/02-human-recognition.png)
+3. **Shared Space** — two translucent fields make one luminous third opening,
+   with people held only at the edges. Clearest metaphor for two complete lives
+   making a shared possibility; risk: it has a slightly cinematic quality.
+   [`docs/design/2026-07-24-mutual-moment-variants/03-shared-space.png`](design/2026-07-24-mutual-moment-variants/03-shared-space.png)
+
+###### Human Recognition refinements
+
+This round makes **Human Recognition** relatable without turning it into a
+staged romantic encounter. The people must remain independent, and the shared
+visual gesture must communicate that Together enables a mutual hello rather
+than creates the connection itself.
+
+1. **Passing Glance** — a fleeting recognition inside a warm, lived-in crowd.
+   The most editorially dramatic; risk: the two figures still look somewhat
+   intentionally aligned.
+   [`docs/design/2026-07-24-human-recognition-refinements/01-passing-glance.png`](design/2026-07-24-human-recognition-refinements/01-passing-glance.png)
+2. **Separate Clusters** — two people remain with separate groups, connected
+   only by a small vermilion opening. Strongest expression of mutual possibility
+   without a staged meeting; risk: the generated event setting feels somewhat
+   aspirational.
+   [`docs/design/2026-07-24-human-recognition-refinements/02-separate-clusters.png`](design/2026-07-24-human-recognition-refinements/02-separate-clusters.png)
+3. **Everyday Crowd** — a closer, more ordinary social atmosphere with people
+   moving around the two figures. Most relatable; risk: it drifts toward a
+   conventional dating-ad composition.
+   [`docs/design/2026-07-24-human-recognition-refinements/03-everyday-crowd.png`](design/2026-07-24-human-recognition-refinements/03-everyday-crowd.png)
+
+### Empty Table variants
+
+The strongest visual mechanism so far is the Empty Table: two places in the
+same physical space, with the platform's promise made tangible before a word
+of explanation. This round keeps the page proposition and waitlist-only scope
+fixed, varying only the emotional tone of the room.
+
+1. **Afterglow Table** — warm and quietly hopeful, with a shared pool of light.
+   Strongest intimacy; risk: it can read too much like restaurant hospitality.
+   [`docs/design/2026-07-23-empty-table-variants/01-afterglow-table.png`](design/2026-07-23-empty-table-variants/01-afterglow-table.png)
+2. **Midnight Meeting Point** — a night-time public space and a single vivid
+   point of convergence. Strongest energy and certainty; risk: it can read as
+   nightlife rather than a considered introduction.
+   [`docs/design/2026-07-23-empty-table-variants/02-midnight-meeting-point.png`](design/2026-07-23-empty-table-variants/02-midnight-meeting-point.png)
+3. **Public Table** — direct daylight, everyday materials, and a single red
+   point between two chairs. Clearest civic, real-world invitation; risk: it
+   can lean toward a campaign poster.
+   [`docs/design/2026-07-23-empty-table-variants/03-public-table.png`](design/2026-07-23-empty-table-variants/03-public-table.png)
+
+No variant is selected yet. The next visual round should preserve the two
+chairs and table, while combining the clarity of **Public Table** with the
+warmth of **Afterglow Table**.
+
+### Symbolic connection branch
+
+This branch explores a simpler emotional mark: two distinct lives move into
+face-to-face proximity and create a new shared possibility. It uses Gestalt
+closure and contrast to show transformation without depicting anyone as broken
+or incomplete.
+
+1. **A New Story** — two page-like forms create a third shared page.
+   Emotionally legible, but the generated profiles are too literal.
+   [`docs/design/2026-07-23-symbolic-connection/01-a-new-story.png`](design/2026-07-23-symbolic-connection/01-a-new-story.png)
+2. **The Space Between** — two open forms create a meeting symbol through
+   negative space. Most suitable as a brand mark, but this version resembles an
+   audio or listening symbol.
+   [`docs/design/2026-07-23-symbolic-connection/02-the-space-between.png`](design/2026-07-23-symbolic-connection/02-the-space-between.png)
+3. **A New Horizon** — proximity creates a shared rising sun. Optimistic, but
+   this version risks reading as cliffs or a travel poster.
+   [`docs/design/2026-07-23-symbolic-connection/03-a-new-horizon.png`](design/2026-07-23-symbolic-connection/03-a-new-horizon.png)
+
+No direction in this branch is approved. The strongest next exploration is to
+combine the emotional clarity of **A New Story** with the abstraction and
+small-scale recognisability of **The Space Between**.
+
+#### Refined symbolic round
+
+4. **The Shared Chapter** — two folded forms create a new central page. This is
+   the cleanest abstraction of the shared-story idea, but it may also read as
+   wings or a conventional open book.
+   [`docs/design/2026-07-23-symbolic-connection/04-the-shared-chapter.png`](design/2026-07-23-symbolic-connection/04-the-shared-chapter.png)
+5. **The Third Line** — two paths create a third direction. Rejected because
+   the result is emotionally cold and resembles punctuation.
+   [`docs/design/2026-07-23-symbolic-connection/05-the-third-line.png`](design/2026-07-23-symbolic-connection/05-the-third-line.png)
+6. **Mutual Fold** — two balanced forms create a warm centre through proximity.
+   It communicates emotion immediately, but the generated heart is too
+   conventional to become Together's differentiating symbol.
+   [`docs/design/2026-07-23-symbolic-connection/06-mutual-fold.png`](design/2026-07-23-symbolic-connection/06-mutual-fold.png)
+
+The current leading mechanism is not a literal object. It is:
+
+`two complete forms → face-to-face proximity → a third shared form appears`
+
+The next approved exploration should keep that mechanism while removing literal
+faces, books, hearts, audio-like brackets, punctuation, and travel landscapes.
 
 ## Conversion hypothesis
 
-`aida_arranged_date` will increase confirmed London launch registrations because
-it makes Together's unique outcome easy to imagine, explains the mechanism in
-one sentence, and asks for only an email. The page is not the product and must
-not behave like product onboarding.
+`mutual_hello` will increase confirmed London launch registrations because the
+human scene and “Look up. They’re here.” make shared presence immediately
+imaginable, while the support copy explains the mutual, face-to-face job in one
+sentence. The page asks for one email and explicitly says that the app has not
+been built.
 
 Primary metric:
 
-`launch_interest_submitted / landing_viewed`
+`launch_interest_confirmed / landing_viewed`
 
-Guardrail once durable intake exists:
+Diagnostic:
 
 `launch_interest_confirmed / launch_interest_submitted`
 
 ## Competition-relative position
 
-Together does not differentiate merely by being “offline,” “no swipe,” a
-singles event, a group dinner, or a human matchmaker. Those positions already
-exist.
-
-Together's specific promise is:
-
-> Choose when you are free. Together curates a mutually accepted person and
-> arranges the place and time.
-
-The page expresses that uniqueness positively. It does not need an
-anti-competitor section because the mechanism itself creates the contrast:
-
-`one request → one mutual yes → one arranged date`
+Together’s category difference is not simply “offline.” It is that the possible
+connection is already in the same place. Together makes mutual recognition and
+the first hello easier; it does not create a remote matching or messaging loop.
 
 ## 50ms design brief
 
-The eye enters on “A meeting. Not a match.” against a generous warm-white
-canvas, then moves naturally to one calm violet registration panel. An example
-appointment card makes the future service tangible without pretending the app
-already exists. The feeling is energetic confidence: **this is new, obvious,
-and I want London to have it.**
-
-The design is disruptive through reduction and specificity, not aggression.
-There is no black-and-orange manifesto, struck-through competitor journey,
-phone mock-up, profile grid, or hostile language.
-
-## Minimal AIDA sequence
-
-### Attention
-
-# A meeting. Not a match.
-
-**Category line:** Face-to-face dating, arranged.
-
-### Interest
-
-Choose when you are free. Together finds someone compatible, checks the
-interest is mutual, and arranges the date—person, place and time.
-
-### Desire
-
-Show the outcome as a confirmed London appointment:
-
-- A specific day and time
-- A real place
-- “Mutually chosen”
-- “Place and time in your calendar”
-
-Then explain only the three indispensable steps:
-
-1. Pick a time.
-2. Both say yes.
-3. Meet.
-
-### Action
-
-**Prompt:** Want this in London?
-
-**Support:** Register your interest and help make Together happen.
-
-**Field:** Email address
-
-**CTA:** I want Together
-
-**Trust line:** London launch · 18+ · Founding members get first access.
-
-The final page section makes the collective launch trigger explicit:
-
-> Together starts when London says yes.
-
-## Psychology applied
-
-- **Jobs to Be Done:** sell a real date already arranged, not dating-app
-  features.
-- **Availability heuristic:** make the outcome vivid through one calendar
-  appointment.
-- **Commitment and consistency:** ask for one small, meaningful commitment.
-- **Critical mass:** show that London registrations determine whether Together
-  gets built.
-- **Unity:** “London” is the shared identity and launch boundary.
-- **Hick's Law / paradox of choice:** one audience, one field, one action.
-- **Regret aversion:** first access is the truthful benefit of registering now.
-- **Ethical scarcity:** do not invent counts, deadlines, or limited places.
+The eye enters on an immense warm-gold **Together.** against midnight blue,
+then finds two independent people catching a possible mutual glance inside a
+real crowd. The hook, explanation, and email field occupy one decisive screen.
+The closing **Come. Spark. Connect.** is an emotional invitation, not a numbered
+product tutorial.
 
 ## Page boundary
 
 Keep:
 
 - One proposition
-- One outcome preview
-- Three short steps
+- One human connection scene
 - One email registration form
 - One honest explanation of what the registration controls
 
@@ -121,7 +300,8 @@ Remove:
 
 - Competitor criticism
 - Industry manifestos
-- Guarantee details for an unbuilt service
+- Legalistic guarantee details for an unbuilt service; show the outcome
+  principle, not unapproved limits or absolute performance claims
 - Safety-process detail before the product exists
 - Meeting preferences, availability, borough, name, and profile questions
 - Testimonials or signup counts until they are real
@@ -134,6 +314,7 @@ Capture:
 - `landing_viewed`
 - `launch_interest_started`
 - `launch_interest_submitted`
+- `launch_interest_confirmed`
 - Variant, city, source, device, and campaign
 
 Do not send the email address to analytics. Durable intake stores it separately
@@ -149,3 +330,5 @@ Before public traffic:
 4. GA4 and PostHog verification
 5. Approved URL and Hyperdrift deployment
 6. Pre-committed build / rework / stop thresholds
+7. Approved eligibility, timing, remedy, and pricing terms before the word
+   “guarantee” is used as a public performance claim

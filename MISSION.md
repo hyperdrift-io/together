@@ -64,8 +64,8 @@ after London can produce repeat meetings reliably.
 
 ## Outcome contract
 
-**Direction:** Approved. Exact eligibility, remedy, and response time remain
-operating decisions.
+**Direction:** Approved. Exact eligibility, remedy, response time, and pricing
+remain operating decisions.
 
 Together should differentiate on the outcome it is willing to own:
 
@@ -84,16 +84,22 @@ contract is:
    or exchange messages.
 2. A Together meeting is confirmed only after every participant opts in and a
    place, time, activity, and contact path are agreed.
-3. If a confirmed meeting falls through, Together takes responsibility for a
-   defined remedy: rebooking, another introduction, or a refund/credit if a fee
-   was charged.
+3. If a confirmed meeting falls through, Together takes responsibility for
+   arranging the next one. A paid service must also offer a clear refund or
+   participant-chosen remedy.
 4. Together never preserves a guarantee by substituting a knowingly poor fit or
    pressuring someone to attend.
 
-This aligns Together's incentive with the participant's desired outcome. The
-commercial model should eventually reinforce the same contract—for example,
-charging for an attended or guaranteed meeting rather than continued access to
-a browsing interface—but no pricing model is approved yet.
+This aligns Together's incentive with the participant's desired outcome. A
+recurring fee for continued access to browsing would reproduce the incentive
+Together is challenging. The commercial model should instead earn revenue from
+an attended date or an outcome-backed service period. No pricing model is
+approved yet.
+
+The landing page may test whether this outcome contract creates appetite. It
+must describe the principle as a future service and must not use an absolute
+performance guarantee until eligibility, timing, territorial limits, remedies,
+and operating capacity are real and published.
 
 ## North-star outcome
 
@@ -136,15 +142,14 @@ A successful meeting cycle is:
    `hyperdrift.io/together`?
 4. Which durable email subscription and confirmation path should the appetite
    page use?
-5. Which guarantee can the pilot operationally honour?
-   - **Confirmation guarantee:** every confirmed meeting has mutual opt-in and
-     an agreed plan; if it falls through, Together makes it right.
-   - **Placement guarantee:** every eligible participant receives a confirmed
-     meeting within a stated period or pays nothing.
-   - **Presence guarantee:** a Together host or verified group is always present
-     so nobody arrives alone.
-6. If money is charged, is the remedy a refund, automatic rebooking, or a
-   participant-chosen option?
+5. How quickly must Together deliver an attended date after an eligible request?
+6. What makes a request eligible for the outcome contract?
+7. When a confirmed date falls through, how many arrangements does Together
+   attempt before a participant chooses a refund or another remedy?
+8. Does “someone is there” mean the selected date attends, or does the service
+   include a host or group format so nobody arrives alone?
+9. Will Together charge only for an attended date, use an outcome-backed
+   membership, or remain free during the pilot?
 
 ## Decision history
 
@@ -187,6 +192,19 @@ confirmed and attended real-world meetings.
 **Reason:** This makes the product outcome legible and removes the incentive to
 keep participants inside an interaction loop that has not produced the result
 they came for.
+
+### Outcome-backed service
+
+**Decision status:** Principle approved; operating terms open.
+
+**Decision:** Together is designed around an attended-date outcome. If a
+mutually confirmed plan falls through, Together remains responsible for the
+next arrangement. Compatibility, consent, comfort, and safety are guardrails,
+not exceptions to the outcome.
+
+**Reason:** A guarantee is disruptive only when it transfers risk from the
+participant to Together. It must never transfer that risk onto another
+participant by pressuring attendance or lowering the fit threshold.
 
 ### Distinct category position
 

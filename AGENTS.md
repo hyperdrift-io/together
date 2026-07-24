@@ -5,9 +5,11 @@
 
 ## Status
 
-Together is a prototype in product discovery. No application architecture,
-remote repository, domain, storage system, or production deployment is approved
-yet. The local own-stack landing prototype is approved.
+Together is a prototype in product discovery. The local own-stack landing page,
+SQLite launch-registration store, confirmation-email boundary, and focused
+registration-flow test are approved. The user approved a public repository,
+SMTP delivery, and production deployment on 2026-07-24. This approval covers
+the demand-test landing page, not the meeting product.
 
 The approved direction is:
 
@@ -15,8 +17,15 @@ The approved direction is:
 - Begin with a responsive web experience rather than a native app
 - Optimise for fast, measurable learning and early growth
 - Host public surfaces through Hyperdrift
-- Lead with “A meeting. Not a match.” and a bold London-first category break
+- Lead with “Look up. They’re here.” and make shared physical presence clear
 - Treat the landing page as a subscription-based demand test, not as the app
+- Keep the outcome contract subordinate to mutual choice, compatibility,
+  comfort, accessibility, and safety
+
+The Passing Glance visual direction is approved and recorded in
+`docs/LANDING_PAGE.md`. Material changes still follow the image-first design
+gate: generate three comparable concept boards, obtain explicit selection, and
+record the approved image before changing UI code.
 
 Read `MISSION.md`, `docs/VALIDATION_PLAN.md`, `docs/LANDING_PAGE.md`, and
 `docs/SOURCE_REVIEW.md` before changing product scope or user-facing copy.
@@ -61,10 +70,15 @@ The first public slice should contain only the measured landing proposition,
 one email registration, required consent copy, metadata, analytics, sitemap,
 robots, and social preview.
 
+Do not change its HTML, JSX, CSS, components, or production assets while a new
+visual approval gate is open.
+
 ## Prototype validation
 
-Do not add or expand automated test suites during discovery. Use fast
-deploy-safety checks only: install, type-check, lint if configured, build,
+Do not add or expand automated test suites during discovery unless the user
+explicitly makes a focused journey test part of the acceptance criterion. The
+registration-and-confirmation test is that approved exception. Otherwise use
+fast deploy-safety checks only: install, type-check, lint if configured, build,
 security scan, and migration dry-run where relevant.
 
 The user must review a local, development, or preview build before a production
@@ -92,6 +106,9 @@ demand test and does not imitate the later product flow. The product outcome,
 if built, remains a successful connection cycle:
 
 `meeting request → mutual opt-in → meeting confirmed → meeting attended → would repeat`
+
+Do not publish an absolute meeting guarantee until its eligibility, timing,
+territory, remedy, pricing, and operating capacity are approved and evidenced.
 
 The build gate is 500 qualified London visits, 100 confirmed registrations, and
 15% confirmed conversion across at least three independent sources. Together

@@ -2,25 +2,30 @@
 
 ## Mission
 
-Turn one availability choice into a mutually accepted, fully arranged
-face-to-face date in London.
+Make a mutual, face-to-face hello easier for people who are already in the same
+place.
 
 ## Current experiment
 
-Test whether qualified London adults register for the app after seeing its
+Test whether qualified London adults register after seeing its
 competition-relative promise:
 
-> A meeting. Not a match.
+> Look up. They’re here.
 
 The landing page is a demand test, not the product.
 
+The differentiating contract is outcome-backed: Together is designed to count
+an attended date as value and to arrange again when a mutually confirmed plan
+falls through. Registration tests appetite for that promise; it does not prove
+operational fulfilment.
+
 ## Variant
 
-`aida_arranged_date`
+`mutual_hello`
 
-Hypothesis: a positive, concrete picture of an already-arranged date plus an
-email-only commitment will produce credible demand without the friction of
-pretending product onboarding already exists.
+Hypothesis: a positive, concrete picture of two people already sharing a place,
+plus an email-only commitment, will produce credible demand without pretending
+product onboarding already exists.
 
 ## Primary path
 
@@ -28,9 +33,9 @@ pretending product onboarding already exists.
 
 Primary metric:
 
-`launch_interest_submitted / landing_viewed`
+`launch_interest_confirmed / landing_viewed`
 
-Guardrail:
+Diagnostic:
 
 `launch_interest_confirmed / launch_interest_submitted`
 

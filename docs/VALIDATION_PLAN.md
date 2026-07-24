@@ -1,7 +1,9 @@
 # Together — Appetite Validation Plan
 
-**Status:** London-first subscription test approved; durable intake pending
-**Experiment:** Minimalist AIDA landing page before product development
+**Status:** Local subscription and email-confirmation flow implemented;
+production provider and deployment pending
+**Experiment:** Passing Glance / mutual hello landing page before product
+development
 
 ## Decision this experiment controls
 
@@ -12,19 +14,31 @@ try it.
 The landing page is therefore not the app, product onboarding, or a concierge
 pilot. Its job is to answer:
 
-> After understanding Together's distinct arranged-date promise, will a London
-> adult register to help bring it into existence?
+> After understanding that Together helps people meet someone who is already in
+> the same place, will a London adult confirm their interest in bringing it
+> into existence?
 
 ## Proposition under test
 
 ### Headline
 
-**A meeting. Not a match.**
+**Look up. They’re here.**
 
 ### Mechanism
 
-Choose when you are free. Together finds someone compatible, checks the
-interest is mutual, and arranges the date—person, place and time.
+Together helps people already in the same public place discover when the
+feeling is mutual and meet face to face. The appetite page describes that
+outcome without inventing product mechanics that have not been built.
+
+### Outcome contract
+
+Together is designed to count an attended date as the outcome. If a mutually
+confirmed plan falls through, Together takes responsibility for arranging the
+next one without weakening consent, comfort, or compatibility.
+
+The appetite page tests whether this commitment is desirable. It does not prove
+that Together can fulfil an absolute guarantee. Placement time, eligibility,
+remedies, and operating cost must be validated during the manual pilot.
 
 ### Commitment
 
@@ -51,7 +65,7 @@ Report conversion separately by source and device.
 
 | Stage | Event | Meaning |
 |---|---|---|
-| Exposure | `landing_viewed` | Visitor saw variant `aida_arranged_date` |
+| Exposure | `landing_viewed` | Visitor saw variant `mutual_hello` |
 | Engagement | `launch_interest_started` | Visitor focused the email field |
 | Appetite | `launch_interest_submitted` | Visitor submitted a valid email |
 | Quality | `launch_interest_confirmed` | Visitor confirmed the registration |
@@ -81,8 +95,10 @@ signal. Always report counts with percentages.
 - **Low friction:** one field measures desire without product-onboarding burden.
 - **Real commitment:** email confirmation is stronger than a CTA click.
 - **Falsifiable:** the thresholds specify when not to build.
-- **Competition-relative:** visitors see the unique arranged-date outcome,
-  rather than a generic “better dating” claim.
+- **Competition-relative:** visitors see shared presence and a real hello,
+  rather than another remote matching or messaging loop.
+- **Risk reversal:** Together, rather than the participant, remains responsible
+  for progressing a failed confirmed plan toward another arrangement.
 - **Local density:** London is the explicit launch market and network boundary.
 
 ## Optional post-confirmation qualification
@@ -107,14 +123,37 @@ policy before collection.
 - Confirmation email and `launch_interest_confirmed`
 - No accounts, profile store, matching, messaging, availability form, or
   meeting operations
+- Outcome-contract language framed as the intended service, with no absolute
+  performance claim before the pilot terms are approved
 
 ## Launch sequence
 
-1. Approve the AIDA page locally.
-2. Select the public URL.
-3. Implement durable consented intake and confirmation.
-4. Verify analytics routing and privacy boundaries.
-5. Approve the slice for production.
-6. Deploy through Hyperdrift infra and run launch readiness.
-7. Acquire 500 qualified London visits across three sources.
-8. Apply the pre-committed build, rework, or stop decision.
+1. Approve the Passing Glance page locally. **Complete.**
+2. Implement durable consented intake and confirmation. **Complete locally.**
+3. Verify registration, email receipt, and confirmation in one focused test.
+   **Complete.**
+4. Select the public URL and production email sender.
+5. Verify analytics routing and privacy boundaries.
+6. Approve the slice for production.
+7. Deploy through Hyperdrift infra and run launch readiness.
+8. Acquire 500 qualified London visits across three sources.
+9. Apply the pre-committed build, rework, or stop decision.
+
+## Guarantee feasibility gate
+
+Registration conversion validates appetite for the promise, not the ability to
+deliver it. Before the first paid or publicly guaranteed meeting, the manual
+pilot must establish:
+
+- Eligible request definition
+- Median and 90th-percentile time to a mutually confirmed date
+- Confirmed-date attendance and cancellation rates
+- Reasons Together cannot place a participant
+- Number and cost of replacement arrangements
+- Participant response to rebooking and refund remedies
+- Safety and compatibility guardrails that cannot be traded for fulfilment
+- Clear geographic, timing, and availability limits
+
+The guarantee should not launch if fulfilling it requires knowingly weaker
+matches, pressure to attend, hidden exclusions, or economics that reward
+low-quality volume.

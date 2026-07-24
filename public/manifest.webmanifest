@@ -1,11 +1,11 @@
 {
   "name": "Together",
   "short_name": "Together",
-  "description": "Face-to-face dating, arranged for London.",
+  "description": "Meet someone who is already there, face to face.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#faf9f6",
-  "theme_color": "#5548e7",
+  "background_color": "#061521",
+  "theme_color": "#061521",
   "icons": [
     {
       "src": "/images/icon.svg",

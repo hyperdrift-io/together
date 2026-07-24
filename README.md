@@ -1,10 +1,11 @@
 # Together
 
-> A meeting. Not a match.
+> Look up. They’re here.
 
-Together is a London-first, face-to-face dating concept in product discovery.
-Choose when you are free; Together curates a mutually accepted introduction and
-arranges the person, place, and time.
+Together is a face-to-face meeting concept in product discovery. It is designed
+to help people who are already in the same public place discover when the
+feeling is mutual and make the first hello easier. London is the first
+validation community, not the product mechanism.
 
 ## Project documents
 
@@ -15,8 +16,18 @@ arranges the person, place, and time.
 
 ## Status
 
-The first own-stack web prototype is a minimalist demand test for local founder
-review. Its email form demonstrates launch registration but does not transmit
-or store personal data. The actual product is deliberately not being built
-until London demand is significant. No remote repository, production domain,
-durable intake, or deployment is approved yet.
+The first own-stack landing page is a demand test for local founder review. Its
+email form stores a pending registration, sends a confirmation link through a
+configurable email transport, and counts only confirmed registrations. The
+actual meeting app is deliberately not being built until London demand is
+significant.
+
+Local verification uses the file-backed test email transport:
+
+```bash
+pnpm test
+```
+
+Production delivery uses SMTP and expects `SMTP_HOST`, `SMTP_PORT`,
+`SMTP_USER`, `SMTP_PASSWORD`, `EMAIL_FROM`, and `SITE_URL`. Registration data
+is stored outside the deploy checkout at `TOGETHER_DATA_PATH`.

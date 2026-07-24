@@ -1,6 +1,7 @@
 import '../styles.css';
 
 import type { ReactNode } from 'react';
+import { Analytics } from '../components/analytics';
 
 type RootLayoutProps = { children: ReactNode };
 
@@ -9,36 +10,37 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <>
       <meta
         name="description"
-        content="Choose when you are free. Together finds someone compatible and arranges the person, place and time for a real date in London."
+        content="Together helps people already in the same place discover when the feeling is mutual—and meet face to face."
       />
-      <meta name="theme-color" content="#faf9f6" />
+      <meta name="theme-color" content="#061521" />
       <meta property="og:type" content="website" />
       <meta property="og:site_name" content="Together" />
-      <meta property="og:title" content="A meeting. Not a match." />
+      <meta property="og:title" content="Look up. They’re here." />
       <meta
         property="og:description"
-        content="Choose when you are free. Together arranges the person, place and time."
+        content="A face-to-face connection with someone who is already there."
       />
       <meta
         property="og:image"
-        content="https://together.hyperdrift.io/images/og-together.png"
+        content="https://together.hyperdrift.io/images/together-passing-glance-og.jpg"
       />
-      <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="630" />
+      <meta property="og:image:width" content="1536" />
+      <meta property="og:image:height" content="806" />
       <meta property="og:url" content="https://together.hyperdrift.io/" />
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content="A meeting. Not a match." />
+      <meta name="twitter:title" content="Look up. They’re here." />
       <meta
         name="twitter:description"
-        content="Face-to-face dating, arranged for London."
+        content="Together makes a mutual hello easier when you’re already in the same place."
       />
       <meta
         name="twitter:image"
-        content="https://together.hyperdrift.io/images/og-together.png"
+        content="https://together.hyperdrift.io/images/together-passing-glance-og.jpg"
       />
       <link rel="canonical" href="https://together.hyperdrift.io/" />
       <link rel="icon" type="image/svg+xml" href="/images/icon.svg" />
       <link rel="manifest" href="/manifest.webmanifest" />
+      <Analytics />
       {children}
     </>
   );
