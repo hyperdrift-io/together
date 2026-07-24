@@ -19,6 +19,7 @@ export default function AdminPage() {
     <>
       <title>Registrations — Together Admin</title>
       <meta name="robots" content="noindex, nofollow, noarchive" />
+      <meta name="googlebot" content="noindex, nofollow, noarchive" />
       <main className="admin-page">
         <header className="admin-header">
           <a className="wordmark" href="/" aria-label="Together home">

@@ -12,6 +12,7 @@ export default function LeavePage({ query }: PageProps<'/leave'>) {
   return (
     <>
       <title>{removed ? 'You’ve left the list' : 'Leave Together'} — Together</title>
+      <meta name="robots" content="noindex, nofollow, noarchive" />
       <main className="message-page">
         <section className="message-card">
           <p className="eyebrow">

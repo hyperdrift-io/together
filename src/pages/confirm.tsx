@@ -21,6 +21,7 @@ export default function ConfirmPage({ query }: PageProps<'/confirm'>) {
             : 'Confirmation link'}{' '}
         — Together
       </title>
+      <meta name="robots" content="noindex, nofollow, noarchive" />
       <main className="message-page">
         <section className="message-card">
           {confirmed ? <ConfirmationTracker /> : null}

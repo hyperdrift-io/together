@@ -12,6 +12,7 @@ export default function CheckEmailPage({
         {alreadyConfirmed ? 'You’re already in' : 'Check your inbox'} —
         Together
       </title>
+      <meta name="robots" content="noindex, nofollow, noarchive" />
       <main className="message-page">
         <section className="message-card">
           <p className="eyebrow">

@@ -22,6 +22,10 @@ stores a pending registration, sends an SMTP confirmation link, and counts only
 confirmed registrations. The actual meeting app is deliberately not being
 built until London demand is significant.
 
+The registration boundary validates both email syntax and whether the domain
+can receive mail before creating a pending record. Temporary DNS failures fail
+open so infrastructure noise does not reject a valid person.
+
 Local verification uses the file-backed test email transport:
 
 ```bash

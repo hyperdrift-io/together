@@ -64,13 +64,19 @@ after(async () => {
 });
 
 test('a visitor registers on the landing page, receives the confirmation email, and confirms', async () => {
-  const email = 'first.hello@example.com';
+  const email = 'first.hello@hyperdrift.io';
   const landingResponse = await fetch(baseUrl);
   const landingHtml = await landingResponse.text();
 
   assert.equal(landingResponse.status, 200);
   assert.match(landingHtml, /Look up\./);
   assert.match(landingHtml, /action="\/api\/launch-interest"/);
+  assert.match(
+    landingHtml,
+    /together-passing-glance-og-branded\.jpg/,
+  );
+  assert.match(landingHtml, /application\/ld\+json/);
+  assert.match(landingHtml, /Meet Someone Already Here, Face to Face/);
 
   const registrationResponse = await fetch(
     `${baseUrl}/api/launch-interest`,
@@ -167,7 +173,7 @@ test('the registration API has an explicit method contract and JSON success path
   assert.equal(methodResponse.headers.get('allow'), 'POST');
   assert.match(methodPayload.message, /Submit the registration form/);
 
-  const email = 'json.hello@example.com';
+  const email = 'json.hello@hyperdrift.io';
   const registrationResponse = await fetch(
     `${baseUrl}/api/launch-interest`,
     {
@@ -196,8 +202,57 @@ test('the registration API has an explicit method contract and JSON success path
   assert.ok(registration.confirmation_sent_at);
 });
 
+test('the registration API rejects an email domain that cannot receive mail', async () => {
+  const email = 'hello@definitely-not-a-domain.invalid';
+  const registrationResponse = await fetch(
+    `${baseUrl}/api/launch-interest`,
+    {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams({ email, company: '' }),
+    },
+  );
+  const payload = await registrationResponse.json();
+
+  assert.equal(registrationResponse.status, 400);
+  assert.deepEqual(payload, {
+    message: 'Use an email address with a valid domain.',
+  });
+
+  const db = new DatabaseSync(databasePath);
+  const registration = db
+    .prepare('SELECT email FROM launch_registrations WHERE email = ?')
+    .get(email);
+  db.close();
+
+  assert.equal(registration, undefined);
+});
+
+test('the registration API rejects malformed email syntax', async () => {
+  const registrationResponse = await fetch(
+    `${baseUrl}/api/launch-interest`,
+    {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams({ email: 'not-an-email', company: '' }),
+    },
+  );
+  const payload = await registrationResponse.json();
+
+  assert.equal(registrationResponse.status, 400);
+  assert.deepEqual(payload, {
+    message: 'Enter a valid email address.',
+  });
+});
+
 test('the admin page shows registration totals and latest records', async () => {
-  const email = 'admin-visible@example.com';
+  const email = 'admin-visible@hyperdrift.io';
   const registrationResponse = await fetch(
     `${baseUrl}/api/launch-interest`,
     {
@@ -217,7 +272,7 @@ test('the admin page shows registration totals and latest records', async () => 
   assert.equal(response.status, 200);
   assert.match(html, /Private launch view/);
   assert.match(html, /Registrations/);
-  assert.match(html, /admin-visible@example\.com/);
+  assert.match(html, /admin-visible@hyperdrift\.io/);
   assert.match(html, /Confirmed/);
   assert.match(html, /Pending/);
 });

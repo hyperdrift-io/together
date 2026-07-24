@@ -1,4 +1,9 @@
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /api/
+Disallow: /check-email
+Disallow: /confirm
+Disallow: /leave
 
 Sitemap: https://together.hyperdrift.io/sitemap.xml

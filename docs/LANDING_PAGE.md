@@ -21,10 +21,15 @@ changing HTML, JSX, CSS, components, or production assets.
 
 **Production hero:** [`together-passing-glance.jpg`](../public/images/together-passing-glance.jpg)
 
+**Branded social preview:** [`together-passing-glance-og-branded.jpg`](../public/images/together-passing-glance-og-branded.jpg)
+
 The production hero was derived from the approved board as a clean,
 text-free bitmap so the page typography, form, responsive layout, and
 accessibility remain native HTML and CSS. Its generation prompt is recorded in
 [`2026-07-24-production-hero-prompt.md`](design/approved/2026-07-24-production-hero-prompt.md).
+The Open Graph image keeps the same approved scene but carries the Together
+wordmark and proposition because social shares do not include the page’s HTML
+branding.
 
 ## Approved visual brief
 

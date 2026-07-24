@@ -55,11 +55,15 @@ export const POST = async (request: Request): Promise<Response> => {
         : '/check-email';
     return Response.redirect(new URL(pathname, request.url), 303);
   } catch (error) {
+    const validationMessages = new Set([
+      'Enter a valid email address.',
+      'Use an email address with a valid domain.',
+    ]);
     const message =
-      error instanceof Error && error.message === 'Enter a valid email address.'
+      error instanceof Error && validationMessages.has(error.message)
         ? error.message
         : 'We could not send the confirmation email. Please try again.';
-    const status = message === 'Enter a valid email address.' ? 400 : 503;
+    const status = validationMessages.has(message) ? 400 : 503;
     console.error(
       'Together registration failed:',
       error instanceof Error ? error.message : 'Unknown error',
