@@ -58,12 +58,21 @@ export function LaunchSignup() {
     setErrorMessage('');
 
     const form = event.currentTarget;
+    const formData = new FormData(form);
 
     try {
       const response = await fetch(form.action, {
         method: 'POST',
-        headers: { Accept: 'application/json' },
-        body: new FormData(form),
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams(
+          Array.from(formData.entries()).map(([key, value]) => [
+            key,
+            String(value),
+          ]),
+        ),
       });
       const payload = (await response.json()) as RegistrationResponse;
 

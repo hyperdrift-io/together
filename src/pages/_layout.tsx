@@ -9,6 +9,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <>
       <meta name="theme-color" content="#061521" />
+      <meta
+        name="google-site-verification"
+        content="50RQLkfM1jREfOFhOOZg22V_67yRE_6LhaqpmwJ4jm0"
+      />
       <link rel="icon" type="image/svg+xml" href="/images/icon.svg" />
       <link rel="manifest" href="/manifest.webmanifest" />
       <Analytics />

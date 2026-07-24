@@ -202,6 +202,41 @@ test('the registration API has an explicit method contract and JSON success path
   assert.ok(registration.confirmation_sent_at);
 });
 
+test('the registration API accepts browser-style multipart submissions', async () => {
+  const email = 'multipart.hello@hyperdrift.io';
+  const body = new FormData();
+  body.set('email', email);
+  body.set('company', '');
+
+  const registrationResponse = await fetch(
+    `${baseUrl}/api/launch-interest`,
+    {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        Authorization: 'Basic ZGV2OmRldg==',
+        Origin: 'https://together.hyperdrift.io',
+      },
+      body,
+    },
+  );
+  const payload = await registrationResponse.json();
+
+  assert.equal(registrationResponse.status, 202);
+  assert.deepEqual(payload, { status: 'check-email' });
+
+  const db = new DatabaseSync(databasePath);
+  const registration = db
+    .prepare(
+      'SELECT status, confirmation_sent_at FROM launch_registrations WHERE email = ?',
+    )
+    .get(email);
+  db.close();
+
+  assert.equal(registration.status, 'pending');
+  assert.ok(registration.confirmation_sent_at);
+});
+
 test('the registration API rejects an email domain that cannot receive mail', async () => {
   const email = 'hello@definitely-not-a-domain.invalid';
   const registrationResponse = await fetch(
