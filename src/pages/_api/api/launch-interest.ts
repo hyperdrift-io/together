@@ -15,6 +15,15 @@ function failure(request: Request, message: string, status: number) {
   return Response.redirect(target, 303);
 }
 
+export const GET = async (): Promise<Response> =>
+  Response.json(
+    { message: 'Method not allowed. Submit the registration form instead.' },
+    {
+      status: 405,
+      headers: { Allow: 'POST' },
+    },
+  );
+
 export const POST = async (request: Request): Promise<Response> => {
   let email = '';
   let company = '';

@@ -9,6 +9,21 @@ type RegistrationRow = {
   token_created_at: string;
 };
 
+export type LaunchRegistrationAdminRow = {
+  email: string;
+  status: 'pending' | 'confirmed';
+  confirmationSentAt: string | null;
+  confirmedAt: string | null;
+  createdAt: string;
+};
+
+export type LaunchRegistrationAdminData = {
+  total: number;
+  pending: number;
+  confirmed: number;
+  registrations: LaunchRegistrationAdminRow[];
+};
+
 type PendingRegistration = {
   status: 'pending';
   email: string;
@@ -224,4 +239,56 @@ export function removeLaunchRegistration(rawEmail: string, token: string) {
       .prepare('DELETE FROM launch_registrations WHERE email = ?')
       .run(email).changes === 1
   );
+}
+
+export function getLaunchRegistrationAdminData(
+  limit = 500,
+): LaunchRegistrationAdminData {
+  const db = getDatabase();
+  const safeLimit = Math.min(Math.max(Math.trunc(limit), 1), 1_000);
+  const counts = db
+    .prepare(`
+      SELECT
+        COUNT(*) AS total,
+        SUM(CASE WHEN status = 'pending' THEN 1 ELSE 0 END) AS pending,
+        SUM(CASE WHEN status = 'confirmed' THEN 1 ELSE 0 END) AS confirmed
+      FROM launch_registrations
+    `)
+    .get() as {
+    total: number;
+    pending: number | null;
+    confirmed: number | null;
+  };
+  const rows = db
+    .prepare(`
+      SELECT
+        email,
+        status,
+        confirmation_sent_at,
+        confirmed_at,
+        created_at
+      FROM launch_registrations
+      ORDER BY created_at DESC
+      LIMIT ?
+    `)
+    .all(safeLimit) as Array<{
+    email: string;
+    status: 'pending' | 'confirmed';
+    confirmation_sent_at: string | null;
+    confirmed_at: string | null;
+    created_at: string;
+  }>;
+
+  return {
+    total: counts.total,
+    pending: counts.pending ?? 0,
+    confirmed: counts.confirmed ?? 0,
+    registrations: rows.map((row) => ({
+      email: row.email,
+      status: row.status,
+      confirmationSentAt: row.confirmation_sent_at,
+      confirmedAt: row.confirmed_at,
+      createdAt: row.created_at,
+    })),
+  };
 }

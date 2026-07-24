@@ -11,6 +11,10 @@ registration-flow test are approved. The user approved a public repository,
 SMTP delivery, and production deployment on 2026-07-24. This approval covers
 the demand-test landing page, not the meeting product.
 
+The private `/admin` operations page is read-only, renders directly from the
+launch-registration database, and is protected at the Nginx boundary with
+HTTP Basic Auth. It must remain excluded from public navigation and indexing.
+
 The approved direction is:
 
 - Gather appetite before building the broader product

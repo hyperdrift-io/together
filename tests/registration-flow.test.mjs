@@ -158,3 +158,66 @@ test('a visitor registers on the landing page, receives the confirmation email, 
   assert.equal(confirmed.status, 'confirmed');
   assert.ok(confirmed.confirmed_at);
 });
+
+test('the registration API has an explicit method contract and JSON success path', async () => {
+  const methodResponse = await fetch(`${baseUrl}/api/launch-interest`);
+  const methodPayload = await methodResponse.json();
+
+  assert.equal(methodResponse.status, 405);
+  assert.equal(methodResponse.headers.get('allow'), 'POST');
+  assert.match(methodPayload.message, /Submit the registration form/);
+
+  const email = 'json.hello@example.com';
+  const registrationResponse = await fetch(
+    `${baseUrl}/api/launch-interest`,
+    {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams({ email, company: '' }),
+    },
+  );
+  const payload = await registrationResponse.json();
+
+  assert.equal(registrationResponse.status, 202);
+  assert.deepEqual(payload, { status: 'check-email' });
+
+  const db = new DatabaseSync(databasePath);
+  const registration = db
+    .prepare(
+      'SELECT status, confirmation_sent_at FROM launch_registrations WHERE email = ?',
+    )
+    .get(email);
+  db.close();
+
+  assert.equal(registration.status, 'pending');
+  assert.ok(registration.confirmation_sent_at);
+});
+
+test('the admin page shows registration totals and latest records', async () => {
+  const email = 'admin-visible@example.com';
+  const registrationResponse = await fetch(
+    `${baseUrl}/api/launch-interest`,
+    {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams({ email, company: '' }),
+    },
+  );
+  assert.equal(registrationResponse.status, 202);
+
+  const response = await fetch(`${baseUrl}/admin`);
+  const html = await response.text();
+
+  assert.equal(response.status, 200);
+  assert.match(html, /Private launch view/);
+  assert.match(html, /Registrations/);
+  assert.match(html, /admin-visible@example\.com/);
+  assert.match(html, /Confirmed/);
+  assert.match(html, /Pending/);
+});
