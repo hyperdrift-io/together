@@ -1,7 +1,6 @@
 # Together — Landing Page Experience
 
-**Status:** Approved direction implemented for local validation; production
-email and deployment remain unapproved
+**Status:** Approved direction live at `https://together.hyperdrift.io`
 **Purpose:** Make the Together experience desirable enough that Londoners
 register to bring it into existence
 **Primary event:** `launch_interest_confirmed`

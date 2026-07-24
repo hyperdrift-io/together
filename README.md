@@ -16,11 +16,11 @@ validation community, not the product mechanism.
 
 ## Status
 
-The first own-stack landing page is a demand test for local founder review. Its
-email form stores a pending registration, sends a confirmation link through a
-configurable email transport, and counts only confirmed registrations. The
-actual meeting app is deliberately not being built until London demand is
-significant.
+The own-stack landing page is live at
+[`together.hyperdrift.io`](https://together.hyperdrift.io). Its email form
+stores a pending registration, sends an SMTP confirmation link, and counts only
+confirmed registrations. The actual meeting app is deliberately not being
+built until London demand is significant.
 
 Local verification uses the file-backed test email transport:
 

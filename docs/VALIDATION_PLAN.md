@@ -1,7 +1,7 @@
 # Together — Appetite Validation Plan
 
-**Status:** Local subscription and email-confirmation flow implemented;
-production provider and deployment pending
+**Status:** Subscription and SMTP confirmation flow deployed for demand
+validation
 **Experiment:** Passing Glance / mutual hello landing page before product
 development
 
@@ -117,7 +117,7 @@ policy before collection.
 
 - Static responsive own-stack landing page
 - Full metadata, social preview, robots, sitemap, and canonical URL
-- GA4 and PostHog before public traffic
+- GA4 before public traffic; add PostHog only when replay evidence is needed
 - One email registration field
 - Durable consented subscription storage
 - Confirmation email and `launch_interest_confirmed`
@@ -129,13 +129,13 @@ policy before collection.
 ## Launch sequence
 
 1. Approve the Passing Glance page locally. **Complete.**
-2. Implement durable consented intake and confirmation. **Complete locally.**
+2. Implement durable consented intake and confirmation. **Complete.**
 3. Verify registration, email receipt, and confirmation in one focused test.
    **Complete.**
-4. Select the public URL and production email sender.
-5. Verify analytics routing and privacy boundaries.
-6. Approve the slice for production.
-7. Deploy through Hyperdrift infra and run launch readiness.
+4. Select the public URL and production email sender. **Complete.**
+5. Verify analytics routing and privacy boundaries. **Complete.**
+6. Approve the slice for production. **Complete.**
+7. Deploy through Hyperdrift infra and run launch readiness. **Complete.**
 8. Acquire 500 qualified London visits across three sources.
 9. Apply the pre-committed build, rework, or stop decision.
 
