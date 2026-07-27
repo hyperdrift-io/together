@@ -36,3 +36,24 @@ the final high-resolution comparison.
 
 - Selected direction: pending
 - Homepage implementation: blocked until explicit approval
+
+## Critical review
+
+1. **The Human Current**
+   - Strongest: visual momentum, same-place immediacy, and spectacular scale.
+   - Risk: copy must carry mutuality because the individual connection is a
+     detail rather than the first read.
+2. **The Shared Horizon**
+   - Strongest: premium atmosphere, generous copy space, and a believable
+     social setting.
+   - Risk: without Together's copy it could belong to a cultural venue.
+3. **The Third Light**
+   - Strongest: most ownable metaphor for separate social lives gaining a
+     shared possibility.
+   - Risk: the generated frame suggests the overlap through light and shadow
+     more than through an unmistakable human recognition moment.
+
+Current recommendation: take **The Human Current** forward if the goal is to
+differentiate Together from conventional dating imagery. It is the strongest
+challenger, but it does not yet make the existing Passing Glance direction
+obsolete; that approved direction remains more emotionally immediate.

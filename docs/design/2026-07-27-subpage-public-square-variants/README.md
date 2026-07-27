@@ -26,10 +26,30 @@ generated imagery to render interface copy, charts, or financial claims.
 
 ## Model choice
 
-Final review renders use `recraftv4_1_pro` at `2688x1536`.
+Final review renders use `recraftv4_1_pro` at `2688x1536`. Standard V4.1 was
+considered for the graphic direction but is limited to the 1 MP size class; a
+mixed-resolution comparison would confound art direction with output quality.
 
 ## Approval record
 
 - Selected system: pending
 - Subpage asset implementation: blocked until explicit approval
 
+## Critical review
+
+1. **Documentary Square**
+   - Strongest: relatable humans and emotional credibility.
+   - Risk: least differentiated; repeated pairings can drift toward generic
+     event or dating photography.
+2. **Architectural Square**
+   - Strongest: clearest extension of the approved Public Square direction and
+     the best companion for investor evidence, diagrams, and projections.
+   - Risk: needs occasional documentary human crops to avoid becoming abstract.
+3. **Graphic Square**
+   - Strongest: most flexible and ownable supporting language for quieter
+     surfaces, email, survey, admin, and small crops.
+   - Risk: less emotionally persuasive as the sole hero system.
+
+Current recommendation: use **Architectural Square** as the subpage backbone,
+then allow a small number of Documentary Square crops where a page needs human
+warmth. This is a controlled system, not a rotating mixture of visual styles.
