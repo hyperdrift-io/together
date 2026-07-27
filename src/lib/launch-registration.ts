@@ -3,6 +3,13 @@ import { mkdirSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
 
+import type {
+  AdultEligibility,
+  LaunchQualificationInput,
+  LondonArea,
+  PlaceType,
+} from './launch-qualification-schema';
+
 type RegistrationRow = {
   status: 'pending' | 'confirmed';
   token_hash: string;
@@ -12,6 +19,10 @@ type RegistrationRow = {
 export type LaunchRegistrationAdminRow = {
   email: string;
   status: 'pending' | 'confirmed';
+  placeType: PlaceType | null;
+  londonArea: LondonArea | null;
+  adultEligibility: AdultEligibility | null;
+  qualificationCompletedAt: string | null;
   confirmationSentAt: string | null;
   confirmedAt: string | null;
   createdAt: string;
@@ -21,6 +32,7 @@ export type LaunchRegistrationAdminData = {
   total: number;
   pending: number;
   confirmed: number;
+  qualified: number;
   registrations: LaunchRegistrationAdminRow[];
 };
 
@@ -69,6 +81,7 @@ function getDatabase() {
   openDatabasePath = path;
   database.exec(`
     PRAGMA journal_mode = WAL;
+    PRAGMA foreign_keys = ON;
     CREATE TABLE IF NOT EXISTS launch_registrations (
       email TEXT PRIMARY KEY,
       status TEXT NOT NULL CHECK (status IN ('pending', 'confirmed')),
@@ -78,6 +91,33 @@ function getDatabase() {
       confirmed_at TEXT,
       consent_version TEXT NOT NULL,
       created_at TEXT NOT NULL
+    );
+    CREATE TABLE IF NOT EXISTS launch_qualifications (
+      email TEXT PRIMARY KEY
+        REFERENCES launch_registrations(email) ON DELETE CASCADE,
+      place_type TEXT NOT NULL
+        CHECK (
+          place_type IN (
+            'social_event',
+            'gig',
+            'bar_cafe',
+            'class_club'
+          )
+        ),
+      london_area TEXT NOT NULL
+        CHECK (
+          london_area IN (
+            'central',
+            'north',
+            'east',
+            'south',
+            'west',
+            'outside_london'
+          )
+        ),
+      adult_eligible INTEGER NOT NULL
+        CHECK (adult_eligible IN (0, 1)),
+      completed_at TEXT NOT NULL
     );
   `);
 
@@ -241,6 +281,66 @@ export function removeLaunchRegistration(rawEmail: string, token: string) {
   );
 }
 
+export function saveLaunchQualification(
+  rawEmail: string,
+  token: string,
+  input: LaunchQualificationInput,
+) {
+  const email = normalizedEmail(rawEmail);
+
+  if (
+    validateLaunchRegistrationToken(email, token) !==
+    'already-confirmed'
+  ) {
+    return false;
+  }
+
+  getDatabase().prepare(`
+    INSERT INTO launch_qualifications (
+      email,
+      place_type,
+      london_area,
+      adult_eligible,
+      completed_at
+    ) VALUES (?, ?, ?, ?, ?)
+    ON CONFLICT(email) DO UPDATE SET
+      place_type = excluded.place_type,
+      london_area = excluded.london_area,
+      adult_eligible = excluded.adult_eligible,
+      completed_at = excluded.completed_at
+  `).run(
+    email,
+    input.placeType,
+    input.londonArea,
+    input.adultEligibility === 'yes' ? 1 : 0,
+    new Date().toISOString(),
+  );
+
+  return true;
+}
+
+export function hasCompletedLaunchQualification(
+  rawEmail: string,
+  token: string,
+) {
+  const email = normalizedEmail(rawEmail);
+
+  if (
+    validateLaunchRegistrationToken(email, token) !==
+    'already-confirmed'
+  ) {
+    return false;
+  }
+
+  const row = getDatabase()
+    .prepare(
+      'SELECT 1 AS completed FROM launch_qualifications WHERE email = ?',
+    )
+    .get(email) as { completed: 1 } | undefined;
+
+  return row?.completed === 1;
+}
+
 export function getLaunchRegistrationAdminData(
   limit = 500,
 ): LaunchRegistrationAdminData {
@@ -251,29 +351,41 @@ export function getLaunchRegistrationAdminData(
       SELECT
         COUNT(*) AS total,
         SUM(CASE WHEN status = 'pending' THEN 1 ELSE 0 END) AS pending,
-        SUM(CASE WHEN status = 'confirmed' THEN 1 ELSE 0 END) AS confirmed
-      FROM launch_registrations
+        SUM(CASE WHEN status = 'confirmed' THEN 1 ELSE 0 END) AS confirmed,
+        SUM(CASE WHEN q.completed_at IS NOT NULL THEN 1 ELSE 0 END) AS qualified
+      FROM launch_registrations AS r
+      LEFT JOIN launch_qualifications AS q ON q.email = r.email
     `)
     .get() as {
     total: number;
     pending: number | null;
     confirmed: number | null;
+    qualified: number | null;
   };
   const rows = db
     .prepare(`
       SELECT
-        email,
-        status,
-        confirmation_sent_at,
-        confirmed_at,
-        created_at
-      FROM launch_registrations
-      ORDER BY created_at DESC
+        r.email,
+        r.status,
+        r.confirmation_sent_at,
+        r.confirmed_at,
+        r.created_at,
+        q.place_type,
+        q.london_area,
+        q.adult_eligible,
+        q.completed_at AS qualification_completed_at
+      FROM launch_registrations AS r
+      LEFT JOIN launch_qualifications AS q ON q.email = r.email
+      ORDER BY r.created_at DESC
       LIMIT ?
     `)
     .all(safeLimit) as Array<{
     email: string;
     status: 'pending' | 'confirmed';
+    place_type: PlaceType | null;
+    london_area: LondonArea | null;
+    adult_eligible: 0 | 1 | null;
+    qualification_completed_at: string | null;
     confirmation_sent_at: string | null;
     confirmed_at: string | null;
     created_at: string;
@@ -283,9 +395,19 @@ export function getLaunchRegistrationAdminData(
     total: counts.total,
     pending: counts.pending ?? 0,
     confirmed: counts.confirmed ?? 0,
+    qualified: counts.qualified ?? 0,
     registrations: rows.map((row) => ({
       email: row.email,
       status: row.status,
+      placeType: row.place_type,
+      londonArea: row.london_area,
+      adultEligibility:
+        row.adult_eligible === null
+          ? null
+          : row.adult_eligible === 1
+            ? 'yes'
+            : 'no',
+      qualificationCompletedAt: row.qualification_completed_at,
       confirmationSentAt: row.confirmation_sent_at,
       confirmedAt: row.confirmed_at,
       createdAt: row.created_at,

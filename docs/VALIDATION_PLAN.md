@@ -69,7 +69,7 @@ Report conversion separately by source and device.
 | Engagement | `launch_interest_started` | Visitor focused the email field |
 | Appetite | `launch_interest_submitted` | Visitor submitted a valid email |
 | Quality | `launch_interest_confirmed` | Visitor confirmed the registration |
-| Qualification | `launch_profile_completed` | Visitor optionally confirmed London, 18+, and essential cohort information |
+| Qualification | `launch_qualification_completed` | Confirmed visitor optionally supplied the three structured pilot-density signals |
 | Advocacy | `launch_interest_shared` | Confirmed registrant shared the launch |
 
 Every event needs `variant`, `city`, `source`, and campaign where available.
@@ -105,13 +105,15 @@ signal. Always report counts with percentages.
 
 After confirmation, ask at most three optional questions:
 
-1. Are you 18 or over and based in London?
-2. Which broad London area is easiest for you?
-3. Who would you hope to meet?
+1. Where would Together feel most natural: a social event, gig, bar or café, or
+   class or club?
+2. Which broad London area contains most of their social time?
+3. Are they 18 or over?
 
 This step qualifies network density without reducing the primary registration
-rate. Sensitive dating preferences require a documented storage and deletion
-policy before collection.
+rate. Store only structured values, delete them with the registration, and do
+not send answer values to analytics. Sensitive dating preferences remain out of
+scope until a documented storage and deletion policy is approved.
 
 ## Technical slice
 

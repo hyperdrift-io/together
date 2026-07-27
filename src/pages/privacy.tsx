@@ -4,7 +4,7 @@ export default function PrivacyPage() {
       <title>Privacy — Together</title>
       <meta
         name="description"
-        content="How Together uses and protects launch-list email registrations."
+        content="How Together uses and protects launch-list registrations and optional pilot qualification answers."
       />
       <meta name="robots" content="index, follow" />
       <link rel="canonical" href="https://together.hyperdrift.io/privacy" />
@@ -20,6 +20,15 @@ export default function PrivacyPage() {
             email address you choose to share, whether you confirmed it, and the
             timestamps needed to operate the launch list.
           </p>
+          <h2>Optional pilot questions</h2>
+          <p>
+            After confirmation, you can optionally tell us the kind of shared
+            place where Together feels most natural, the broad part of London
+            where you spend social time, and whether you are 18 or over. We use
+            these structured answers to understand where an adult London pilot
+            could work. They do not create a dating profile or affect your place
+            on the launch list.
+          </p>
           <h2>Why we use it</h2>
           <p>
             We use your email to confirm your interest, understand whether there
@@ -29,14 +38,15 @@ export default function PrivacyPage() {
           <h2>Analytics</h2>
           <p>
             We measure visits and registration events without sending your email
-            address to analytics. This helps us decide whether the idea deserves
-            to become a product.
+            address or qualification answers to analytics. This helps us decide
+            whether the idea deserves to become a product.
           </p>
           <h2>Your choice</h2>
           <p>
             Every confirmation email includes a link to leave the list. We keep
-            confirmed registrations while Together remains under active
-            validation, then remove them if the project does not continue.
+            confirmed registrations and any optional qualification answers
+            together while Together remains under active validation. Leaving the
+            list removes both. We remove them if the project does not continue.
           </p>
           <p>
             For questions or a deletion request, email{' '}

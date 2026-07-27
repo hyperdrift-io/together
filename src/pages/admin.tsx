@@ -1,4 +1,10 @@
 import { getLaunchRegistrationAdminData } from '../lib/launch-registration';
+import {
+  adultEligibilityOptions,
+  londonAreaOptions,
+  placeTypeOptions,
+  qualificationLabel,
+} from '../lib/launch-qualification-schema';
 
 function formatDate(value: string | null) {
   if (!value) {
@@ -45,6 +51,10 @@ export default function AdminPage() {
             <dd>{data.confirmed}</dd>
           </div>
           <div>
+            <dt>Qualified</dt>
+            <dd>{data.qualified}</dd>
+          </div>
+          <div>
             <dt>Pending</dt>
             <dd>{data.pending}</dd>
           </div>
@@ -69,6 +79,10 @@ export default function AdminPage() {
                     <th scope="col">Registered</th>
                     <th scope="col">Email sent</th>
                     <th scope="col">Confirmed</th>
+                    <th scope="col">Natural place</th>
+                    <th scope="col">London area</th>
+                    <th scope="col">18+</th>
+                    <th scope="col">Qualified</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -83,6 +97,29 @@ export default function AdminPage() {
                       <td>{formatDate(registration.createdAt)}</td>
                       <td>{formatDate(registration.confirmationSentAt)}</td>
                       <td>{formatDate(registration.confirmedAt)}</td>
+                      <td>
+                        {qualificationLabel(
+                          placeTypeOptions,
+                          registration.placeType,
+                        )}
+                      </td>
+                      <td>
+                        {qualificationLabel(
+                          londonAreaOptions,
+                          registration.londonArea,
+                        )}
+                      </td>
+                      <td>
+                        {qualificationLabel(
+                          adultEligibilityOptions,
+                          registration.adultEligibility,
+                        )}
+                      </td>
+                      <td>
+                        {formatDate(
+                          registration.qualificationCompletedAt,
+                        )}
+                      </td>
                     </tr>
                   ))}
                 </tbody>

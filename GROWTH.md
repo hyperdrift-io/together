@@ -49,9 +49,9 @@ Rework at 8–14.9%. Stop or change the wedge below 8%.
 
 ## Privacy boundary
 
-Analytics may contain city, source, campaign, device, variant, and a
-non-sensitive registration identifier. It must never contain the email address
-or later dating-profile answers.
+Analytics may contain city, source, campaign, device, variant, question number,
+and a non-sensitive registration identifier. It must never contain the email
+address, qualification answer values, or later dating-profile answers.
 
 ## Launch gate
 

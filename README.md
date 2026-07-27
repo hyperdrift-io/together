@@ -19,8 +19,10 @@ validation community, not the product mechanism.
 The own-stack landing page is live at
 [`together.hyperdrift.io`](https://together.hyperdrift.io). Its email form
 stores a pending registration, sends an SMTP confirmation link, and counts only
-confirmed registrations. The actual meeting app is deliberately not being
-built until London demand is significant.
+confirmed registrations. Confirmed people can optionally answer three
+structured questions that qualify London pilot density without changing the
+appetite signal. The actual meeting app is deliberately not being built until
+London demand is significant.
 
 The registration boundary validates both email syntax and whether the domain
 can receive mail before creating a pending record. Temporary DNS failures fail

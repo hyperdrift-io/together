@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from 'react';
 import type { FormEvent } from 'react';
 
+import { trackTogetherEvent } from '../lib/analytics-client';
+
 type SubmissionState =
   | 'idle'
   | 'submitting'
@@ -15,24 +17,6 @@ type RegistrationResponse = {
   message?: string;
 };
 
-const variant = 'mutual_hello';
-
-const track = (event: string) => {
-  if (window.gtag) {
-    window.gtag('event', event, {
-      city: 'london',
-      variant,
-    });
-    return;
-  }
-
-  window.dataLayer?.push({
-    event,
-    city: 'london',
-    variant,
-  });
-};
-
 export function LaunchSignup() {
   const [submissionState, setSubmissionState] =
     useState<SubmissionState>('idle');
@@ -40,7 +24,7 @@ export function LaunchSignup() {
   const started = useRef(false);
 
   useEffect(() => {
-    track('landing_viewed');
+    trackTogetherEvent('landing_viewed');
   }, []);
 
   const recordStart = () => {
@@ -49,7 +33,7 @@ export function LaunchSignup() {
     }
 
     started.current = true;
-    track('launch_interest_started');
+    trackTogetherEvent('launch_interest_started');
   };
 
   const submitInterest = async (event: FormEvent<HTMLFormElement>) => {
@@ -83,7 +67,7 @@ export function LaunchSignup() {
         );
       }
 
-      track('launch_interest_submitted');
+      trackTogetherEvent('launch_interest_submitted');
       setSubmissionState(
         payload.status === 'already-confirmed'
           ? 'already-confirmed'

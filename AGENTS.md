@@ -77,9 +77,11 @@ If Together becomes a standalone Hyperdrift app, use the own-stack:
 - No Next.js, Tailwind, CSS-in-JS, or presentation inline styles
 - No new dependency without explicit approval
 
-The first public slice should contain only the measured landing proposition,
-one email registration, required consent copy, metadata, analytics, sitemap,
-robots, and social preview.
+The public appetite slice contains the measured landing proposition, one email
+registration, required consent copy, metadata, analytics, sitemap, robots, and
+social preview. After confirmation, it may ask the approved optional
+three-question qualification flow recorded in
+`docs/design/2026-07-27-survey-integrations/README.md`.
 
 Do not change its HTML, JSX, CSS, components, or production assets while a new
 visual approval gate is open.
@@ -98,7 +100,11 @@ Hyperdrift infra and follow the workspace asynchronous handoff rule.
 
 ## Data and safety
 
-- During appetite validation, collect only consented launch email registration.
+- During appetite validation, collect only consented launch email registration
+  plus the approved optional structured qualification answers: natural place
+  type, broad London area, and adult eligibility.
+- Store qualification answers with the registration lifecycle and delete them
+  when the registration is removed.
 - Never send contact details, free-text intents, dating preferences,
   accessibility information, or safety reports to analytics.
 - Do not share participant contact details before explicit mutual permission.

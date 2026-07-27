@@ -1,7 +1,11 @@
 import type { PageProps } from 'waku/router';
 
 import { ConfirmationTracker } from '../components/confirmation-tracker';
-import { validateLaunchRegistrationToken } from '../lib/launch-registration';
+import { LaunchQualification } from '../components/launch-qualification';
+import {
+  hasCompletedLaunchQualification,
+  validateLaunchRegistrationToken,
+} from '../lib/launch-registration';
 
 export default function ConfirmPage({ query }: PageProps<'/confirm'>) {
   const search = new URLSearchParams(query);
@@ -10,41 +14,63 @@ export default function ConfirmPage({ query }: PageProps<'/confirm'>) {
   const validation = validateLaunchRegistrationToken(email, token);
   const confirmed = validation === 'already-confirmed';
   const canConfirm = validation === 'pending';
+  const qualificationCompleted =
+    confirmed && hasCompletedLaunchQualification(email, token);
+
+  if (confirmed) {
+    return (
+      <>
+        <title>You’re on the list — Together</title>
+        <meta name="robots" content="noindex, nofollow, noarchive" />
+        <main className="qualification-page">
+          <ConfirmationTracker />
+          <a
+            className="qualification-wordmark"
+            href="/"
+            aria-label="Together home"
+          >
+            Together.
+          </a>
+          <section className="qualification-layout">
+            <header className="qualification-confirmation">
+              <p className="eyebrow">Confirmed</p>
+              <h1>You’re in</h1>
+              <p className="qualification-list-status">
+                You’re on the list.
+              </p>
+              <p>One more spark.</p>
+            </header>
+            <LaunchQualification
+              email={email}
+              token={token}
+              initiallyCompleted={qualificationCompleted}
+            />
+          </section>
+        </main>
+      </>
+    );
+  }
 
   return (
     <>
       <title>
-        {confirmed
-          ? 'You’re on the list'
-          : canConfirm
-            ? 'Confirm your place'
-            : 'Confirmation link'}{' '}
-        — Together
+        {canConfirm ? 'Confirm your place' : 'Confirmation link'} — Together
       </title>
       <meta name="robots" content="noindex, nofollow, noarchive" />
       <main className="message-page">
         <section className="message-card">
-          {confirmed ? <ConfirmationTracker /> : null}
           <p className="eyebrow">
-            {confirmed
-              ? 'Confirmed'
-              : canConfirm
-                ? 'One real signal'
-                : 'A fresh link will help'}
+            {canConfirm ? 'One real signal' : 'A fresh link will help'}
           </p>
           <h1>
-            {confirmed
-              ? 'You’re on the list.'
-              : canConfirm
-                ? 'Confirm your place.'
-                : 'This link isn’t active.'}
+            {canConfirm
+              ? 'Confirm your place.'
+              : 'This link isn’t active.'}
           </h1>
           <p>
-            {confirmed
-              ? 'Your interest is now part of the signal that decides whether Together gets built.'
-              : canConfirm
-                ? 'Confirm that you want Together to become a real face-to-face meeting app.'
-                : 'Return to the landing page and enter your email again to receive a new confirmation link.'}
+            {canConfirm
+              ? 'Confirm that you want Together to become a real face-to-face meeting app.'
+              : 'Return to the landing page and enter your email again to receive a new confirmation link.'}
           </p>
           {canConfirm ? (
             <form action="/api/confirm-interest" method="post">
@@ -56,7 +82,7 @@ export default function ConfirmPage({ query }: PageProps<'/confirm'>) {
             </form>
           ) : (
             <a className="primary" href="/">
-              {confirmed ? 'Come. Spark. Connect.' : 'Send a new link'}
+              Send a new link
             </a>
           )}
         </section>

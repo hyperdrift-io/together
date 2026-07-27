@@ -1,0 +1,58 @@
+{
+  "generated_at": "2026-07-27T21:39:06.095Z",
+  "endpoint": "/images/generations/raster",
+  "model": "recraftv4_1_utility",
+  "size": "1344x768",
+  "seed": 20260727,
+  "prompt": "Text-free premium editorial hero asset for Together, seen from a high oblique aerial viewpoint. One real public social square at blue hour, full of many independent adults moving naturally through separate groups and paths. At the visual centre, exactly two independent adults already sharing the same place stand several steps apart inside one warm architectural pool of amber light. They are not posing as a couple, not touching, and not isolated from the social atmosphere. The light creates one simple circular human opening that makes mutual recognition and an immediate face-to-face hello understandable in 50 milliseconds. Surrounding architecture and crowd remain deep midnight navy and mineral blue; the centre is warm gold with one restrained vermilion accent. Cinematic but believable, tactile stone, subtle film grain, strong chiaroscuro, generous negative space, one dominant focal point, premium cultural-magazine art direction, sophisticated rather than romantic. Compose for a responsive 16:9 website crop with the focal pair safely inside the central 50 percent. No text, lettering, logos, phones, hearts, dating profiles, location pins, maps, radar graphics, beams connecting people, tables, London landmarks, surveillance aesthetic, wedding imagery, lonely figures, or staged date.",
+  "enhanced_prompt": null,
+  "controls": {
+    "colors": [
+      {
+        "rgb": [
+          6,
+          21,
+          33
+        ],
+        "weight": 0.35
+      },
+      {
+        "rgb": [
+          244,
+          181,
+          68
+        ],
+        "weight": 0.3
+      },
+      {
+        "rgb": [
+          239,
+          74,
+          36
+        ],
+        "weight": 0.15
+      },
+      {
+        "rgb": [
+          255,
+          250,
+          240
+        ],
+        "weight": 0.15
+      }
+    ],
+    "background_color": {
+      "rgb": [
+        6,
+        21,
+        33
+      ]
+    }
+  },
+  "requested_output": "apps/together/docs/design/2026-07-27-recraft-model-benchmark/03-recraft-v4-1-utility.png",
+  "output": "apps/together/docs/design/2026-07-27-recraft-model-benchmark/03-recraft-v4-1-utility.png",
+  "format": "png",
+  "api": {
+    "image_id": "639e7e59-cc33-4b9a-a34f-ba891eea51d7"
+  }
+}
