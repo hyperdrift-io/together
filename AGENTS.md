@@ -25,19 +25,26 @@ The approved direction is:
 - Treat the landing page as a subscription-based demand test, not as the app
 - Keep the outcome contract subordinate to mutual choice, compatibility,
   comfort, accessibility, and safety
+- Keep the appetite homepage focused on registration; add only a subtle
+  “Read the proposal” link to the public business proposal
+- Maintain a separate gated, unlinked-from-home investor case that uses the
+  uploaded research critically, distinguishes evidence from assumptions, and
+  includes transparent market and operating-scenario visualisations
+- Keep the investor case excluded from indexing and the public sitemap
 
-The Passing Glance visual direction is approved and recorded in
-`docs/LANDING_PAGE.md`. Material changes still follow the image-first design
-gate: generate three comparable concept boards, obtain explicit selection, and
-record the approved image before changing UI code.
+The Passing Glance homepage and The Public Square proposal/investor direction
+are approved and recorded in `docs/LANDING_PAGE.md`. Material changes still
+follow the image-first design gate: generate three comparable concept boards,
+obtain explicit selection, and record the approved image before changing UI
+code.
 
 Read `MISSION.md`, `docs/VALIDATION_PLAN.md`, `docs/LANDING_PAGE.md`, and
 `docs/SOURCE_REVIEW.md` before changing product scope or user-facing copy.
 
 ## Mission
 
-Turn one availability choice into a mutually accepted, fully arranged
-face-to-face date in London.
+Help two adults already sharing a public place discover mutual interest and
+turn it into a comfortable face-to-face hello.
 
 The fuller wording and all open operating decisions live in `MISSION.md`.
 

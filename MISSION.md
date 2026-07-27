@@ -1,219 +1,183 @@
 # Together — Mission and Vision Ledger
 
-**Status:** Core direction approved; operating contract in discovery  
-**Last updated:** 2026-07-23
+**Status:** Core direction approved; product mechanics in discovery
+**Last updated:** 2026-07-27
 
 ## Mission
 
-Together turns one availability choice into a mutually accepted, fully arranged
-face-to-face date in London.
+Together helps two adults already sharing a public place discover mutual
+interest and turn it into a comfortable face-to-face hello.
 
 ## The user outcome
 
-A participant receives a person, place, and time they have chosen to meet in
-one confirmed plan.
+Two people who are already there recognise that the interest is mutual and
+choose to meet face to face.
 
-The product succeeds when the meeting happens and the participant chooses to do
-it again. Signups, matches, messages, and time in the product are supporting
-signals, not the outcome.
+The product succeeds when the meeting happens and both people retain full
+agency. Likes, profiles, matches, messages, and time in the product are not the
+outcome.
 
 ## Initial wedge
 
-Start with face-to-face introductions for adults in London who are ready to
-meet someone but do not want another cycle of browsing, matching, and messaging.
+Start with adults in London social settings where people are already open to
+meeting someone. London is the first learning market, not a restriction in the
+product concept. Recruitment should still concentrate on a small number of
+places or communities so presence, trust, and repeat behaviour can become
+measurable.
 
-London is the first operating market, not a generic launch label. Recruitment
-must still begin inside one or two dense, reachable London communities so
-availability and trust concentrate quickly. A second city should open only
-after London can produce repeat meetings reliably.
+The first product is not a city-wide dating feed and does not arrange a later
+date elsewhere. Its specific job is to make mutual recognition easier among
+people already sharing a public place.
 
 ## Experience pillars
 
-1. **Request a meeting quickly.** Say when and where you can meet and enough
-   about what matters for Together to propose someone worth meeting.
-2. **Choose with mutual agency.** An introduction happens only after each
-   participant opts in. Personal contact details are not shared beforehand
-   without explicit permission.
-3. **Make the plan happen.** Together reduces the coordination needed to agree
-   on a suitable place, time, group size, budget, and access requirements.
-4. **Learn from outcomes, not browsing.** Matching improves from attended
-   meetings, participant feedback, and repeat choices—not from maximising
-   swipes, messages, or screen time.
-5. **Design access in from the start.** Participants can share only the needs
-   relevant to a particular plan. Together treats those needs as ordinary
-   planning inputs, keeps disclosure optional, and minimises retained data.
+1. **Begin with shared presence.** Together only presents the immediate
+   connection mechanic when both people are already in the same suitable public
+   place.
+2. **Keep the signal private until mutual.** Nobody is exposed, approached, or
+   identified because of one-sided interest.
+3. **Make recognition clear.** When interest is mutual, Together makes it easy
+   for both people to recognise one another and choose whether to say hello.
+4. **Count human outcomes.** Together learns from face-to-face introductions,
+   comfort, repeat choice, and trusted invitations—not screen engagement.
+5. **Treat trust as product infrastructure.** Eligibility, consent, conduct,
+   reporting, removal, accessibility, and data minimisation must be defined
+   before operating the meeting experience.
 
 ## Product principles
 
-- **Real-world value first.** Optimise for comfortable meetings and repeat
-  participation.
-- **Own the outcome.** A like, match, profile view, or message is not a
-  successful Together outcome. Together takes responsibility for progressing a
-  mutually chosen introduction into a confirmed real-world plan.
-- **Availability before profile theatre.** A real time and place are more
-  actionable than another public profile built to collect likes.
-- **Human concierge before automation.** Manual matching is the fastest way to
-  learn which signals matter. Automate only repeated, understood work.
-- **Trust is part of the product.** Eligibility, mutual consent, conduct,
-  contact sharing, reporting, cancellation, and follow-up must be clear before
-  introductions begin.
+- **A meeting, not a match.** A digital interaction is useful only when it helps
+  a mutually chosen face-to-face introduction happen.
+- **Proximity is a constraint, not a filter.** “Already here” is the mechanism.
+  Together is not a conventional remote dating product narrowed by distance.
+- **Mutual agency is non-negotiable.** Either person can decline or withdraw at
+  any time.
+- **Demand before software.** Confirm appetite and local density before
+  building the product.
+- **Manual learning before automation.** The first pilot should reveal the
+  real operating, trust, and behavioural requirements.
 - **Enable, never diminish.** Copy follows the Hyperdrift Voice Covenant:
   strengths first, evidence second, next move third.
-- **Web first.** The first product is a responsive web experience. A native app
-  requires evidence that platform capabilities or retention justify it.
+- **Web first.** A native app requires evidence that platform capabilities or
+  retention justify it.
 
 ## Outcome contract
 
-**Direction:** Approved. Exact eligibility, remedy, response time, and pricing
-remain operating decisions.
+**Direction:** Approved. Exact eligibility, recognition mechanics, safety
+process, remedies, and pricing remain open.
 
-Together should differentiate on the outcome it is willing to own:
+Together does not call a profile view, like, match, or message a successful
+outcome. A successful Together cycle requires:
 
-> A meeting. Not a match.
+1. Two eligible adults are already sharing a suitable public place.
+2. Each signals interest independently.
+3. Recognition is revealed only when the signal is mutual.
+4. Both retain the choice to meet or withdraw.
+5. The introduction becomes face to face.
 
-The guarantee must feed the whole connection cycle rather than replace it.
-Together still seeks compatibility, requires mutual opt-in, respects planning
-and access needs, and learns from the meeting outcome.
-
-A literal promise that every applicant will meet someone immediately would be
-unsafe and operationally dishonest before Together has sufficient density.
-People can also withdraw consent or cancel at any time. The responsible initial
-contract is:
-
-1. Together does not call an introduction successful when people merely match
-   or exchange messages.
-2. A Together meeting is confirmed only after every participant opts in and a
-   place, time, activity, and contact path are agreed.
-3. If a confirmed meeting falls through, Together takes responsibility for
-   arranging the next one. A paid service must also offer a clear refund or
-   participant-chosen remedy.
-4. Together never preserves a guarantee by substituting a knowingly poor fit or
-   pressuring someone to attend.
-
-This aligns Together's incentive with the participant's desired outcome. A
-recurring fee for continued access to browsing would reproduce the incentive
-Together is challenging. The commercial model should instead earn revenue from
-an attended date or an outcome-backed service period. No pricing model is
-approved yet.
-
-The landing page may test whether this outcome contract creates appetite. It
-must describe the principle as a future service and must not use an absolute
-performance guarantee until eligibility, timing, territorial limits, remedies,
-and operating capacity are real and published.
+Together must not create pressure to approach, imply guaranteed compatibility,
+or manufacture a meeting by weakening consent or safety. An absolute
+performance guarantee cannot launch until the manual pilot establishes density,
+operating limits, and a responsible remedy.
 
 ## North-star outcome
 
-**Repeat successful participants:** people who attend a Together-facilitated
-meeting and choose another Together introduction or activity within 30 days.
+**Repeat successful participants:** people who complete a comfortable,
+Together-facilitated face-to-face introduction and choose to use Together again
+within 30 days.
 
-A successful meeting cycle is:
+The behavioural loop is:
 
-`meeting request → mutual opt-in → meeting confirmed → meeting attended → would repeat`
+`shared presence → private signal → mutual recognition → face-to-face hello → would repeat`
 
 ## Current assumptions to test
 
 | Hypothesis | Earliest behavioural evidence |
 |---|---|
-| Londoners want this product enough to register | At least 100 confirmed registrations from 500 qualified London visits across three independent sources |
-| Curation is more useful than open browsing | A participant accepts a proposed introduction without needing a public feed |
-| Coordination is a meaningful source of value | Accepted introductions become confirmed plans and attended meetings |
-| Inclusive planning improves trust and attendance | Participants use optional planning preferences and report feeling comfortable |
-| The experience can grow through real relationships | Attendees return or invite someone they trust after a successful meeting |
-| People will pay for repeated value | Returning participants accept a real paid pilot, deposit, or membership offer |
+| London adults want this product enough to register | At least 100 confirmed registrations from 500 qualified visits across three independent sources |
+| “Already here” is understood as the core mechanism | Visitors can accurately describe the same-place experience after seeing the proposition |
+| People will signal interest in a real social setting | Eligible participants use the private signal during active pilot windows |
+| Mutual recognition becomes a real hello | Mutual signals convert to comfortable face-to-face introductions |
+| The experience deserves repetition | Participants would use Together again or invite someone they trust |
+| Local density can become operationally reliable | A small group of places produces repeated active windows and mutual signals |
+| People will pay for the outcome | Returning participants accept a real paid pilot or outcome-aligned offer |
 
-## Explicitly out of scope for the appetite phase
+## Appetite-phase boundary
 
-- Native mobile applications
-- Swipe or discovery feeds
-- Public profiles
+The current public product is a demand test. It contains:
+
+- The approved appetite homepage
+- One confirmed-email registration
+- A public business proposal
+- A private investor case
+- Analytics, SEO, privacy, and read-only registration operations
+
+It does not contain:
+
+- Native applications
+- Accounts or public profiles
+- Swipe, discovery, or social feeds
 - In-product messaging
-- Automated or AI-labelled matching
-- A social CRM
-- Multi-city rollout
-- Paid acquisition before the activation and repeat loop is trustworthy
-- A large onboarding questionnaire
+- Live proximity detection
+- Signalling or recognition mechanics
+- Automated matching
+- AI-labelled product features
+- Social-CRM functionality
+- Multi-city operating logic
 
-## Open decisions
+## Open operating decisions
 
-1. Which London communities can supply the first 30 qualified participants
-   fastest?
-2. Who operates the concierge, introductions, safety follow-up, and removals?
-3. Does the landing page launch at `together.hyperdrift.io` or
-   `hyperdrift.io/together`?
-4. Which durable email subscription and confirmation path should the appetite
-   page use?
-5. How quickly must Together deliver an attended date after an eligible request?
-6. What makes a request eligible for the outcome contract?
-7. When a confirmed date falls through, how many arrangements does Together
-   attempt before a participant chooses a refund or another remedy?
-8. Does “someone is there” mean the selected date attends, or does the service
-   include a host or group format so nobody arrives alone?
-9. Will Together charge only for an attended date, use an outcome-backed
-   membership, or remain free during the pilot?
+1. Which London places or communities can produce the first dense pilot?
+2. Who operates eligibility, safety follow-up, reports, and removals?
+3. What makes a public place suitable for the mechanic?
+4. How do people prove shared presence without creating invasive tracking?
+5. How are identity and recognition revealed after a mutual signal?
+6. What accessibility and comfort controls belong in the first pilot?
+7. What happens when someone withdraws after mutual recognition?
+8. Which data is required, how long is it retained, and who can access it?
+9. Does the commercial model charge for an attended meeting, an
+   outcome-backed period, venue participation, or another aligned outcome?
+10. What density and repeat thresholds justify expanding beyond the first
+    cluster?
 
 ## Decision history
 
 ### Appetite before application
 
-**Decision:** Validate appetite with a landing page before building the broader
-product.
+**Decision:** Validate confirmed interest before building the meeting product.
 
-**Reason:** The highest-risk assumption is that Londoners want the distinct
-arranged-date product enough for a dense launch cohort to exist.
+**Reason:** The highest-risk assumption is not technical feasibility. It is
+whether enough people want the same-place proposition for local density to
+exist.
 
-### Registration before product intake
+### Shared place, not arranged date
 
-**Decision status:** Approved.
+**Decision:** Together begins with people already sharing a public place. It
+does not begin by arranging a future person, place, and time.
 
-**Decision:** The landing page is a minimalist subscription test, not the app.
-It asks only for an email registration and does not collect availability,
-meeting preferences, or profile information.
-
-**Reason:** Product-style onboarding adds friction and tests willingness to
-complete a speculative form rather than appetite for Together. Confirmed
-registration is the earliest credible commitment; significant demand controls
-whether the product is built.
-
-### Web before native
-
-**Decision:** Begin with a web experience.
-
-**Reason:** A responsive web flow minimises installation friction and shortens
-the build-measure-learn cycle.
+**Reason:** Immediate shared presence is the fundamental product distinction
+and keeps the promise legible: look up, the person is already there.
 
 ### Meetings over engagement proxies
 
-**Decision status:** Approved; guarantee mechanics open.
+**Decision:** Together is designed and measured around mutually chosen
+face-to-face introductions.
 
-**Decision:** Together will not present likes, matches, profile views, or
-messages as its core value. The product will be designed and measured around
-confirmed and attended real-world meetings.
+**Reason:** This aligns the product with the human outcome rather than the
+amount of digital interaction produced on the way.
 
-**Reason:** This makes the product outcome legible and removes the incentive to
-keep participants inside an interaction loop that has not produced the result
-they came for.
+### Mutual recognition
 
-### Outcome-backed service
+**Decision:** Interest remains private unless it is mutual, and either person
+can withdraw.
 
-**Decision status:** Principle approved; operating terms open.
+**Reason:** The product should make a hello easier without turning public space
+into exposure or pressure.
 
-**Decision:** Together is designed around an attended-date outcome. If a
-mutually confirmed plan falls through, Together remains responsible for the
-next arrangement. Compatibility, consent, comfort, and safety are guardrails,
-not exceptions to the outcome.
+### London first, concept without borders
 
-**Reason:** A guarantee is disruptive only when it transfers risk from the
-participant to Together. It must never transfer that risk onto another
-participant by pressuring attendance or lowering the fit threshold.
+**Decision:** London is the first validation and operating market, while the
+core same-place mechanic is not inherently London-specific.
 
-### Distinct category position
-
-**Decision status:** Approved.
-
-**Decision:** Together will present itself as face-to-face dating, arranged.
-Public copy is punchy, direct, and positive about the unique service: choose
-when, mutually choose the person, receive the place and time. The visual system
-uses calm, confident reduction.
-
-**Reason:** Disruption comes from a proposition competitors do not own, not
-aggressive design or extended criticism of existing products.
+**Reason:** One dense market creates faster evidence. Expansion should follow
+reliable density, trust, and repeat behaviour rather than precede them.

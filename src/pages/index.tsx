@@ -89,7 +89,10 @@ export default function HomePage() {
             <a className="wordmark" href="#top" aria-label="Together home">
               Together.
             </a>
-            <p>Face to face. Already here.</p>
+            <div className="site-header-links">
+              <p>Face to face. Already here.</p>
+              <a href="/proposal">Read the proposal</a>
+            </div>
           </header>
 
           <div className="hero-copy">

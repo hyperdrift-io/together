@@ -31,6 +31,66 @@ The Open Graph image keeps the same approved scene but carries the Together
 wordmark and proposition because social shares do not include the page’s HTML
 branding.
 
+## Public proposal and investor case — The Public Square approved
+
+**Approved information architecture:**
+
+- `/proposal` is the public, customer-facing business proposal. It is not a
+  second generic landing page. It should make the radical offer desirable:
+  Together helps people already sharing a public place discover mutual interest
+  and meet face to face. Its narrative moves from the cultural problem to the
+  human mechanism, the meeting outcome, the honest demand gate, and the
+  existing launch registration.
+- `/investors` is a private investment case. It should combine the thesis,
+  why-now evidence, market landscape, competitive positioning, local-density
+  model, transparent operating scenarios, validation plan, material risks,
+  unresolved economics, and source library. It must remain gated, `noindex`,
+  excluded from the sitemap, and absent from homepage navigation.
+- The appetite homepage remains visually unchanged except for one subtle
+  “Read the proposal” link to `/proposal`.
+
+The investor narrative uses the current **already here** product as canonical.
+The uploaded April 2026 documents are inputs to interrogate, not facts to
+republish. External evidence, internal hypotheses, illustrative scenarios, and
+live traction must remain visually distinct. Pricing, CAC, contribution margin,
+payback, team, raise, and use of funds remain unknown until supplied or
+validated.
+
+The first three paired boards were based on an ambiguous “offering page” and
+are superseded. They remain in
+[`design/archive/2026-07-24-offering-and-investor-pages-superseded/`](design/archive/2026-07-24-offering-and-investor-pages-superseded/).
+
+Three corrected paired public-proposal/investor boards were presented:
+
+1. **Radical Prospectus** — strongest continuity with the approved homepage.
+   The public proposal is cinematic and confrontational; the investor case has
+   the clarity of a modern financial publication. Trade-off: the two surfaces
+   feel deliberately different rather than seamlessly continuous.
+   [`01-radical-prospectus.png`](design/2026-07-26-business-proposal-and-investor/01-radical-prospectus.png)
+2. **The Human Signal** — strongest emotional identification. Documentary
+   imagery and one shared amber signal make proximity and mutual recognition
+   immediate, while the investor page remains a disciplined dossier.
+   Trade-off: photography quality will materially affect the final result.
+   [`02-the-human-signal.png`](design/2026-07-26-business-proposal-and-investor/02-the-human-signal.png)
+3. **The Public Square** — clearest strategic explanation of a proximity
+   network. The expanding-place motif creates an ownable system for both the
+   customer promise and density economics. Trade-off: it is more conceptual
+   and less intimate than Passing Glance.
+   [`03-the-public-square.png`](design/2026-07-26-business-proposal-and-investor/03-the-public-square.png)
+
+**Selected direction:** The Public Square, approved 2026-07-27.
+
+**Approved image:**
+[`03-the-public-square.png`](design/2026-07-26-business-proposal-and-investor/03-the-public-square.png)
+
+The implementation should preserve its spatial, architectural system: midnight
+blue, mineral blue, warm amber, parchment, and sparing vermilion; expanding
+place-and-density rings; monumental customer-facing typography; and precise
+cartographic investor visualisations. The public page creates desire around
+mutual recognition in a shared place. The private page distinguishes verified
+evidence, internal research, illustrative scenarios, current validation, and
+unknown economics.
+
 ## Approved visual brief
 
 The eye enters on an immense, warm-gold **Together.** against midnight blue.
