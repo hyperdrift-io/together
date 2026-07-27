@@ -1,0 +1,60 @@
+{
+  "generated_at": "2026-07-27T22:02:02.077Z",
+  "endpoint": "/images/generations/raster",
+  "model": "recraftv4_1_pro",
+  "size": "2688x1536",
+  "seed": 270701,
+  "reference_image": null,
+  "strength": null,
+  "prompt": "Create a spectacular, emotionally magnetic 16:9 homepage hero image for Together, a service that helps two adults who are already at the same real public social place discover mutual interest and say hello face to face.\n\nMetaphor: THE HUMAN CURRENT. A vast contemporary public square during an uplifting early-evening social event, seen from a high cinematic oblique angle. The square is alive with believable adults arriving, talking, laughing and moving in many small independent groups. The overall movement of the crowd and the architecture form two flowing human currents that nearly meet, opening one warm, luminous shared passage through the scene. At opposite edges of that passage, two relatable adults are subtly aware of each other while each remains naturally embedded with separate friends. They are not touching, not posed, not isolated, not centered as a romantic couple. The emotional instant is recognition and possibility: look up, someone interesting is already here. Together makes that nearby possibility visible but leaves the human choice to them.\n\nVisual direction: premium cinematic editorial photography with restrained surreal spatial choreography, large-scale and breathtaking but still recognisably human. Deep midnight navy architecture and shadow, warm amber practical light, a restrained coral accent, soft ivory highlights. Rich crowd detail, confident contrast, subtle film grain, tactile natural materials, beautiful atmospheric depth. The warm path should emerge from real light, crowd flow and negative space rather than a magic beam or interface effect.\n\nResponsive composition: preserve the central 50 percent as the visual story; leave calmer deep-navy negative space across the upper-left quarter for homepage copy; keep critical people and geometry away from the far edges.\n\nAvoid: central spotlight on a couple, empty date table, lonely people, staged romance, wedding imagery, touching or kissing, depressive mood, hearts, phones, app screens, swipe cards, chat bubbles, profile portraits, location pins, maps, radar, surveillance, London landmarks, literal wires or glowing data lines, fake text, letters, numbers, logos, charts, generic gradients, glassmorphism, stock-photo polish. No typography.",
+  "enhanced_prompt": null,
+  "controls": {
+    "colors": [
+      {
+        "rgb": [
+          6,
+          21,
+          33
+        ],
+        "weight": 0.35
+      },
+      {
+        "rgb": [
+          244,
+          181,
+          68
+        ],
+        "weight": 0.3
+      },
+      {
+        "rgb": [
+          239,
+          74,
+          36
+        ],
+        "weight": 0.15
+      },
+      {
+        "rgb": [
+          255,
+          250,
+          240
+        ],
+        "weight": 0.15
+      }
+    ],
+    "background_color": {
+      "rgb": [
+        6,
+        21,
+        33
+      ]
+    }
+  },
+  "requested_output": "apps/together/docs/design/2026-07-27-homepage-public-square-variants/01-the-human-current.png",
+  "output": "apps/together/docs/design/2026-07-27-homepage-public-square-variants/01-the-human-current.png",
+  "format": "png",
+  "api": {
+    "image_id": "2b8c9c12-65dc-4e4e-9d7d-4c0fa909c3a5"
+  }
+}

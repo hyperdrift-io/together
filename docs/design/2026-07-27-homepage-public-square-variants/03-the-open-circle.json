@@ -1,0 +1,60 @@
+{
+  "generated_at": "2026-07-27T22:03:52.653Z",
+  "endpoint": "/images/generations/raster",
+  "model": "recraftv4_1_pro",
+  "size": "2688x1536",
+  "seed": 270713,
+  "reference_image": null,
+  "strength": null,
+  "prompt": "Create a visually iconic, spectacular 16:9 homepage hero image for Together, a service that helps two adults who are already at the same real public social place discover mutual interest and say hello face to face. THE PUBLIC SQUARE IS THE ONLY HERO: every person is small and socially embedded; there must be no people inside the central negative space and no isolated pair anywhere.\n\nMetaphor: THE OPEN CIRCLE. A contemporary public square during a vibrant social evening, viewed almost directly from above. Architecture, paving, pools of warm light and many believable adults moving and gathering form a vast imperfect circular composition around a calm EMPTY central garden. The circle is deliberately open at one point near the lower-right: an inviting human-scale threshold rather than a broken or sad symbol. A small group of friends occupies each side of that opening. One person in each group subtly turns toward the other group across only a few real metres, while staying fully inside their own cluster. Nobody stands alone, nobody enters the empty centre, and no two figures face one another as a pair. The open threshold completes the visual rhythm. The metaphor should read instantly: life already contains the connection; Together reveals the opening and people decide whether to step through it.\n\nVisual direction: premium editorial aerial photography fused with restrained graphic composition, geometrically powerful and highly ownable. Deep midnight navy ground, warm amber pools of social light, a restrained coral accent, soft ivory highlights. A dense, diverse crowd around the outer rhythm, believable gestures and groupings, tactile stone and architectural detail, dramatic contrast, elegant film grain. The incomplete circle must arise from the real square and crowd choreography, not from a drawn icon, halo, magic portal or interface overlay.\n\nResponsive composition: place the open-circle environment across the right two thirds; leave calmer dark architectural texture in the upper-left for homepage copy; preserve the lower-right threshold on narrow crops.\n\nAvoid: any person inside the central clearing, isolated pair, central couple, large people, lonely figures, ring or wedding symbolism, broken-heart imagery, touching or kissing, staged romance, empty date table, spotlight, hearts, phones, app screens, swipe cards, chat bubbles, location pins, maps, radar, surveillance, London landmarks, literal glowing connection line, fake text, letters, numbers, logos, charts, generic gradients, glassmorphism. No typography.",
+  "enhanced_prompt": null,
+  "controls": {
+    "colors": [
+      {
+        "rgb": [
+          6,
+          21,
+          33
+        ],
+        "weight": 0.35
+      },
+      {
+        "rgb": [
+          244,
+          181,
+          68
+        ],
+        "weight": 0.3
+      },
+      {
+        "rgb": [
+          239,
+          74,
+          36
+        ],
+        "weight": 0.15
+      },
+      {
+        "rgb": [
+          255,
+          250,
+          240
+        ],
+        "weight": 0.15
+      }
+    ],
+    "background_color": {
+      "rgb": [
+        6,
+        21,
+        33
+      ]
+    }
+  },
+  "requested_output": "apps/together/docs/design/2026-07-27-homepage-public-square-variants/03-the-open-circle.png",
+  "output": "apps/together/docs/design/2026-07-27-homepage-public-square-variants/03-the-open-circle.png",
+  "format": "png",
+  "api": {
+    "image_id": "4376c891-a427-40a5-b12a-ec3e5b7eb4ef"
+  }
+}
