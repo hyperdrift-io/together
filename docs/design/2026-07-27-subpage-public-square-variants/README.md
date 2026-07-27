@@ -1,6 +1,7 @@
 # Together subpages — Public Square asset systems
 
-Status: awaiting visual selection. Do not implement.
+Status: rejected — visually cold and too abstract for the human mission. Do not
+implement.
 
 These three text-free image boards compare visual systems for the public
 proposal, private investor page, survey/admin surfaces, and transactional

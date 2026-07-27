@@ -1,6 +1,7 @@
 # Together homepage — Public Square challengers
 
-Status: awaiting visual selection. Do not implement.
+Status: rejected — visually cold and too abstract for the human mission. Do not
+implement.
 
 These three images challenge the current Passing Glance hero without changing
 the product promise: Together helps two adults already sharing a public social

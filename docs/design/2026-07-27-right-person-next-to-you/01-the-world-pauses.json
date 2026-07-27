@@ -1,0 +1,60 @@
+{
+  "generated_at": "2026-07-27T22:33:20.333Z",
+  "endpoint": "/images/generations/raster",
+  "model": "recraftv4_1_pro",
+  "size": "2688x1536",
+  "seed": 8293,
+  "reference_image": null,
+  "strength": null,
+  "prompt": "The right person is already next to you. Together makes mutual recognition and a real face-to-face hello possible.\n\nWORLD PAUSES: create a fearless next-generation global campaign photograph at a real social gathering. Two relatable adults are only a few metres apart, each still among different friends, when they catch one spontaneous mutual glance. Human eyes, recognition, surprise, warmth and possibility dominate; surrounding life rushes past in expressive motion while their moment becomes clear. Bold, radical, intimate, culturally current and visually iconic—the electric instant before the first hello, never a posed or established couple. Invent an original photographic signature worthy of a world-class creative agency.\n\nHorizontal 16:9, both faces and their believable proximity safe in the central mobile crop, with calm dark space for homepage copy. Deep navy #061521, warm amber #f4b544, restrained coral #ef4a24 and ivory #fffaf0. No text, logos, phones, interface, hearts, maps, pins or tracking graphics.",
+  "enhanced_prompt": null,
+  "controls": {
+    "colors": [
+      {
+        "rgb": [
+          6,
+          21,
+          33
+        ],
+        "weight": 0.35
+      },
+      {
+        "rgb": [
+          244,
+          181,
+          68
+        ],
+        "weight": 0.3
+      },
+      {
+        "rgb": [
+          239,
+          74,
+          36
+        ],
+        "weight": 0.15
+      },
+      {
+        "rgb": [
+          255,
+          250,
+          240
+        ],
+        "weight": 0.15
+      }
+    ],
+    "background_color": {
+      "rgb": [
+        6,
+        21,
+        33
+      ]
+    }
+  },
+  "requested_output": "/Users/yannvr/dev/hyperdrift/apps/together/docs/design/2026-07-27-right-person-next-to-you/01-the-world-pauses.png",
+  "output": "apps/together/docs/design/2026-07-27-right-person-next-to-you/01-the-world-pauses.png",
+  "format": "png",
+  "api": {
+    "image_id": "574f14b5-6083-433c-bf81-6c583e6f4166"
+  }
+}
