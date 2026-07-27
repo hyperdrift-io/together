@@ -1,0 +1,60 @@
+{
+  "generated_at": "2026-07-27T22:07:21.095Z",
+  "endpoint": "/images/generations/raster",
+  "model": "recraftv4_1_pro",
+  "size": "2688x1536",
+  "seed": 270733,
+  "reference_image": null,
+  "strength": null,
+  "prompt": "Create a single polished 16:9 visual direction board, entirely without text, for the subpages of Together, a service that helps two adults already sharing a public social place discover mutual interest and meet face to face.\n\nDirection: GRAPHIC SQUARE. Present one coherent, highly ownable editorial illustration system as a clean gallery composition on a deep midnight navy background. The dominant image occupies roughly two thirds of the board: a bold hand-crafted screen-print style public square filled with many distinctive human silhouettes and small independent social constellations. Warm amber architectural shapes define one shared place; coral and ivory gestures mark attention and openness. Two adults within separate clusters share subtle mutual orientation across a short distance. The larger crowd pattern creates an incomplete flowing circle and a welcoming piece of negative space between them, expressing that the opportunity already exists where they are. Along one side, arrange three smaller text-free modules in the same visual language: a simplified social constellation; two overlapping patches of light forming a shared third colour; and a quiet human-scale threshold motif suitable for survey, admin, confirmation, or footer use.\n\nVisual direction: sophisticated contemporary editorial screen print, tactile paper grain, imperfect ink edges, restrained geometric forms, expressive but relatable human gestures, deep midnight navy, warm amber, restrained coral and soft ivory. Dramatic enough for the public proposal, systematic enough to accompany native investor charts without competing with them, and simple enough to crop or animate later. It must feel humane, not technical.\n\nAvoid: words, letters, numbers, logos, website UI, charts, dashboards, phones, app screens, hearts, swipe cards, chat bubbles, profile cards, location pins, maps, radar, surveillance, London landmarks, central isolated couple, touching, kissing, date table, loneliness, sad broken symbols, literal glowing wires, generic gradients, glassmorphism, childish icons, corporate infographic style.",
+  "enhanced_prompt": null,
+  "controls": {
+    "colors": [
+      {
+        "rgb": [
+          6,
+          21,
+          33
+        ],
+        "weight": 0.35
+      },
+      {
+        "rgb": [
+          244,
+          181,
+          68
+        ],
+        "weight": 0.3
+      },
+      {
+        "rgb": [
+          239,
+          74,
+          36
+        ],
+        "weight": 0.15
+      },
+      {
+        "rgb": [
+          255,
+          250,
+          240
+        ],
+        "weight": 0.15
+      }
+    ],
+    "background_color": {
+      "rgb": [
+        6,
+        21,
+        33
+      ]
+    }
+  },
+  "requested_output": "apps/together/docs/design/2026-07-27-subpage-public-square-variants/03-graphic-square.png",
+  "output": "apps/together/docs/design/2026-07-27-subpage-public-square-variants/03-graphic-square.png",
+  "format": "png",
+  "api": {
+    "image_id": "89926f90-42b7-4bb9-a963-ce22eccd8864"
+  }
+}

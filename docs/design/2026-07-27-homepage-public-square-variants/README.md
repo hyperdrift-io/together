@@ -23,9 +23,8 @@ hello.
    opens a subtle path between two independent social groups.
 2. **The Shared Horizon** — an eye-level social gathering where a band of warm
    light makes a nearby possibility suddenly legible.
-3. **The Open Circle** — an iconic overhead composition where architecture and
-   human movement create an incomplete circle that two people can choose to
-   close.
+3. **The Third Light** — two ordinary pools of social light overlap to reveal a
+   brighter shared possibility that did not exist in either space alone.
 
 ## Model choice
 
@@ -37,4 +36,3 @@ the final high-resolution comparison.
 
 - Selected direction: pending
 - Homepage implementation: blocked until explicit approval
-

@@ -1,0 +1,60 @@
+{
+  "generated_at": "2026-07-27T22:07:21.777Z",
+  "endpoint": "/images/generations/raster",
+  "model": "recraftv4_1_pro",
+  "size": "2688x1536",
+  "seed": 270732,
+  "reference_image": null,
+  "strength": null,
+  "prompt": "Create a single polished 16:9 visual direction board, entirely without text, for the subpages of Together, a service that helps two adults already sharing a public social place discover mutual interest and say hello face to face.\n\nDirection: ARCHITECTURAL SQUARE. Present one coherent family of tactile architectural images as a clean gallery composition on a deep midnight navy background. The dominant image occupies roughly two thirds of the board: an exquisitely crafted isometric architectural miniature of a contemporary public square and adjoining social venue at early evening. Many tiny but human adults occupy believable independent groups; warm pools of social light make the square feel alive and safe. The plan is not radial surveillance: it is porous, open and welcoming, with several entrances and one shared central clearing where paths naturally cross. Two people remain inside separate groups near the clearing, close enough for a real hello but never isolated or staged. Along one side, arrange three smaller text-free modules from the same miniature world: a top-down density study, a close tactile crop of two social paths approaching an open threshold, and a minimal architectural fragment where two amber-lit spaces overlap into a third shared space.\n\nVisual direction: premium museum-model photography and refined editorial architectural visualisation, physically plausible scale materials, tactile stone, paper, wood and warm glass, soft depth of field, elegant shadows, deep midnight navy, warm amber, restrained coral, soft ivory. It must feel precise enough for an investor memo yet warm enough for public storytelling. This is a visual system, not a literal product map.\n\nAvoid: words, letters, numbers, logos, UI, charts, dashboards, fake financial graphics, phones, hearts, swipe cards, chat bubbles, location pins, radar rings, surveillance screens, London landmarks, central spotlight couple, date table, touching, kissing, lonely figures, fortress architecture, magic portals, generic gradients, glassmorphism.",
+  "enhanced_prompt": null,
+  "controls": {
+    "colors": [
+      {
+        "rgb": [
+          6,
+          21,
+          33
+        ],
+        "weight": 0.35
+      },
+      {
+        "rgb": [
+          244,
+          181,
+          68
+        ],
+        "weight": 0.3
+      },
+      {
+        "rgb": [
+          239,
+          74,
+          36
+        ],
+        "weight": 0.15
+      },
+      {
+        "rgb": [
+          255,
+          250,
+          240
+        ],
+        "weight": 0.15
+      }
+    ],
+    "background_color": {
+      "rgb": [
+        6,
+        21,
+        33
+      ]
+    }
+  },
+  "requested_output": "apps/together/docs/design/2026-07-27-subpage-public-square-variants/02-architectural-square.png",
+  "output": "apps/together/docs/design/2026-07-27-subpage-public-square-variants/02-architectural-square.png",
+  "format": "png",
+  "api": {
+    "image_id": "ece6eb9c-36ee-4be4-8f93-960866aba8c7"
+  }
+}
