@@ -22,12 +22,17 @@ export default function PrivacyPage() {
           </p>
           <h2>Optional pilot questions</h2>
           <p>
-            After confirmation, you can optionally tell us the kind of shared
-            place where Together feels most natural, the broad part of London
-            where you spend social time, and whether you are 18 or over. We use
-            these structured answers to understand where an adult London pilot
-            could work. They do not create a dating profile or affect your place
-            on the launch list.
+            You can optionally tell us the kind of shared place where Together
+            feels most natural, the broad part of London where you spend social
+            time, and whether you are 18 or over. You can share these answers
+            anonymously, or add your email to join the list. We use them to
+            understand where an adult London pilot could work. They do not
+            create a dating profile or affect your place on the launch list.
+          </p>
+          <p>
+            Anonymous survey answers are tied only to a random browser ID and
+            are removed after 30 days. If you add an email and confirm it, we
+            keep the answers with your launch-list registration instead.
           </p>
           <h2>Why we use it</h2>
           <p>

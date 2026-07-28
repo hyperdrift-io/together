@@ -1,0 +1,15 @@
+Use case: stylized-concept
+Asset type: landscape art for the market-landscape section of Together's private investor memo
+
+Create a breathtaking editorial constellation of public places that makes a new category feel inevitable: an elegant, tactile top-down isometric midnight city field composed of several distinct lively social venues and clusters—courtyard, gallery, café terrace, garden, small music room, rooftop—connected by extremely subtle warm amber threads of possibility. A single luminous shared central public square anchors the field, with people naturally gathering and two adults recognising one another there. The connections should feel like human proximity and momentum, never tracking, never surveillance.
+
+Scene/backdrop: a compact, beautifully designed night-time urban public realm, atmospheric deep navy surroundings, warm carved pools of light, no roads or map pins.
+Subject: a constellation of real public places and human clusters, centred on one warm public square.
+Style/medium: premium architectural editorial illustration, cinematic tactile miniature realism, museum-quality investor-report art, sophisticated not sci-fi.
+Composition/framing: wide 16:9 landscape; layered depth and calm negative space; immediately legible at a glance; centre square clear, peripheral venues distinct.
+Lighting/mood: midnight blue with intelligent amber illumination, hopeful, intimate, quietly radical.
+Color palette: restrained deep navy, warm amber/gold, parchment stone, sparse muted coral accents.
+Materials/textures: limestone, wood, foliage, glass windows, soft human-scale light.
+Text (verbatim): none.
+Constraints: absolutely no UI, readable text, numbers, labels, brand marks, logos, dashboards, charts, map labels, pins, grids, smartphones, CCTV, floating holograms, or surveillance imagery. Do not make the people isolated under a theatrical spotlight. Human connection must feel mutual, natural, and grounded in a shared place.
+Avoid: generic corporate network graphic, cold cyberpunk, polished app interface, literal dating imagery, clutter, noise, and any text.

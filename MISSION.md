@@ -108,8 +108,9 @@ The current public product is a demand test. It contains:
 
 - The approved appetite homepage
 - One confirmed-email registration
-- One optional three-question post-confirmation qualification step for natural
-  place type, broad London area, and adult eligibility
+- One optional three-question public survey for natural place type, broad London
+  area, and adult eligibility, with an optional email opt-in; linked answers are
+  promoted after email confirmation
 - A public business proposal
 - A private investor case
 - Analytics, SEO, privacy, and read-only registration operations

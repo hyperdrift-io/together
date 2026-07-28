@@ -6,34 +6,6 @@ const socialImageUrl =
 const description =
   'Together proposes a more human way to meet: discover mutual interest with someone already sharing the same public place, then meet face to face.';
 
-const crowd = [
-  [82, 126],
-  [150, 82],
-  [224, 148],
-  [306, 92],
-  [404, 132],
-  [490, 76],
-  [608, 142],
-  [714, 98],
-  [116, 250],
-  [206, 304],
-  [306, 244],
-  [496, 250],
-  [598, 306],
-  [704, 238],
-  [78, 398],
-  [184, 468],
-  [286, 402],
-  [516, 410],
-  [632, 476],
-  [736, 388],
-  [128, 554],
-  [266, 536],
-  [430, 548],
-  [568, 552],
-  [700, 526],
-] as const;
-
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'WebPage',
@@ -51,36 +23,10 @@ const structuredData = {
 function PublicSquare() {
   return (
     <figure className="public-square">
-      <svg
-        viewBox="0 0 800 620"
-        role="img"
-        aria-labelledby="public-square-title public-square-description"
-      >
-        <title id="public-square-title">Two people recognise each other</title>
-        <desc id="public-square-description">
-          A public gathering seen from above. Two people share a warm circle at
-          its centre while the surrounding crowd remains free to move.
-        </desc>
-        <circle className="square-ring ring-outer" cx="400" cy="320" r="276" />
-        <circle className="square-ring ring-middle" cx="400" cy="320" r="190" />
-        <circle className="square-ring ring-inner" cx="400" cy="320" r="108" />
-        {crowd.map(([cx, cy]) => (
-          <g className="crowd-person" key={`${cx}-${cy}`}>
-            <circle cx={cx} cy={cy} r="9" />
-            <path d={`M ${cx} ${cy + 10} v 25`} />
-          </g>
-        ))}
-        <circle className="shared-place" cx="400" cy="320" r="82" />
-        <g className="recognised-person person-one">
-          <circle cx="370" cy="296" r="14" />
-          <path d="M 370 312 v 48" />
-        </g>
-        <g className="recognised-person person-two">
-          <circle cx="430" cy="296" r="14" />
-          <path d="M 430 312 v 48" />
-        </g>
-        <path className="mutual-line" d="M 386 296 H 414" />
-      </svg>
+      <img
+        src="/images/together-proposal-public-square.png"
+        alt="A lively public square where two people notice one another among the crowd."
+      />
       <figcaption>
         Same place. Mutual signal. A hello that can happen now.
       </figcaption>
@@ -205,28 +151,22 @@ export default function ProposalPage() {
               introduction that becomes face to face.
             </p>
           </div>
-          <ol aria-label="Together outcome">
-            <li>
-              <span>Presence</span>
-            </li>
-            <li>
-              <span>Mutual signal</span>
-            </li>
-            <li>
-              <span>Recognition</span>
-            </li>
-            <li>
-              <span>Meeting</span>
-            </li>
-          </ol>
+          <figure className="meeting-portrait">
+            <img
+              src="/images/together-meeting-outcome.png"
+              alt="Two adults sharing a relaxed first hello in a lively public social space."
+            />
+            <figcaption>Presence. Mutual signal. Recognition. Hello.</figcaption>
+          </figure>
         </section>
 
         <section className="demand-gate" aria-labelledby="demand-title">
-          <div className="demand-rings" aria-hidden="true">
-            <span />
-            <span />
-            <span />
-          </div>
+          <figure className="demand-gathering">
+            <img
+              src="/images/together-demand-gathering.png"
+              alt="A public square gradually filling with people at dusk."
+            />
+          </figure>
           <div>
             <p className="eyebrow">Demand before software</p>
             <h2 id="demand-title">We build when the demand is real.</h2>

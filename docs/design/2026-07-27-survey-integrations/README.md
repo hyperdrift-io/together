@@ -10,7 +10,10 @@
 
 ## Approved interaction contract
 
-- Confirm the registration before presenting the qualification request.
+- Make the survey available as an optional public research surface, with an
+  email opt-in at the end for people who also want the first invitation.
+- After registration, suggest the qualification only when the participant has
+  not already completed it.
 - Keep the confirmation and first question in one continuous view.
 - Show one question at a time and auto-advance after a structured answer.
 - Use the three-point spark treatment for progress.
@@ -46,9 +49,9 @@ appetite test should preserve confirmed email registration as its independent
 demand signal.
 
 This design round previews a maximum three-question, optional qualification
-step after confirmation. The same first question and answer set appear in every
-direction so the comparison concerns the integration mechanic rather than
-different survey content.
+flow. The same first question and answer set appear in every direction so the
+comparison concerns the integration mechanic rather than different survey
+content.
 
 ## Shared behavioural principles
 
@@ -129,8 +132,9 @@ The recommended production boundary is:
 
 ## Options not selected for preview
 
-- **Before email registration:** rejected because it increases signup friction
-  and corrupts the appetite metric.
+- **Survey plus optional email opt-in:** selected as the public research path.
+  It keeps confirmed registration as the appetite signal while making research
+  participation useful to people who are not ready to register yet.
 - **Blocking email confirmation:** rejected because qualification is not
   required to confirm demand.
 - **External Typeform, Tally, or Google Form:** useful for an operator-run pilot

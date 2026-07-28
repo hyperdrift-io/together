@@ -88,36 +88,10 @@ const risks = [
 function InvestorSquare() {
   return (
     <figure className="investor-square">
-      <svg
-        viewBox="0 0 760 500"
-        role="img"
-        aria-labelledby="investor-square-title investor-square-description"
-      >
-        <title id="investor-square-title">A network beginning in one place</title>
-        <desc id="investor-square-description">
-          A mapped public square with people, surrounding places and density
-          rings that expand from one mutual signal.
-        </desc>
-        <path className="map-block block-one" d="M 52 88 H 230 V 202 H 52 Z" />
-        <path className="map-block block-two" d="M 530 64 H 706 V 206 H 530 Z" />
-        <path className="map-block block-three" d="M 62 302 H 238 V 438 H 62 Z" />
-        <path className="map-block block-four" d="M 524 300 H 700 V 438 H 524 Z" />
-        <circle className="map-ring outer" cx="380" cy="252" r="186" />
-        <circle className="map-ring middle" cx="380" cy="252" r="124" />
-        <circle className="map-ring inner" cx="380" cy="252" r="64" />
-        <g className="map-people">
-          <circle cx="280" cy="154" r="8" />
-          <circle cx="468" cy="160" r="8" />
-          <circle cx="252" cy="258" r="8" />
-          <circle cx="510" cy="246" r="8" />
-          <circle cx="292" cy="350" r="8" />
-          <circle cx="474" cy="354" r="8" />
-          <circle cx="346" cy="222" r="9" />
-          <circle cx="414" cy="222" r="9" />
-        </g>
-        <circle className="map-signal" cx="380" cy="252" r="38" />
-        <path className="map-mutual" d="M 358 252 H 402" />
-      </svg>
+      <img
+        src="/images/together-investor-public-square.png"
+        alt="An illuminated public square at the centre of a dense network of places."
+      />
       <figcaption>
         The wedge is not “dating, but nearby.” It is mutual recognition among
         people already sharing a place.
@@ -153,66 +127,38 @@ function MarketLandscape() {
         </text>
         <g className="landscape-node">
           <circle cx="380" cy="86" r="53" />
-          <text x="380" y="80">
-            Mainstream
-          </text>
-          <text x="380" y="100">
-            dating
-          </text>
+          <text x="380" y="80">Mainstream</text>
+          <text x="380" y="100">dating</text>
         </g>
         <g className="landscape-node">
           <circle cx="556" cy="164" r="53" />
-          <text x="556" y="158">
-            IRL and
-          </text>
-          <text x="556" y="178">
-            events
-          </text>
+          <text x="556" y="158">IRL and</text>
+          <text x="556" y="178">events</text>
         </g>
         <g className="landscape-node">
           <circle cx="608" cy="340" r="53" />
-          <text x="608" y="334">
-            Activity
-          </text>
-          <text x="608" y="354">
-            social
-          </text>
+          <text x="608" y="334">Activity</text>
+          <text x="608" y="354">social</text>
         </g>
         <g className="landscape-node">
           <circle cx="516" cy="500" r="53" />
-          <text x="516" y="494">
-            Premium
-          </text>
-          <text x="516" y="514">
-            matching
-          </text>
+          <text x="516" y="494">Premium</text>
+          <text x="516" y="514">matching</text>
         </g>
         <g className="landscape-node">
           <circle cx="244" cy="500" r="53" />
-          <text x="244" y="494">
-            Inclusive
-          </text>
-          <text x="244" y="514">
-            dating
-          </text>
+          <text x="244" y="494">Inclusive</text>
+          <text x="244" y="514">dating</text>
         </g>
         <g className="landscape-node">
           <circle cx="152" cy="340" r="53" />
-          <text x="152" y="334">
-            AI-native
-          </text>
-          <text x="152" y="354">
-            concepts
-          </text>
+          <text x="152" y="334">AI-native</text>
+          <text x="152" y="354">concepts</text>
         </g>
         <g className="landscape-node">
           <circle cx="204" cy="164" r="53" />
-          <text x="204" y="158">
-            Regional
-          </text>
-          <text x="204" y="178">
-            incumbents
-          </text>
+          <text x="204" y="158">Regional</text>
+          <text x="204" y="178">incumbents</text>
         </g>
       </svg>
       <figcaption>

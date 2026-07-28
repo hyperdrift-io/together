@@ -119,6 +119,34 @@ function getDatabase() {
         CHECK (adult_eligible IN (0, 1)),
       completed_at TEXT NOT NULL
     );
+    CREATE TABLE IF NOT EXISTS launch_survey_responses (
+      visitor_hash TEXT PRIMARY KEY,
+      email TEXT UNIQUE
+        REFERENCES launch_registrations(email) ON DELETE CASCADE,
+      place_type TEXT NOT NULL
+        CHECK (
+          place_type IN (
+            'social_event',
+            'gig',
+            'bar_cafe',
+            'class_club'
+          )
+        ),
+      london_area TEXT NOT NULL
+        CHECK (
+          london_area IN (
+            'central',
+            'north',
+            'east',
+            'south',
+            'west',
+            'outside_london'
+          )
+        ),
+      adult_eligible INTEGER NOT NULL
+        CHECK (adult_eligible IN (0, 1)),
+      created_at TEXT NOT NULL
+    );
   `);
 
   return database;
@@ -139,6 +167,10 @@ export function validLaunchEmail(value: string) {
 
 function tokenHash(token: string) {
   return createHash('sha256').update(token).digest('hex');
+}
+
+function visitorHash(visitorId: string) {
+  return createHash('sha256').update(visitorId).digest('hex');
 }
 
 function hashesMatch(expected: string, actual: string) {
@@ -215,6 +247,8 @@ export function confirmLaunchRegistration(
     SET status = 'confirmed', confirmed_at = ?
     WHERE email = ?
   `).run(new Date().toISOString(), email);
+
+  promoteLaunchSurveyResponse(email);
 
   return 'confirmed';
 }
@@ -316,6 +350,110 @@ export function saveLaunchQualification(
     new Date().toISOString(),
   );
 
+  return true;
+}
+
+export function saveLaunchSurveyResponse(
+  visitorId: string,
+  input: LaunchQualificationInput,
+  rawEmail = '',
+) {
+  const email = rawEmail ? normalizedEmail(rawEmail) : null;
+  const db = getDatabase();
+  const now = new Date().toISOString();
+  const anonymousExpiry = new Date(
+    Date.now() - 30 * 24 * 60 * 60 * 1000,
+  ).toISOString();
+
+  db.prepare(
+    'DELETE FROM launch_survey_responses WHERE email IS NULL AND created_at < ?',
+  ).run(anonymousExpiry);
+
+  if (email) {
+    db.prepare('DELETE FROM launch_survey_responses WHERE email = ?').run(email);
+  }
+
+  db.prepare(`
+    INSERT INTO launch_survey_responses (
+      visitor_hash,
+      email,
+      place_type,
+      london_area,
+      adult_eligible,
+      created_at
+    ) VALUES (?, ?, ?, ?, ?, ?)
+    ON CONFLICT(visitor_hash) DO UPDATE SET
+      email = excluded.email,
+      place_type = excluded.place_type,
+      london_area = excluded.london_area,
+      adult_eligible = excluded.adult_eligible,
+      created_at = excluded.created_at
+  `).run(
+    visitorHash(visitorId),
+    email,
+    input.placeType,
+    input.londonArea,
+    input.adultEligibility === 'yes' ? 1 : 0,
+    now,
+  );
+
+  if (email) {
+    promoteLaunchSurveyResponse(email);
+  }
+}
+
+export function promoteLaunchSurveyResponse(rawEmail: string) {
+  const email = normalizedEmail(rawEmail);
+  const db = getDatabase();
+  const registration = db
+    .prepare('SELECT status FROM launch_registrations WHERE email = ?')
+    .get(email) as { status: 'pending' | 'confirmed' } | undefined;
+
+  if (registration?.status !== 'confirmed') {
+    return false;
+  }
+
+  const response = db
+    .prepare(`
+      SELECT place_type, london_area, adult_eligible, created_at
+      FROM launch_survey_responses
+      WHERE email = ?
+    `)
+    .get(email) as
+    | {
+        place_type: PlaceType;
+        london_area: LondonArea;
+        adult_eligible: 0 | 1;
+        created_at: string;
+      }
+    | undefined;
+
+  if (!response) {
+    return false;
+  }
+
+  db.prepare(`
+    INSERT INTO launch_qualifications (
+      email,
+      place_type,
+      london_area,
+      adult_eligible,
+      completed_at
+    ) VALUES (?, ?, ?, ?, ?)
+    ON CONFLICT(email) DO UPDATE SET
+      place_type = excluded.place_type,
+      london_area = excluded.london_area,
+      adult_eligible = excluded.adult_eligible,
+      completed_at = excluded.completed_at
+  `).run(
+    email,
+    response.place_type,
+    response.london_area,
+    response.adult_eligible,
+    response.created_at,
+  );
+
+  db.prepare('DELETE FROM launch_survey_responses WHERE email = ?').run(email);
   return true;
 }
 

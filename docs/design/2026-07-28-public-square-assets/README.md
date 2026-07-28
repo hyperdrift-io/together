@@ -13,3 +13,9 @@ Status: awaiting selection. No page implementation.
   place reads as a repeatable network of real-world connection.
 - `01-proposal-public-square.png` — closest literal translation of the approved
   board, retained as an alternate; its central encounter feels more staged.
+- `04-meeting-outcome.png` — proposal outcome image: a comfortable first hello
+  after mutual recognition, deliberately more intimate than the square scenes.
+- `05-demand-gathering.png` — proposal demand image: real shared presence
+  building in a public square.
+- `06-market-constellation.png` — investor market image: an illustrative dense
+  social district; the adjacent positioning map carries the category analysis.

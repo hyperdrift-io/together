@@ -152,6 +152,8 @@ test('a visitor registers on the landing page, receives the confirmation email, 
   const completionHtml = await completionResponse.text();
   assert.equal(completionResponse.status, 200);
   assert.match(completionHtml, /You’re on the list\./);
+  assert.match(completionHtml, /Where would you most naturally use Together\?/);
+  assert.match(completionHtml, /60 seconds · Optional/);
 
   const confirmedDatabase = new DatabaseSync(databasePath);
   const confirmed = confirmedDatabase
@@ -235,6 +237,93 @@ test('the registration API accepts browser-style multipart submissions', async (
 
   assert.equal(registration.status, 'pending');
   assert.ok(registration.confirmation_sent_at);
+});
+
+test('the public survey accepts anonymous answers and links email-backed answers after confirmation', async () => {
+  const methodResponse = await fetch(`${baseUrl}/api/launch-survey`);
+  assert.equal(methodResponse.status, 405);
+  assert.equal(methodResponse.headers.get('allow'), 'POST');
+
+  const anonymousResponse = await fetch(`${baseUrl}/api/launch-survey`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      visitorId: 'anonymous-survey-visitor-0001',
+      placeType: 'gig',
+      londonArea: 'east',
+      adultEligibility: 'yes',
+    }),
+  });
+
+  assert.equal(anonymousResponse.status, 200);
+  assert.deepEqual(await anonymousResponse.json(), { status: 'saved' });
+
+  const anonymousDatabase = new DatabaseSync(databasePath);
+  const anonymousAnswer = anonymousDatabase
+    .prepare(
+      'SELECT email, place_type, london_area, adult_eligible FROM launch_survey_responses',
+    )
+    .get();
+  anonymousDatabase.close();
+
+  assert.equal(anonymousAnswer.email, null);
+  assert.equal(anonymousAnswer.place_type, 'gig');
+  assert.equal(anonymousAnswer.london_area, 'east');
+  assert.equal(anonymousAnswer.adult_eligible, 1);
+
+  const email = 'survey.hello@hyperdrift.io';
+  const emailResponse = await fetch(`${baseUrl}/api/launch-survey`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      visitorId: 'email-survey-visitor-00000001',
+      email,
+      placeType: 'class_club',
+      londonArea: 'north',
+      adultEligibility: 'yes',
+    }),
+  });
+
+  assert.equal(emailResponse.status, 200);
+  assert.deepEqual(await emailResponse.json(), { status: 'check-email' });
+
+  const messages = (await readFile(outboxPath, 'utf8'))
+    .trim()
+    .split('\n')
+    .map((line) => JSON.parse(line));
+  const message = messages.at(-1);
+  const confirmationUrl = new URL(message.confirmationUrl);
+
+  const confirmationResponse = await fetch(
+    `${baseUrl}/api/confirm-interest`,
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({
+        email: confirmationUrl.searchParams.get('email'),
+        token: confirmationUrl.searchParams.get('token'),
+      }),
+      redirect: 'manual',
+    },
+  );
+
+  assert.equal(confirmationResponse.status, 303);
+
+  const linkedDatabase = new DatabaseSync(databasePath);
+  const qualification = linkedDatabase
+    .prepare(
+      'SELECT place_type, london_area, adult_eligible FROM launch_qualifications WHERE email = ?',
+    )
+    .get(email);
+  const pendingSurvey = linkedDatabase
+    .prepare('SELECT 1 AS found FROM launch_survey_responses WHERE email = ?')
+    .get(email);
+  linkedDatabase.close();
+
+  assert.equal(qualification.place_type, 'class_club');
+  assert.equal(qualification.london_area, 'north');
+  assert.equal(qualification.adult_eligible, 1);
+  assert.equal(pendingSurvey, undefined);
 });
 
 test('the registration API rejects an email domain that cannot receive mail', async () => {

@@ -44,8 +44,9 @@ remedies, and operating cost must be validated during the manual pilot.
 
 One email address to join the London launch list.
 
-The first registration must remain easy. Optional qualification belongs after
-email confirmation, not before it.
+The first registration must remain easy. The optional survey is also available
+as a public research surface; its email opt-in remains separate from the
+confirmed-registration appetite signal.
 
 ## Audience
 
@@ -101,9 +102,9 @@ signal. Always report counts with percentages.
   for progressing a failed confirmed plan toward another arrangement.
 - **Local density:** London is the explicit launch market and network boundary.
 
-## Optional post-confirmation qualification
+## Optional public survey and post-confirmation qualification
 
-After confirmation, ask at most three optional questions:
+The public homepage offers at most three optional questions:
 
 1. Where would Together feel most natural: a social event, gig, bar or café, or
    class or club?
@@ -111,9 +112,12 @@ After confirmation, ask at most three optional questions:
 3. Are they 18 or over?
 
 This step qualifies network density without reducing the primary registration
-rate. Store only structured values, delete them with the registration, and do
-not send answer values to analytics. Sensitive dating preferences remain out of
-scope until a documented storage and deletion policy is approved.
+rate. A participant can answer anonymously or add an email to join the list.
+Email-linked answers are attached to the registration after confirmation;
+otherwise the survey is offered after confirmation if it was not completed.
+Anonymous answers are removed after 30 days. Do not send answer values to
+analytics. Sensitive dating preferences remain out of scope until a documented
+storage and deletion policy is approved.
 
 ## Technical slice
 

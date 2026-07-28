@@ -1,4 +1,5 @@
 import { LaunchSignup } from '../components/launch-signup';
+import { LaunchSurvey } from '../components/launch-survey';
 
 const canonicalUrl = 'https://together.hyperdrift.io/';
 const socialImageUrl =
@@ -95,6 +96,8 @@ export default function HomePage() {
             </div>
           </header>
 
+          <div className="hero-scene" aria-hidden="true" />
+
           <div className="hero-copy">
             <p className="eyebrow">A real connection, in the real world</p>
             <h1 id="hero-title">
@@ -110,11 +113,26 @@ export default function HomePage() {
               list to help make it happen.
             </p>
             <LaunchSignup />
+            <a className="survey-link" href="#survey">
+              Help shape the first room · 60 seconds
+            </a>
           </div>
 
           <footer className="hero-close">
             <p>Come. Spark. Connect.</p>
           </footer>
+        </section>
+
+        <section className="public-survey" id="survey" aria-labelledby="survey-title">
+          <div>
+            <p className="eyebrow">Help shape the first room</p>
+            <h2 id="survey-title">Where should Together begin?</h2>
+            <p>
+              Three optional answers help us find the first public places where
+              a real hello could happen.
+            </p>
+          </div>
+          <LaunchSurvey />
         </section>
       </main>
     </>

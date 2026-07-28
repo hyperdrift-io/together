@@ -31,6 +31,11 @@ The Open Graph image keeps the same approved scene but carries the Together
 wordmark and proposition because social shares do not include the page’s HTML
 branding.
 
+The homepage also carries an optional public three-question survey. It lets a
+visitor shape the first London pilot anonymously or add an email to join the
+launch list. Email-linked answers are promoted after confirmation; otherwise
+the same survey is suggested post-confirmation only when it was not completed.
+
 ## Public proposal and investor case — The Public Square approved
 
 **Approved information architecture:**
@@ -90,6 +95,27 @@ cartographic investor visualisations. The public page creates desire around
 mutual recognition in a shared place. The private page distinguishes verified
 evidence, internal research, illustrative scenarios, current validation, and
 unknown economics.
+
+### Approved Public Square asset refresh
+
+**Variation requested:** 2026-07-28. This is an asset-level refinement within
+the approved Public Square structure, not a new page direction.
+
+- Homepage: the approved production Passing Glance asset remains the hero. On
+  mobile it is now presented as a distinct scene above the copy, so both people
+  stay visible. [`03-mutual-recognition.png`](design/2026-07-28-public-square-assets/03-mutual-recognition.png)
+  remains an archived alternate, not a production asset.
+- Proposal: [`01-proposal-public-square.png`](design/2026-07-28-public-square-assets/01-proposal-public-square.png)
+  establishes the shared public place; [`04-meeting-outcome.png`](design/2026-07-28-public-square-assets/04-meeting-outcome.png)
+  carries the face-to-face result.
+- Investor memo: [`02-investor-public-square.png`](design/2026-07-28-public-square-assets/02-investor-public-square.png)
+  expresses a place-based network, while market, positioning, operating and
+  validation visuals remain precise explanatory diagrams.
+
+The proposal demand gate uses
+[`05-demand-gathering.png`](design/2026-07-28-public-square-assets/05-demand-gathering.png).
+The investor market landscape remains the labelled category diagram because it
+is more useful than illustrative artwork for that decision.
 
 ## Approved visual brief
 

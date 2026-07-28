@@ -127,6 +127,10 @@ input:disabled {
   background-size: cover;
 }
 
+.hero-scene {
+  display: none;
+}
+
 .hero::after {
   z-index: -1;
   background:
@@ -324,6 +328,168 @@ input:disabled {
 
 .signup-confirmation > p:last-child {
   color: var(--muted);
+}
+
+.survey-link {
+  display: inline-block;
+  margin-top: 1.1rem;
+  color: var(--gold);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-decoration-color: rgb(244 181 68 / 0.45);
+  text-underline-offset: 0.3rem;
+  text-transform: uppercase;
+}
+
+.survey-link:hover {
+  text-decoration-color: var(--gold);
+}
+
+.public-survey {
+  display: grid;
+  grid-template-columns: minmax(18rem, 0.72fr) minmax(25rem, 1.28fr);
+  gap: clamp(3rem, 8vw, 10rem);
+  padding: clamp(5rem, 10vw, 10rem) var(--edge);
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 85% 12%, rgb(244 181 68 / 0.32), transparent 28rem),
+    var(--parchment);
+}
+
+.public-survey > div,
+.public-survey-form,
+.public-survey-complete {
+  width: min(100%, 38rem);
+}
+
+.public-survey > div {
+  justify-self: end;
+}
+
+.public-survey .eyebrow,
+.public-survey-complete .eyebrow {
+  color: #9d3f25;
+}
+
+.public-survey h2,
+.public-survey-complete h3 {
+  margin-top: 0.85rem;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(3rem, 5vw, 5.5rem);
+  font-weight: 400;
+  letter-spacing: -0.055em;
+  line-height: 0.9;
+}
+
+.public-survey > div > p:last-child,
+.public-survey-complete > p:last-child {
+  margin-top: 1.4rem;
+  color: var(--ink-soft);
+  font-size: clamp(1rem, 1.7vw, 1.25rem);
+}
+
+.public-survey-form {
+  display: grid;
+  gap: 2rem;
+}
+
+.public-survey-form fieldset {
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+
+.public-survey-form legend {
+  margin-bottom: 0.85rem;
+  padding: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.45rem, 2.4vw, 2rem);
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+}
+
+.public-survey-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.public-survey-options label {
+  position: relative;
+}
+
+.public-survey-options input {
+  position: absolute;
+  opacity: 0;
+}
+
+.public-survey-options span {
+  display: block;
+  min-height: 2.75rem;
+  border: 0.08rem solid rgb(7 23 34 / 0.36);
+  padding: 0.65rem 0.85rem;
+  color: var(--ink);
+  font-size: 0.82rem;
+  font-weight: 700;
+  transition:
+    color 160ms ease,
+    border-color 160ms ease,
+    background 160ms ease;
+}
+
+.public-survey-options input:checked + span {
+  border-color: var(--spark);
+  color: var(--paper);
+  background: var(--ink);
+}
+
+.public-survey-options input:focus-visible + span {
+  outline: 0.18rem solid var(--spark);
+  outline-offset: 0.2rem;
+}
+
+.public-survey-email {
+  border-top: 0.08rem solid rgb(7 23 34 / 0.4);
+  padding-top: 1.5rem;
+}
+
+.public-survey-email > label {
+  display: block;
+  font-weight: 800;
+}
+
+.public-survey-email input {
+  width: 100%;
+  min-height: 3.4rem;
+  margin-top: 0.7rem;
+  border: 0.08rem solid var(--ink);
+  border-radius: 0;
+  padding-inline: 0.9rem;
+  color: var(--ink);
+  background: rgb(255 250 240 / 0.78);
+}
+
+.public-survey-email p {
+  max-width: 34rem;
+  margin-top: 0.7rem;
+  color: var(--ink-soft);
+  font-size: 0.74rem;
+}
+
+.public-survey-form button.primary {
+  justify-self: start;
+}
+
+.public-survey-error {
+  margin: 0;
+  color: #9d3f25;
+  font-weight: 700;
+}
+
+.public-survey-complete {
+  border-top: 0.15rem solid var(--spark);
+  padding-top: 1.5rem;
 }
 
 .hero-close {
@@ -1059,62 +1225,17 @@ button.retry:hover {
   filter: blur(1rem);
 }
 
-.public-square svg {
+.public-square img {
   display: block;
   width: 100%;
-  overflow: visible;
-}
-
-.square-ring {
-  fill: none;
-  stroke: var(--map-line);
-  stroke-width: 1.4;
-}
-
-.square-ring.ring-middle {
-  stroke: rgb(42 113 133 / 0.62);
-  stroke-dasharray: 7 12;
-}
-
-.square-ring.ring-inner {
-  stroke: rgb(244 181 68 / 0.58);
-}
-
-.crowd-person {
-  fill: var(--parchment-deep);
-  stroke: var(--parchment-deep);
-  stroke-linecap: round;
-  stroke-width: 4;
-  opacity: 0.52;
-}
-
-.shared-place {
-  fill: rgb(244 181 68 / 0.18);
-  stroke: var(--gold);
-  stroke-width: 2;
-}
-
-.recognised-person {
-  fill: var(--gold);
-  stroke: var(--gold);
-  stroke-linecap: round;
-  stroke-width: 7;
-}
-
-.recognised-person.person-two {
-  fill: var(--paper);
-  stroke: var(--paper);
-}
-
-.mutual-line {
-  fill: none;
-  stroke: var(--spark);
-  stroke-linecap: round;
-  stroke-width: 5;
+  aspect-ratio: 16 / 9;
+  border: 0.08rem solid rgb(244 181 68 / 0.35);
+  object-fit: cover;
 }
 
 .public-square figcaption,
 .investor-square figcaption,
+.meeting-portrait figcaption,
 .market-landscape figcaption,
 .positioning-map figcaption,
 .density-flywheel figcaption,
@@ -1230,52 +1351,21 @@ button.retry:hover {
   font-size: clamp(1.05rem, 2vw, 1.4rem);
 }
 
-.meeting-outcome ol {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem 0;
-  align-items: center;
+.meeting-portrait {
   margin: 0;
-  padding: 0;
-  list-style: none;
 }
 
-.meeting-outcome li {
-  position: relative;
-  display: grid;
-  place-items: center;
-  min-width: 0;
-  text-align: center;
-}
-
-.meeting-outcome li::before {
+.meeting-portrait img {
   display: block;
-  width: clamp(2.7rem, 5vw, 4.5rem);
-  aspect-ratio: 1;
-  border: 0.12rem solid var(--ink);
-  border-radius: 50%;
-  background: transparent;
-  content: "";
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0.08rem solid rgb(7 23 34 / 0.35);
+  object-fit: cover;
 }
 
-.meeting-outcome li:last-child::before {
-  border-color: var(--spark);
-  background: var(--gold);
-}
-
-.meeting-outcome li:not(:last-child)::after {
-  position: absolute;
-  top: clamp(1.3rem, 2.5vw, 2.2rem);
-  left: 72%;
-  width: 56%;
-  height: 0.08rem;
-  background: var(--ink);
-  content: "";
-}
-
-.meeting-outcome span {
-  display: block;
-  margin-top: 0.75rem;
+.meeting-portrait figcaption {
+  margin-top: 0.85rem;
+  color: var(--ink-soft);
   font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.08em;
@@ -1290,29 +1380,16 @@ button.retry:hover {
   padding-block: clamp(5rem, 10vw, 10rem);
 }
 
-.demand-rings {
-  position: relative;
-  aspect-ratio: 1;
-  width: min(100%, 28rem);
-  margin-inline: auto;
+.demand-gathering {
+  margin: 0;
 }
 
-.demand-rings span {
-  position: absolute;
-  inset: 0;
-  border: 0.08rem solid rgb(244 181 68 / 0.28);
-  border-radius: 50%;
-}
-
-.demand-rings span:nth-child(2) {
-  inset: 18%;
-  border-color: var(--mineral-bright);
-}
-
-.demand-rings span:nth-child(3) {
-  inset: 38%;
-  border-color: var(--gold);
-  background: radial-gradient(circle, rgb(239 74 36 / 0.55), transparent 68%);
+.demand-gathering img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0.08rem solid rgb(244 181 68 / 0.35);
+  object-fit: cover;
 }
 
 .demand-gate h2 {
@@ -1457,51 +1534,12 @@ button.retry:hover {
   margin: 0;
 }
 
-.investor-square svg {
+.investor-square img {
   display: block;
   width: 100%;
-}
-
-.map-block {
-  fill: rgb(23 72 91 / 0.54);
-  stroke: rgb(242 234 216 / 0.28);
-  stroke-width: 2;
-}
-
-.map-block.block-two,
-.map-block.block-three {
-  fill: rgb(23 72 91 / 0.32);
-}
-
-.map-ring {
-  fill: none;
-  stroke: rgb(244 181 68 / 0.28);
-  stroke-width: 2;
-}
-
-.map-ring.middle {
-  stroke-dasharray: 7 10;
-}
-
-.map-ring.inner {
-  stroke: var(--gold);
-}
-
-.map-people {
-  fill: var(--parchment-deep);
-}
-
-.map-signal {
-  fill: rgb(244 181 68 / 0.24);
-  stroke: var(--gold);
-  stroke-width: 2;
-}
-
-.map-mutual {
-  fill: none;
-  stroke: var(--spark);
-  stroke-linecap: round;
-  stroke-width: 5;
+  aspect-ratio: 16 / 9;
+  border: 0.08rem solid rgb(244 181 68 / 0.35);
+  object-fit: cover;
 }
 
 .investor-square figcaption {
@@ -2168,25 +2206,25 @@ button.retry:hover {
 
 @media (max-width: 48rem) {
   .hero {
+    display: block;
     min-height: 100svh;
   }
 
-  .hero::before {
-    background-position: center 11rem;
-    background-repeat: no-repeat;
-    background-size: auto 32rem;
+  .hero::before,
+  .hero::after {
+    display: none;
   }
 
-  .hero::after {
+  .hero-scene {
+    display: block;
+    aspect-ratio: 4 / 3;
     background:
       linear-gradient(
         180deg,
-        rgb(2 10 16 / 0.82) 0%,
-        rgb(2 10 16 / 0.2) 30%,
-        rgb(2 10 16 / 0.22) 49%,
-        rgb(2 10 16 / 0.96) 77%,
+        transparent 45%,
         var(--night-deep) 100%
-      );
+      ),
+      url("/images/together-passing-glance.jpg") center 64% / cover no-repeat;
   }
 
   .site-header-links {
@@ -2198,7 +2236,7 @@ button.retry:hover {
   }
 
   .hero-copy {
-    padding-top: min(34vh, 16rem);
+    padding-top: clamp(2rem, 9vw, 3.5rem);
   }
 
   .hero h1 {
@@ -2324,6 +2362,7 @@ button.retry:hover {
   .meeting-outcome,
   .demand-gate,
   .proposal-join,
+  .public-survey,
   .investor-hero,
   .memo-section > header,
   .wedge-copy {
@@ -2333,6 +2372,10 @@ button.retry:hover {
   .proposal-hero {
     min-height: 0;
     padding-top: 4rem;
+  }
+
+  .public-survey > div {
+    justify-self: start;
   }
 
   .proposal-hero h1 {
@@ -2369,15 +2412,6 @@ button.retry:hover {
   .scenario-details article + article {
     border-top: 0.08rem solid var(--line);
     border-left: 0;
-  }
-
-  .meeting-outcome ol {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .meeting-outcome li:nth-child(2)::after,
-  .meeting-outcome li:last-child::after {
-    display: none;
   }
 
   .proposal-footer {
@@ -2465,6 +2499,10 @@ button.retry:hover {
 
   .launch-signup button.primary {
     width: 100%;
+  }
+
+  .public-survey {
+    padding-inline: 1rem;
   }
 
   .qualification-page {

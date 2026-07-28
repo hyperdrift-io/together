@@ -1,0 +1,10 @@
+Use case: photorealistic-natural
+Asset type: wide 16:9 editorial image for Together's public proposal section, "We build when the demand is real."
+Primary request: A high, poetic but believable aerial-to-elevated view over a welcoming public social square at blue hour. Many independent adults are naturally arriving, moving through, and gathering in small organic clusters across the open square. Warm amber pools of light from lamps, cafe terraces, and windows appear to gradually join across the midnight-blue space, making human presence feel like it is accumulating.
+Scene/backdrop: a real, calm public square with stone paving, restrained architecture at the edges, benches and paths; no identifiable city landmarks.
+Subject: distributed human presence, not one romantic couple.
+Style/medium: premium cinematic editorial photography; candid and observational, not a poster or illustration.
+Composition/framing: wide landscape 16:9, generously composed, with clear breathing room and a sense of the square filling over time. People should be visible as distinct adults, varied and natural, never packed as a crowd.
+Lighting/mood: luminous, hopeful, intimate at civic scale; amber warmth slowly overcoming midnight-blue evening.
+Color palette: deep midnight navy, natural stone, amber gold, restrained warm coral accents.
+Constraints: convey demand as human presence accumulating in a real shared place. No app interface, maps, pins, location tracking motifs, charts, analytics, romance pose, nightclub, concert, party poster, text, logos, watermark, or diagram. No central spotlighted couple.

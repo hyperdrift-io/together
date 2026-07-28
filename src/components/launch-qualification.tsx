@@ -77,6 +77,15 @@ export function LaunchQualification({
   const started = useRef(false);
 
   useEffect(() => {
+    if (initiallyCompleted) {
+      return;
+    }
+
+    if (window.localStorage.getItem('together-launch-survey-completed')) {
+      setSubmissionState('completed');
+      return;
+    }
+
     if (!initiallyCompleted) {
       trackTogetherEvent('launch_qualification_viewed');
     }
