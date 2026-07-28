@@ -1,5 +1,6 @@
 import { LaunchSignup } from '../components/launch-signup';
 import { LaunchSurvey } from '../components/launch-survey';
+import { ShareTogether } from '../components/share-together';
 
 const canonicalUrl = 'https://together.hyperdrift.io/';
 const socialImageUrl =
@@ -134,6 +135,8 @@ export default function HomePage() {
           </div>
           <LaunchSurvey />
         </section>
+
+        <ShareTogether />
       </main>
     </>
   );
