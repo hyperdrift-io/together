@@ -19,6 +19,8 @@ type RegistrationRow = {
 export type LaunchRegistrationAdminRow = {
   email: string;
   status: 'pending' | 'confirmed';
+  phoneNumber: string | null;
+  smsOptedIn: boolean;
   placeType: PlaceType | null;
   londonArea: LondonArea | null;
   adultEligibility: AdultEligibility | null;
@@ -89,6 +91,10 @@ function getDatabase() {
       token_created_at TEXT NOT NULL,
       confirmation_sent_at TEXT,
       confirmed_at TEXT,
+      phone_number TEXT,
+      sms_opt_in INTEGER NOT NULL DEFAULT 0
+        CHECK (sms_opt_in IN (0, 1)),
+      sms_opted_in_at TEXT,
       consent_version TEXT NOT NULL,
       created_at TEXT NOT NULL
     );
@@ -149,11 +155,40 @@ function getDatabase() {
     );
   `);
 
+  ensureRegistrationColumns(database);
+
   return database;
+}
+
+function ensureRegistrationColumns(db: DatabaseSync) {
+  const columns = db
+    .prepare('PRAGMA table_info(launch_registrations)')
+    .all() as Array<{ name: string }>;
+  const names = new Set(columns.map((column) => column.name));
+
+  if (!names.has('phone_number')) {
+    db.exec('ALTER TABLE launch_registrations ADD COLUMN phone_number TEXT');
+  }
+
+  if (!names.has('sms_opt_in')) {
+    db.exec(
+      'ALTER TABLE launch_registrations ADD COLUMN sms_opt_in INTEGER NOT NULL DEFAULT 0',
+    );
+  }
+
+  if (!names.has('sms_opted_in_at')) {
+    db.exec(
+      'ALTER TABLE launch_registrations ADD COLUMN sms_opted_in_at TEXT',
+    );
+  }
 }
 
 function normalizedEmail(value: string) {
   return value.normalize('NFKC').trim().toLowerCase();
+}
+
+function normalizedPhone(value: string) {
+  return value.normalize('NFKC').trim().replace(/[\s().-]/g, '');
 }
 
 export function validLaunchEmail(value: string) {
@@ -163,6 +198,10 @@ export function validLaunchEmail(value: string) {
     email.length <= 254 &&
     /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
   );
+}
+
+export function validLaunchPhone(value: string) {
+  return /^\+?[1-9]\d{7,14}$/.test(normalizedPhone(value));
 }
 
 function tokenHash(token: string) {
@@ -479,6 +518,33 @@ export function hasCompletedLaunchQualification(
   return row?.completed === 1;
 }
 
+export function saveLaunchPhonePreference(
+  rawEmail: string,
+  token: string,
+  rawPhone: string,
+) {
+  const email = normalizedEmail(rawEmail);
+  const phone = normalizedPhone(rawPhone);
+
+  if (!validLaunchPhone(phone)) {
+    return 'invalid-phone' as const;
+  }
+
+  if (validateLaunchRegistrationToken(email, token) !== 'already-confirmed') {
+    return 'inactive-link' as const;
+  }
+
+  getDatabase()
+    .prepare(`
+      UPDATE launch_registrations
+      SET phone_number = ?, sms_opt_in = 1, sms_opted_in_at = ?
+      WHERE email = ?
+    `)
+    .run(phone, new Date().toISOString(), email);
+
+  return 'saved' as const;
+}
+
 export function getLaunchRegistrationAdminData(
   limit = 500,
 ): LaunchRegistrationAdminData {
@@ -505,6 +571,8 @@ export function getLaunchRegistrationAdminData(
       SELECT
         r.email,
         r.status,
+        r.phone_number,
+        r.sms_opt_in,
         r.confirmation_sent_at,
         r.confirmed_at,
         r.created_at,
@@ -520,6 +588,8 @@ export function getLaunchRegistrationAdminData(
     .all(safeLimit) as Array<{
     email: string;
     status: 'pending' | 'confirmed';
+    phone_number: string | null;
+    sms_opt_in: 0 | 1;
     place_type: PlaceType | null;
     london_area: LondonArea | null;
     adult_eligible: 0 | 1 | null;
@@ -537,6 +607,8 @@ export function getLaunchRegistrationAdminData(
     registrations: rows.map((row) => ({
       email: row.email,
       status: row.status,
+      phoneNumber: row.phone_number,
+      smsOptedIn: row.sms_opt_in === 1,
       placeType: row.place_type,
       londonArea: row.london_area,
       adultEligibility:

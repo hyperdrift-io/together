@@ -2,6 +2,7 @@ import type { PageProps } from 'waku/router';
 
 import { ConfirmationTracker } from '../components/confirmation-tracker';
 import { LaunchQualification } from '../components/launch-qualification';
+import { LaunchPhonePreference } from '../components/launch-phone-preference';
 import {
   hasCompletedLaunchQualification,
   validateLaunchRegistrationToken,
@@ -39,6 +40,7 @@ export default function ConfirmPage({ query }: PageProps<'/confirm'>) {
                 You’re on the list.
               </p>
               <p>One more spark.</p>
+              <LaunchPhonePreference email={email} token={token} />
             </header>
             <LaunchQualification
               email={email}

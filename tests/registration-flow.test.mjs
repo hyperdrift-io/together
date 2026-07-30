@@ -153,18 +153,41 @@ test('a visitor registers on the landing page, receives the confirmation email, 
   assert.equal(completionResponse.status, 200);
   assert.match(completionHtml, /You’re on the list\./);
   assert.match(completionHtml, /Where would you most naturally use Together\?/);
+  assert.match(completionHtml, /Add a mobile number/);
   assert.match(completionHtml, /60 seconds · Optional/);
+
+  const phonePreferenceResponse = await fetch(
+    `${baseUrl}/api/launch-phone-preference`,
+    {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email,
+        token: confirmationUrl.searchParams.get('token'),
+        phone: '+44 7700 900123',
+        smsOptIn: true,
+      }),
+    },
+  );
+
+  assert.equal(phonePreferenceResponse.status, 200);
+  assert.deepEqual(await phonePreferenceResponse.json(), { status: 'saved' });
 
   const confirmedDatabase = new DatabaseSync(databasePath);
   const confirmed = confirmedDatabase
     .prepare(
-      'SELECT status, confirmed_at FROM launch_registrations WHERE email = ?',
+      'SELECT status, confirmed_at, phone_number, sms_opt_in FROM launch_registrations WHERE email = ?',
     )
     .get(email);
   confirmedDatabase.close();
 
   assert.equal(confirmed.status, 'confirmed');
   assert.ok(confirmed.confirmed_at);
+  assert.equal(confirmed.phone_number, '+447700900123');
+  assert.equal(confirmed.sms_opt_in, 1);
 });
 
 test('the registration API has an explicit method contract and JSON success path', async () => {
@@ -399,4 +422,8 @@ test('the admin page shows registration totals and latest records', async () => 
   assert.match(html, /admin-visible@hyperdrift\.io/);
   assert.match(html, /Confirmed/);
   assert.match(html, /Pending/);
+  assert.match(html, /Mobile/);
+  assert.match(html, /Text updates/);
+  assert.match(html, /\+447700900123/);
+  assert.match(html, /Opted in/);
 });

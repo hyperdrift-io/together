@@ -774,6 +774,84 @@ button.copy-link:hover {
   line-height: 1;
 }
 
+.phone-preference {
+  max-width: 30rem;
+  margin-top: clamp(2rem, 4vw, 3.5rem);
+  border-top: 0.08rem solid var(--line);
+  padding-top: 1.2rem;
+}
+
+.phone-preference h2 {
+  max-width: 14ch;
+  margin-bottom: 0.7rem;
+  color: var(--paper);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.phone-preference > p:not(.eyebrow) {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.phone-preference > button.quiet {
+  margin-top: 0.45rem;
+}
+
+.phone-preference form {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.phone-preference form > label:not(.text-consent) {
+  color: var(--gold-soft);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.phone-preference form > input {
+  width: 100%;
+  border: 0.08rem solid rgb(255 250 240 / 0.42);
+  padding: 0.8rem 0.95rem;
+  color: var(--paper);
+  background: rgb(2 10 16 / 0.72);
+}
+
+.phone-preference label.text-consent {
+  display: grid;
+  grid-template-columns: 1.15rem minmax(0, 1fr);
+  gap: 0.7rem;
+  align-items: start;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.35;
+}
+
+.phone-preference label.text-consent input {
+  width: 1.15rem;
+  min-height: 1.15rem;
+  margin: 0.1rem 0 0;
+  accent-color: var(--gold);
+}
+
+.phone-preference form > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  align-items: center;
+  margin-top: 0.35rem;
+}
+
+.phone-preference form button.quiet {
+  color: var(--muted);
+}
+
 .qualification-survey,
 .qualification-complete {
   width: min(100%, 39rem);
@@ -1149,7 +1227,7 @@ button.retry:hover {
 
 .admin-table-scroll table {
   width: 100%;
-  min-width: 86rem;
+  min-width: 98rem;
   border-collapse: collapse;
   text-align: left;
 }

@@ -20,6 +20,12 @@ export default function PrivacyPage() {
             email address you choose to share, whether you confirmed it, and the
             timestamps needed to operate the launch list.
           </p>
+          <p>
+            If you separately choose text updates after confirming, we also keep
+            your mobile number and text consent so we can send occasional
+            Together event invitations and updates. We do not show your number
+            to other members.
+          </p>
           <h2>Optional pilot questions</h2>
           <p>
             You can optionally tell us the kind of shared place where Together
@@ -49,9 +55,10 @@ export default function PrivacyPage() {
           <h2>Your choice</h2>
           <p>
             Every confirmation email includes a link to leave the list. We keep
-            confirmed registrations and any optional qualification answers
-            together while Together remains under active validation. Leaving the
-            list removes both. We remove them if the project does not continue.
+            confirmed registrations, optional text preferences, and any optional
+            qualification answers together while Together remains under active
+            validation. Leaving the list removes them. We remove them if the
+            project does not continue.
           </p>
           <p>
             For questions or a deletion request, email{' '}

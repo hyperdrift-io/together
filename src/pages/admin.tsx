@@ -75,6 +75,8 @@ export default function AdminPage() {
                 <thead>
                   <tr>
                     <th scope="col">Email</th>
+                    <th scope="col">Mobile</th>
+                    <th scope="col">Text updates</th>
                     <th scope="col">Status</th>
                     <th scope="col">Registered</th>
                     <th scope="col">Email sent</th>
@@ -89,6 +91,8 @@ export default function AdminPage() {
                   {data.registrations.map((registration) => (
                     <tr key={registration.email}>
                       <th scope="row">{registration.email}</th>
+                      <td>{registration.phoneNumber || '—'}</td>
+                      <td>{registration.smsOptedIn ? 'Opted in' : '—'}</td>
                       <td>
                         <span data-status={registration.status}>
                           {registration.status}
