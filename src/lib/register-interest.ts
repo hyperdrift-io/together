@@ -73,9 +73,17 @@ async function validateEmailDomain(email: string) {
   throw new Error(invalidDomainMessage);
 }
 
-export async function registerInterest(email: string) {
+type RegistrationPreference = {
+  phone?: string;
+  smsOptIn?: boolean;
+};
+
+export async function registerInterest(
+  email: string,
+  preference: RegistrationPreference = {},
+) {
   await validateEmailDomain(email);
-  const registration = startLaunchRegistration(email);
+  const registration = startLaunchRegistration(email, preference);
 
   if (registration.status === 'already-confirmed') {
     return { status: 'already-confirmed' as const };

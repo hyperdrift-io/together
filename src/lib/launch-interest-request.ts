@@ -18,11 +18,15 @@ function failure(request: Request, message: string, status: number) {
 export async function handleLaunchInterestRequest(request: Request) {
   let email = '';
   let company = '';
+  let phone = '';
+  let smsOptIn = false;
 
   try {
     const formData = await request.formData();
     email = String(formData.get('email') || '');
     company = String(formData.get('company') || '');
+    phone = String(formData.get('phone') || '');
+    smsOptIn = formData.get('smsOptIn') === 'on';
   } catch {
     return failure(request, 'Enter a valid email address.', 400);
   }
@@ -34,7 +38,7 @@ export async function handleLaunchInterestRequest(request: Request) {
   }
 
   try {
-    const result = await registerInterest(email);
+    const result = await registerInterest(email, { phone, smsOptIn });
 
     if (acceptsJson(request)) {
       return Response.json(result, { status: 202 });
@@ -49,6 +53,8 @@ export async function handleLaunchInterestRequest(request: Request) {
     const validationMessages = new Set([
       'Enter a valid email address.',
       'Use an email address with a valid domain.',
+      'Enter a valid mobile number, including the country code.',
+      'Choose the text consent box to receive invitation updates.',
     ]);
     const message =
       error instanceof Error && validationMessages.has(error.message)

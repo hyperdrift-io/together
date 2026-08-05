@@ -5,6 +5,7 @@ import { LaunchQualification } from '../components/launch-qualification';
 import { LaunchPhonePreference } from '../components/launch-phone-preference';
 import {
   hasCompletedLaunchQualification,
+  hasLaunchPhonePreference,
   validateLaunchRegistrationToken,
 } from '../lib/launch-registration';
 
@@ -17,6 +18,8 @@ export default function ConfirmPage({ query }: PageProps<'/confirm'>) {
   const canConfirm = validation === 'pending';
   const qualificationCompleted =
     confirmed && hasCompletedLaunchQualification(email, token);
+  const phonePreferenceSaved =
+    confirmed && hasLaunchPhonePreference(email, token);
 
   if (confirmed) {
     return (
@@ -40,7 +43,9 @@ export default function ConfirmPage({ query }: PageProps<'/confirm'>) {
                 You’re on the list.
               </p>
               <p>One more spark.</p>
-              <LaunchPhonePreference email={email} token={token} />
+              {!phonePreferenceSaved ? (
+                <LaunchPhonePreference email={email} token={token} />
+              ) : null}
             </header>
             <LaunchQualification
               email={email}

@@ -77,6 +77,8 @@ test('a visitor registers on the landing page, receives the confirmation email, 
   );
   assert.match(landingHtml, /application\/ld\+json/);
   assert.match(landingHtml, /Meet Someone Already Here, Face to Face/);
+  assert.match(landingHtml, /Mobile number/);
+  assert.match(landingHtml, /first invitation by text/);
 
   const registrationResponse = await fetch(
     `${baseUrl}/api/launch-interest`,
@@ -85,7 +87,11 @@ test('a visitor registers on the landing page, receives the confirmation email, 
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
-      body: new URLSearchParams({ email }),
+      body: new URLSearchParams({
+        email,
+        phone: '+44 7700 900123',
+        smsOptIn: 'on',
+      }),
       redirect: 'manual',
     },
   );
@@ -112,13 +118,15 @@ test('a visitor registers on the landing page, receives the confirmation email, 
   const pendingDatabase = new DatabaseSync(databasePath);
   const pending = pendingDatabase
     .prepare(
-      'SELECT status, confirmation_sent_at FROM launch_registrations WHERE email = ?',
+      'SELECT status, confirmation_sent_at, phone_number, sms_opt_in FROM launch_registrations WHERE email = ?',
     )
     .get(email);
   pendingDatabase.close();
 
   assert.equal(pending.status, 'pending');
   assert.ok(pending.confirmation_sent_at);
+  assert.equal(pending.phone_number, '+447700900123');
+  assert.equal(pending.sms_opt_in, 1);
 
   const confirmationResponse = await fetch(message.confirmationUrl);
   const confirmationHtml = await confirmationResponse.text();
@@ -153,28 +161,8 @@ test('a visitor registers on the landing page, receives the confirmation email, 
   assert.equal(completionResponse.status, 200);
   assert.match(completionHtml, /You’re on the list\./);
   assert.match(completionHtml, /Where would you most naturally use Together\?/);
-  assert.match(completionHtml, /Add a mobile number/);
+  assert.doesNotMatch(completionHtml, /Add a mobile number/);
   assert.match(completionHtml, /60 seconds · Optional/);
-
-  const phonePreferenceResponse = await fetch(
-    `${baseUrl}/api/launch-phone-preference`,
-    {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email,
-        token: confirmationUrl.searchParams.get('token'),
-        phone: '+44 7700 900123',
-        smsOptIn: true,
-      }),
-    },
-  );
-
-  assert.equal(phonePreferenceResponse.status, 200);
-  assert.deepEqual(await phonePreferenceResponse.json(), { status: 'saved' });
 
   const confirmedDatabase = new DatabaseSync(databasePath);
   const confirmed = confirmedDatabase

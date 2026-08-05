@@ -265,14 +265,36 @@ input:disabled {
   font-weight: 700;
 }
 
-.launch-signup > div {
+.launch-signup .signup-email-row {
   position: relative;
   display: grid;
   grid-template-columns: minmax(12rem, 1fr) auto;
   max-width: 35rem;
 }
 
-.launch-signup input:not(.signup-trap) {
+.signup-phone-row {
+  display: grid;
+  gap: 0.48rem;
+  max-width: 35rem;
+  margin-top: 0.75rem;
+}
+
+.signup-phone-label {
+  color: var(--paper);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.signup-phone-label span {
+  color: var(--gold-soft);
+  font-weight: 500;
+}
+
+.signup-phone-row input[type="tel"] {
+  max-width: 22rem;
+}
+
+.launch-signup input:not(.signup-trap):not([type="checkbox"]) {
   width: 100%;
   border: 0.08rem solid var(--paper);
   border-radius: 0;
@@ -823,7 +845,7 @@ button.copy-link:hover {
   background: rgb(2 10 16 / 0.72);
 }
 
-.phone-preference label.text-consent {
+:is(.phone-preference, .launch-signup) label.text-consent {
   display: grid;
   grid-template-columns: 1.15rem minmax(0, 1fr);
   gap: 0.7rem;
@@ -833,7 +855,7 @@ button.copy-link:hover {
   line-height: 1.35;
 }
 
-.phone-preference label.text-consent input {
+:is(.phone-preference, .launch-signup) label.text-consent input {
   width: 1.15rem;
   min-height: 1.15rem;
   margin: 0.1rem 0 0;
@@ -2689,7 +2711,7 @@ button.retry:hover {
 }
 
 @media (max-width: 34rem) {
-  .launch-signup > div {
+  .launch-signup .signup-email-row {
     grid-template-columns: 1fr;
     gap: 0.55rem;
   }

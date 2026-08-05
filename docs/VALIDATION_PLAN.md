@@ -42,11 +42,13 @@ remedies, and operating cost must be validated during the manual pilot.
 
 ### Commitment
 
-One email address to join the London launch list.
+One email address to join the London launch list. A mobile number is visible
+but optional for people who want the first invitation by text.
 
-The first registration must remain easy. The optional survey is also available
-as a public research surface; its email opt-in remains separate from the
-confirmed-registration appetite signal.
+The first registration must remain easy: email is the only required field and
+`launch_interest_confirmed` remains the appetite signal. The optional survey
+is also available as a public research surface; its email opt-in remains
+separate from the confirmed-registration appetite signal.
 
 ## Audience
 

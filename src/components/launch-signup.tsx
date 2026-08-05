@@ -116,7 +116,7 @@ export function LaunchSignup() {
       onSubmit={submitInterest}
     >
       <label htmlFor="launch-email">Be first to try Together</label>
-      <div>
+      <div className="signup-email-row">
         <input
           id="launch-email"
           name="email"
@@ -142,6 +142,33 @@ export function LaunchSignup() {
         >
           {submissionState === 'submitting' ? 'Joining…' : 'Join Together'}
         </button>
+      </div>
+
+      <div className="signup-phone-row">
+        <label className="signup-phone-label" htmlFor="launch-phone">
+          Mobile number <span>Optional — for the first invitation by text</span>
+        </label>
+        <input
+          id="launch-phone"
+          name="phone"
+          type="tel"
+          inputMode="tel"
+          autoComplete="tel"
+          placeholder="+44 7700 900123"
+          disabled={submissionState === 'submitting'}
+        />
+        <label className="text-consent" htmlFor="sms-opt-in">
+          <input
+            id="sms-opt-in"
+            name="smsOptIn"
+            type="checkbox"
+            disabled={submissionState === 'submitting'}
+          />
+          <span>
+            Send me occasional Together invitations and updates by text. Stop
+            anytime.
+          </span>
+        </label>
       </div>
 
       {submissionState === 'error' ? (

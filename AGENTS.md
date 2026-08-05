@@ -78,8 +78,9 @@ If Together becomes a standalone Hyperdrift app, use the own-stack:
 - No new dependency without explicit approval
 
 The public appetite slice contains the measured landing proposition, one email
-registration, a public optional three-question survey with email opt-in,
-required consent copy, metadata, analytics, sitemap, robots, and social preview.
+registration with an optional consented mobile number for invitation updates,
+a public optional three-question survey with email opt-in, required consent
+copy, metadata, analytics, sitemap, robots, and social preview.
 It suggests the qualification after confirmation only when it has not already
 been completed, as recorded in
 `docs/design/2026-07-27-survey-integrations/README.md`.
@@ -101,9 +102,10 @@ Hyperdrift infra and follow the workspace asynchronous handoff rule.
 
 ## Data and safety
 
-- During appetite validation, collect only consented launch email registration
-  plus the approved optional structured survey answers: natural place type,
-  broad London area, and adult eligibility.
+- During appetite validation, collect only consented launch email registration,
+  an optional consented mobile number for invitation updates, plus the approved
+  optional structured survey answers: natural place type, broad London area,
+  and adult eligibility.
 - Store email-linked answers with the registration lifecycle and delete them
   when the registration is removed. Anonymous survey answers use a random
   browser ID only and expire after 30 days.

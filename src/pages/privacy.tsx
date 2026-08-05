@@ -21,10 +21,10 @@ export default function PrivacyPage() {
             timestamps needed to operate the launch list.
           </p>
           <p>
-            If you separately choose text updates after confirming, we also keep
-            your mobile number and text consent so we can send occasional
-            Together event invitations and updates. We do not show your number
-            to other members.
+            If you choose text updates while joining, we also keep your mobile
+            number and text consent so we can send occasional Together event
+            invitations and updates. We do not show your number to other
+            members.
           </p>
           <h2>Optional pilot questions</h2>
           <p>

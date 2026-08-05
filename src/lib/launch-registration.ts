@@ -222,11 +222,33 @@ function hashesMatch(expected: string, actual: string) {
   );
 }
 
-export function startLaunchRegistration(rawEmail: string): RegistrationStart {
+type LaunchRegistrationPreference = {
+  phone?: string;
+  smsOptIn?: boolean;
+};
+
+export function startLaunchRegistration(
+  rawEmail: string,
+  preference: LaunchRegistrationPreference = {},
+): RegistrationStart {
   const email = normalizedEmail(rawEmail);
 
   if (!validLaunchEmail(email)) {
     throw new Error('Enter a valid email address.');
+  }
+
+  const phone = normalizedPhone(preference.phone || '');
+
+  if (phone && !validLaunchPhone(phone)) {
+    throw new Error('Enter a valid mobile number, including the country code.');
+  }
+
+  if (phone && !preference.smsOptIn) {
+    throw new Error('Choose the text consent box to receive invitation updates.');
+  }
+
+  if (!phone && preference.smsOptIn) {
+    throw new Error('Enter a valid mobile number, including the country code.');
   }
 
   const db = getDatabase();
@@ -249,13 +271,30 @@ export function startLaunchRegistration(rawEmail: string): RegistrationStart {
       status,
       token_hash,
       token_created_at,
+      phone_number,
+      sms_opt_in,
+      sms_opted_in_at,
       consent_version,
       created_at
-    ) VALUES (?, 'pending', ?, ?, '2026-07-24', ?)
+    ) VALUES (?, 'pending', ?, ?, ?, ?, ?, '2026-07-24', ?)
     ON CONFLICT(email) DO UPDATE SET
       token_hash = excluded.token_hash,
-      token_created_at = excluded.token_created_at
-  `).run(email, tokenHash(token), now, now);
+      token_created_at = excluded.token_created_at,
+      phone_number = COALESCE(excluded.phone_number, launch_registrations.phone_number),
+      sms_opt_in = CASE
+        WHEN excluded.sms_opt_in = 1 THEN 1
+        ELSE launch_registrations.sms_opt_in
+      END,
+      sms_opted_in_at = COALESCE(excluded.sms_opted_in_at, launch_registrations.sms_opted_in_at)
+  `).run(
+    email,
+    tokenHash(token),
+    now,
+    phone || null,
+    phone ? 1 : 0,
+    phone ? now : null,
+    now,
+  );
 
   return { status: 'pending', email, token };
 }
@@ -516,6 +555,22 @@ export function hasCompletedLaunchQualification(
     .get(email) as { completed: 1 } | undefined;
 
   return row?.completed === 1;
+}
+
+export function hasLaunchPhonePreference(rawEmail: string, token: string) {
+  const email = normalizedEmail(rawEmail);
+
+  if (validateLaunchRegistrationToken(email, token) !== 'already-confirmed') {
+    return false;
+  }
+
+  const row = getDatabase()
+    .prepare(
+      'SELECT sms_opt_in FROM launch_registrations WHERE email = ?',
+    )
+    .get(email) as { sms_opt_in: 0 | 1 } | undefined;
+
+  return row?.sms_opt_in === 1;
 }
 
 export function saveLaunchPhonePreference(
