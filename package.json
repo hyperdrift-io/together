@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "waku dev",
     "build": "waku build",
-    "start": "waku start --port ${PORT:-8080} --host ${HOST:-127.0.0.1}",
+    "start": "bash scripts/start-production.sh",
     "test": "node --test tests/registration-flow.test.mjs",
     "type-check": "tsc --noEmit",
     "typegen": "waku router typegen"
