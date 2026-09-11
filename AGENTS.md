@@ -1,7 +1,7 @@
 # Together
 
-> Inherits the Hyperdrift workspace `AGENTS.md` and
-> `meta/PHILOSOPHY.md`, including the Voice Covenant.
+> Inherits the [Hyperdrift workspace AGENTS.md](../../AGENTS.md)
+> (`~/dev/hyperdrift/AGENTS.md`) and `meta/PHILOSOPHY.md`, including the Voice Covenant.
 
 ## Status
 
