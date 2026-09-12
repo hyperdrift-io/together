@@ -41,3 +41,14 @@ is stored outside the deploy checkout at `TOGETHER_DATA_PATH`.
 Operators can review totals and the latest registrations at `/admin`. The
 production route is read-only and protected by Nginx Basic Auth; credentials
 are managed by infrastructure rather than the application repository.
+
+The homepage counter and `/admin` both read the same store, so test sign-ups
+inflate the first-list progress. Remove them on the server, where
+`TOGETHER_DATA_PATH` points at the production database:
+
+```bash
+node scripts/registrations.mjs list
+node scripts/registrations.mjs remove test@example.com another@example.com
+```
+
+Removal cascades to the qualification and survey answers for that email.
