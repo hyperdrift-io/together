@@ -1,6 +1,8 @@
+import { LaunchProgress } from '../components/launch-progress';
 import { LaunchSignup } from '../components/launch-signup';
-import { LaunchSurvey } from '../components/launch-survey';
+import { LaunchSurveyDialog } from '../components/launch-survey-dialog';
 import { ShareTogether } from '../components/share-together';
+import { pilotAppUrl } from '../lib/pilot-app';
 
 const canonicalUrl = 'https://together.hyperdrift.io/';
 const socialImageUrl =
@@ -94,6 +96,7 @@ export default function HomePage() {
             <div className="site-header-links">
               <p>Face to face. Already here.</p>
               <a href="/proposal">Read the proposal</a>
+              <a href={pilotAppUrl}>Sign in</a>
             </div>
           </header>
 
@@ -110,9 +113,10 @@ export default function HomePage() {
               feeling is mutual—and meet face to face.
             </p>
             <p className="status-note">
-              We’re validating the idea before building the app. Join the first
-              list to help make it happen.
+              The pilot app is live with a first small group. Join the list to
+              be invited next.
             </p>
+            <LaunchProgress />
             <LaunchSignup />
             <a className="survey-link" href="#survey">
               Help shape the first room · 60 seconds
@@ -124,16 +128,19 @@ export default function HomePage() {
           </footer>
         </section>
 
-        <section className="public-survey" id="survey" aria-labelledby="survey-title">
+        <section className="public-survey" aria-labelledby="shape-title">
           <div>
             <p className="eyebrow">Help shape the first room</p>
-            <h2 id="survey-title">Where should Together begin?</h2>
+            <h2 id="shape-title">Where should Together begin?</h2>
             <p>
               Three optional answers help us find the first public places where
               a real hello could happen.
             </p>
           </div>
-          <LaunchSurvey />
+          <a className="primary" href="#survey">
+            Answer three questions
+          </a>
+          <LaunchSurveyDialog />
         </section>
 
         <ShareTogether />
@@ -143,5 +150,5 @@ export default function HomePage() {
 }
 
 export const getConfig = async () => {
-  return { render: 'static' } as const;
+  return { render: 'dynamic' } as const;
 };

@@ -36,6 +36,22 @@ visitor shape the first London pilot anonymously or add an email to join the
 launch list. Email-linked answers are promoted after confirmation; otherwise
 the same survey is suggested post-confirmation only when it was not completed.
 
+## Pilot integration — 2026-09-12
+
+Requested directly by the user; no new concept board round was run because
+the approved Passing Glance hero, typography, and palette are untouched.
+
+- The site header links to the pilot app (`Sign in`) so existing testers can
+  reach `together-weld.vercel.app` from the landing page.
+- The status note now says the pilot app is live with a first small group.
+- A `<progress>` bar under the status note shows confirmed registrations out
+  of the first-room target of 50, rendered per request from the registration
+  store (the homepage moved from static to dynamic rendering for this).
+- The public survey left the page body and lives in a native `<dialog>`. The
+  hero link and a parchment call-to-action band (`Answer three questions`)
+  both point at `#survey`; the dialog opens on that hash, so the address
+  `together.hyperdrift.io/#survey` deep-links into the questions.
+
 ## Public proposal and investor case — The Public Square approved
 
 **Approved information architecture:**

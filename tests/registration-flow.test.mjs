@@ -79,6 +79,10 @@ test('a visitor registers on the landing page, receives the confirmation email, 
   assert.match(landingHtml, /Meet Someone Already Here, Face to Face/);
   assert.match(landingHtml, /Mobile number/);
   assert.match(landingHtml, /first invitation by text/);
+  assert.match(landingHtml, /<progress[^>]*max="50"/);
+  assert.match(landingHtml, /of 50 on the first list/);
+  assert.match(landingHtml, /href="https:\/\/together-weld\.vercel\.app"/);
+  assert.match(landingHtml, /<dialog[^>]*id="survey"/);
 
   const registrationResponse = await fetch(
     `${baseUrl}/api/launch-interest`,

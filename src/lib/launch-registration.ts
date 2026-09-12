@@ -600,6 +600,16 @@ export function saveLaunchPhonePreference(
   return 'saved' as const;
 }
 
+export function countConfirmedLaunchRegistrations() {
+  const row = getDatabase()
+    .prepare(
+      "SELECT COUNT(*) AS confirmed FROM launch_registrations WHERE status = 'confirmed'",
+    )
+    .get() as { confirmed: number };
+
+  return row.confirmed;
+}
+
 export function getLaunchRegistrationAdminData(
   limit = 500,
 ): LaunchRegistrationAdminData {
