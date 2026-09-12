@@ -107,8 +107,11 @@ fast deploy-safety checks only: install, type-check, lint if configured, build,
 security scan, and migration dry-run where relevant.
 
 The user must review a local, development, or preview build before a production
-deployment. Production deploys and launch-readiness watches run through
-Hyperdrift infra and follow the workspace asynchronous handoff rule.
+deployment. A push to `main` runs `.github/workflows/deploy.yml`: the
+registration-flow test on a GitHub-hosted runner, then `make deploy-local
+app=together` on the server's own runner, then a GitHub release. No local SSH
+is needed. Launch-readiness watches still run through Hyperdrift infra and
+follow the workspace asynchronous handoff rule.
 
 ## Data and safety
 

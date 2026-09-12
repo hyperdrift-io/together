@@ -1,0 +1,81 @@
+name: CI / Deploy
+
+run-name: >-
+  ${{ github.event_name == 'pull_request'
+      && format('CI · {0}', github.head_ref)
+      || 'Deploy → production' }}
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+# Least privilege by default; only `release` widens to write.
+permissions:
+  contents: read
+
+jobs:
+  # Gate the pipeline on a GitHub-hosted runner. Runs on push AND PR so type
+  # errors and the approved registration-flow journey are caught before deploy.
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - uses: pnpm/action-setup@v6
+        with:
+          version: 10
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Type-check
+        run: pnpm run type-check
+      - name: Registration-flow test
+        run: pnpm test
+
+  deploy:
+    name: Deploy together → production
+    needs: test
+    if: github.event_name == 'push'
+    runs-on: [self-hosted, hyperdrift, deploy]
+    steps:
+      # Type-check, build, and smoke run server-side via Ansible. The
+      # self-hosted runner lives on production, so deploys run locally
+      # without inbound SSH from GitHub-hosted runners.
+      - name: Deploy via server-side Ansible
+        run: |
+          cd ~/dev/hyperdrift-infra
+          git pull --ff-only
+          PATH=$PATH:~/.local/bin make deploy-local app=together
+
+  release:
+    needs: deploy
+    if: ${{ success() && github.ref_name == 'main' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+          fetch-depth: 0
+          persist-credentials: false
+
+      # Tag = vYYYY.MM.DD.<workflow run #>, unique per run so releases never collide.
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="v$(date -u +%Y.%m.%d).${GITHUB_RUN_NUMBER}"
+          gh release create "$TAG" \
+            --generate-notes \
+            --title "$TAG" \
+            --target main
+          echo "✅ Release $TAG created"
