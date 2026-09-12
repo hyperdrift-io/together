@@ -194,6 +194,20 @@ input:disabled {
   text-decoration-color: var(--gold);
 }
 
+.site-header-links a.pilot-signin {
+  border: 0.08rem solid var(--gold);
+  padding: 0.55rem 0.9rem;
+  text-decoration: none;
+  transition:
+    color 160ms ease,
+    background 160ms ease;
+}
+
+.site-header-links a.pilot-signin:hover {
+  color: var(--night-deep);
+  background: var(--gold);
+}
+
 .wordmark {
   width: max-content;
   color: var(--gold);
@@ -309,21 +323,36 @@ progress::-moz-progress-bar {
 }
 
 .signup-phone-row {
-  display: grid;
-  gap: 0.48rem;
   max-width: 35rem;
   margin-top: 0.75rem;
+}
+
+.signup-phone-row summary {
+  width: max-content;
+  max-width: 100%;
+  cursor: pointer;
+  color: var(--paper);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.signup-phone-row summary span {
+  color: var(--gold-soft);
+  font-weight: 500;
+}
+
+.signup-phone-row[open] summary {
+  margin-bottom: 0.6rem;
+}
+
+.signup-phone-row > :not(summary) {
+  margin-bottom: 0.48rem;
 }
 
 .signup-phone-label {
   color: var(--paper);
   font-size: 0.78rem;
   font-weight: 700;
-}
-
-.signup-phone-label span {
-  color: var(--gold-soft);
-  font-weight: 500;
 }
 
 .signup-phone-row input[type="tel"] {
@@ -734,6 +763,124 @@ button.copy-link:hover {
   font-size: clamp(1.55rem, 3.2vw, 2.65rem);
   letter-spacing: -0.035em;
   text-align: center;
+}
+
+.pilot-live {
+  display: grid;
+  grid-template-columns: minmax(16rem, 30rem) minmax(18rem, 38rem);
+  gap: clamp(2rem, 6vw, 7rem);
+  align-items: center;
+  justify-content: center;
+  padding: clamp(4rem, 9vw, 8rem) var(--edge);
+  color: var(--paper);
+  background:
+    radial-gradient(circle at 12% 20%, rgb(42 113 133 / 0.38), transparent 26rem),
+    var(--night-deep);
+}
+
+.pilot-live figure {
+  margin: 0;
+}
+
+.pilot-live img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 0.08rem solid var(--line);
+  box-shadow: 0 1.6rem 4rem rgb(0 0 0 / 0.45);
+}
+
+.pilot-live figcaption {
+  margin-top: 0.7rem;
+  color: var(--muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.pilot-live h2 {
+  margin-top: 0.85rem;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.4rem, 4.4vw, 4.4rem);
+  font-weight: 400;
+  letter-spacing: -0.05em;
+  line-height: 0.94;
+}
+
+.pilot-live h2 + p {
+  max-width: 33rem;
+  margin-top: 1.2rem;
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  line-height: 1.45;
+}
+
+.pilot-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem 1.5rem;
+  align-items: center;
+  margin-top: 1.6rem;
+}
+
+.pilot-actions a:not(.primary) {
+  color: var(--gold);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-decoration-color: rgb(244 181 68 / 0.45);
+  text-underline-offset: 0.3rem;
+  text-transform: uppercase;
+}
+
+.pilot-steps {
+  display: grid;
+  gap: 0.55rem;
+  max-width: 33rem;
+  margin: 2rem 0 0;
+  border-top: 0.08rem solid var(--line);
+  padding: 1.2rem 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  counter-reset: step;
+  list-style: none;
+}
+
+.pilot-steps li {
+  display: grid;
+  grid-template-columns: 1.6rem minmax(0, 1fr);
+  gap: 0.6rem;
+  counter-increment: step;
+}
+
+.pilot-steps li::before {
+  color: var(--gold);
+  font-weight: 800;
+  content: counter(step) ".";
+}
+
+.pilot-steps b {
+  color: var(--paper);
+}
+
+.join-again {
+  display: grid;
+  justify-items: center;
+  gap: 0.6rem;
+  padding: clamp(4rem, 9vw, 8rem) var(--edge);
+  text-align: center;
+  background: var(--night-deep);
+}
+
+.join-again h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.4rem, 4.4vw, 4.4rem);
+  font-weight: 400;
+  letter-spacing: -0.05em;
+  line-height: 0.94;
+}
+
+.join-again a.primary {
+  margin-top: 1.2rem;
 }
 
 .message-page {
@@ -2663,6 +2810,7 @@ button.retry:hover {
   .meeting-outcome,
   .demand-gate,
   .proposal-join,
+  .pilot-live,
   .public-survey,
   .share-together,
   .investor-hero,

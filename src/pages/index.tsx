@@ -1,8 +1,9 @@
 import { LaunchProgress } from '../components/launch-progress';
 import { LaunchSignup } from '../components/launch-signup';
 import { LaunchSurveyDialog } from '../components/launch-survey-dialog';
+import { PilotLink } from '../components/pilot-link';
+import { PilotPreview } from '../components/pilot-preview';
 import { ShareTogether } from '../components/share-together';
-import { pilotAppUrl } from '../lib/pilot-app';
 
 const canonicalUrl = 'https://together.hyperdrift.io/';
 const socialImageUrl =
@@ -96,7 +97,9 @@ export default function HomePage() {
             <div className="site-header-links">
               <p>Face to face. Already here.</p>
               <a href="/proposal">Read the proposal</a>
-              <a href={pilotAppUrl}>Sign in</a>
+              <PilotLink className="pilot-signin" placement="header">
+                Sign in
+              </PilotLink>
             </div>
           </header>
 
@@ -113,8 +116,8 @@ export default function HomePage() {
               feeling is mutual—and meet face to face.
             </p>
             <p className="status-note">
-              The pilot app is live with a first small group. Join the list to
-              be invited next.
+              The pilot app is live with a first small group in London. Join
+              the list and you are invited next.
             </p>
             <LaunchProgress />
             <LaunchSignup />
@@ -127,6 +130,8 @@ export default function HomePage() {
             <p>Come. Spark. Connect.</p>
           </footer>
         </section>
+
+        <PilotPreview />
 
         <section className="public-survey" aria-labelledby="shape-title">
           <div>
@@ -144,6 +149,14 @@ export default function HomePage() {
         </section>
 
         <ShareTogether />
+
+        <section className="join-again" aria-labelledby="join-again-title">
+          <p className="eyebrow">Your place is next</p>
+          <h2 id="join-again-title">Be in the room when it opens.</h2>
+          <a className="primary" href="#join">
+            Join the London list
+          </a>
+        </section>
       </main>
     </>
   );

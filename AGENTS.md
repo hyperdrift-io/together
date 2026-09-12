@@ -19,11 +19,14 @@ The pilot app now exists as a separate codebase:
 `https://github.com/wblauvac/Together` (Next.js + Supabase PWA, deployed at
 `https://together-weld.vercel.app`, magic-link sign-in). This landing page
 stays the public front door and the demand-test store. Since 2026-09-12 it
-links to the pilot ("Sign in" in the header), opens the three-question survey
-in a `<dialog>` from any `#survey` link, and shows a `<progress>` bar of
-confirmed registrations towards the first-room target of 50 on the homepage.
-The pilot URL lives in `src/lib/pilot-app.ts`; the target lives in
-`src/components/launch-progress.tsx`.
+links to the pilot ("Sign in" in the header and a `The pilot is live` band
+under the hero, both through `PilotLink`, which records
+`pilot_signin_clicked`), opens the three-question survey in a `<dialog>` from
+any `#survey` link, and shows a `<progress>` bar of confirmed registrations
+towards the first-room target of 50 on the homepage. The pilot URL lives in
+`src/lib/pilot-app.ts`; the target lives in
+`src/components/launch-progress.tsx`. Test registrations are removed on the
+server with `scripts/registrations.mjs`.
 
 The approved direction is:
 

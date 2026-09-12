@@ -115,7 +115,7 @@ export function LaunchSignup() {
       onFocusCapture={recordStart}
       onSubmit={submitInterest}
     >
-      <label htmlFor="launch-email">Be first to try Together</label>
+      <label htmlFor="launch-email">Be invited to the next room</label>
       <div className="signup-email-row">
         <input
           id="launch-email"
@@ -140,13 +140,16 @@ export function LaunchSignup() {
           type="submit"
           disabled={submissionState === 'submitting'}
         >
-          {submissionState === 'submitting' ? 'Joining…' : 'Join Together'}
+          {submissionState === 'submitting' ? 'Joining…' : 'Join the list'}
         </button>
       </div>
 
-      <div className="signup-phone-row">
+      <details className="signup-phone-row">
+        <summary>
+          Want the first invitation by text? <span>Optional</span>
+        </summary>
         <label className="signup-phone-label" htmlFor="launch-phone">
-          Mobile number <span>Optional — for the first invitation by text</span>
+          Mobile number
         </label>
         <input
           id="launch-phone"
@@ -169,7 +172,7 @@ export function LaunchSignup() {
             anytime.
           </span>
         </label>
-      </div>
+      </details>
 
       {submissionState === 'error' ? (
         <p className="form-error" role="alert">
@@ -178,8 +181,8 @@ export function LaunchSignup() {
       ) : null}
 
       <small>
-        18+ · London will be the first launch community. Confirm by email. You
-        can leave at any time. <a href="/privacy">How we use your email.</a>
+        18+ · London first. One confirmation email, no password, nothing to
+        install. Leave at any time. <a href="/privacy">How we use your email.</a>
       </small>
     </form>
   );

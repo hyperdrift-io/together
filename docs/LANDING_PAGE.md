@@ -52,6 +52,27 @@ the approved Passing Glance hero, typography, and palette are untouched.
   both point at `#survey`; the dialog opens on that hash, so the address
   `together.hyperdrift.io/#survey` deep-links into the questions.
 
+## Conversion pass and pilot prominence — 2026-09-12
+
+Requested directly by the user; the approved Passing Glance hero, wordmark,
+typography, and palette are untouched, so no concept-board round was run.
+
+- The header `Sign in` is now an outlined button, and every pilot link fires
+  `pilot_signin_clicked` (property `placement`: `header` or `pilot-section`)
+  so returning testers can be told apart from new registrations.
+- A new `The pilot is live` band sits directly under the hero: the approved
+  meeting-outcome asset, a primary `Sign in to the pilot` button, a
+  `Join the list` fallback, and the three steps from registration to
+  invitation. Replace the illustration with a real pilot screenshot in
+  `public/images/` once one can be captured; the caption must never claim the
+  illustration is the app.
+- Registration form: the label reads `Be invited to the next room`, the button
+  `Join the list`, and the optional mobile number and text consent now live
+  behind a native `<details>` disclosure so the visible form is one field.
+  Stored data and the API are unchanged.
+- The page closes with a `Be in the room when it opens` band that links back
+  to `#join`, so the last thing a scroller sees is the registration.
+
 ## Public proposal and investor case — The Public Square approved
 
 **Approved information architecture:**

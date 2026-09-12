@@ -15,7 +15,7 @@ export function LaunchProgress() {
       />
       <span>
         <b>{shown}</b>
-        {` of ${firstRoomTarget} on the first list. The first room opens at ${firstRoomTarget}.`}
+        {` of ${firstRoomTarget} on the first list. The next room opens at ${firstRoomTarget}.`}
       </span>
     </p>
   );
