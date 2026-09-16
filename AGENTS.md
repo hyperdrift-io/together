@@ -21,7 +21,8 @@ The pilot app now exists as a separate codebase:
 stays the public front door and the demand-test store. Since 2026-09-12 it
 links to the pilot ("Sign in" in the header), opens the three-question survey
 in a `<dialog>` from any `#survey` link, and shows a `<progress>` bar of
-confirmed registrations towards the first-room target of 50 on the homepage.
+all registrations in the page's market (pending included, matching the admin
+total; changed 2026-09-16) towards the first-room target of 50 on the homepage.
 The pilot URL lives in `src/lib/pilot-app.ts`; the target lives in
 `src/components/launch-progress.tsx`.
 

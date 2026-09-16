@@ -612,14 +612,13 @@ export function saveLaunchPhonePreference(
   return 'saved' as const;
 }
 
-export function countConfirmedLaunchRegistrations(market: Locale) {
+// Everyone on a market's list, confirmed or not, matching the admin total.
+export function countLaunchRegistrations(market: Locale) {
   const row = getDatabase()
-    .prepare(
-      "SELECT COUNT(*) AS confirmed FROM launch_registrations WHERE status = 'confirmed' AND market = ?",
-    )
-    .get(market) as { confirmed: number };
+    .prepare('SELECT COUNT(*) AS total FROM launch_registrations WHERE market = ?')
+    .get(market) as { total: number };
 
-  return row.confirmed;
+  return row.total;
 }
 
 export function registrationMarket(rawEmail: string): Locale {

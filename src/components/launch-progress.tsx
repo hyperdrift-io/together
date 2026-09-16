@@ -1,4 +1,4 @@
-import { countConfirmedLaunchRegistrations } from '../lib/launch-registration';
+import { countLaunchRegistrations } from '../lib/launch-registration';
 import type { Locale } from '../lib/locale';
 
 export const firstRoomTarget = 50;
@@ -18,15 +18,19 @@ const copy = {
 
 // Each market fills its own first room, so each has its own counter.
 export function LaunchProgress({ market }: { market: Locale }) {
-  const confirmed = countConfirmedLaunchRegistrations(market);
-  const shown = Math.min(confirmed, firstRoomTarget);
+  const registered = countLaunchRegistrations(market);
+  const filled = Math.min(registered, firstRoomTarget);
   const t = copy[market];
 
   return (
     <p className="launch-progress">
-      <progress value={shown} max={firstRoomTarget} aria-label={t.label(shown)} />
+      <progress
+        value={filled}
+        max={firstRoomTarget}
+        aria-label={t.label(registered)}
+      />
       <span>
-        <b>{shown}</b>
+        <b>{registered}</b>
         {t.status}
       </span>
     </p>
