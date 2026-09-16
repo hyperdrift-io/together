@@ -6,5 +6,8 @@ Disallow: /check-email
 Disallow: /confirm
 Disallow: /investors
 Disallow: /leave
+Disallow: /fr/check-email
+Disallow: /fr/confirm
+Disallow: /fr/leave
 
 Sitemap: https://together.hyperdrift.io/sitemap.xml

@@ -3,7 +3,8 @@
 import { useEffect, useRef, useState } from 'react';
 import type { FormEvent } from 'react';
 
-import { trackTogetherEvent } from '../lib/analytics-client';
+import { marketProperties, trackTogetherEvent } from '../lib/analytics-client';
+import type { Locale } from '../lib/locale';
 
 type SubmissionState =
   | 'idle'
@@ -17,15 +18,66 @@ type RegistrationResponse = {
   message?: string;
 };
 
-export function LaunchSignup() {
+const copy = {
+  en: {
+    sendFailure: 'We could not send the confirmation email. Please try again.',
+    checkEyebrow: 'One more step',
+    checkTitle: 'Check your inbox.',
+    checkBody:
+      'Open the email from Together and confirm your place on the first list.',
+    inEyebrow: 'You’re in',
+    inTitle: 'You’re already on the list.',
+    inBody: 'We’ll write when Together is ready for its first real hello.',
+    label: 'Get your invitation',
+    email: 'Email address',
+    submitting: 'Sending…',
+    submit: 'Get my invite',
+    phone: 'Mobile number',
+    phoneHint: 'Optional — for the first invitation by text',
+    phonePlaceholder: '+44 7700 900123',
+    consent:
+      'Send me occasional Together invitations and updates by text. Stop anytime.',
+    fineprint:
+      '18+ · London will be the first launch community. Confirm by email. You can leave at any time.',
+    privacy: 'How we use your email.',
+  },
+  fr: {
+    sendFailure:
+      'Impossible d’envoyer l’e-mail de confirmation. Réessaie dans un instant.',
+    checkEyebrow: 'Plus qu’une étape',
+    checkTitle: 'Regarde ta boîte mail.',
+    checkBody:
+      'Ouvre l’e-mail de Together et confirme ta place sur la première liste française.',
+    inEyebrow: 'C’est fait',
+    inTitle: 'Tu es déjà sur la liste.',
+    inBody:
+      'On t’écrit dès que Together est prêt pour un premier vrai bonjour en France.',
+    label: 'Reçois ton invitation',
+    email: 'Adresse e-mail',
+    submitting: 'Envoi…',
+    submit: 'Je veux mon invitation',
+    phone: 'Mobile',
+    phoneHint: 'Facultatif — pour recevoir la première invitation par SMS',
+    phonePlaceholder: '+33 6 12 34 56 78',
+    consent:
+      'Envoyez-moi de temps en temps des invitations et nouvelles de Together par SMS. Désinscription à tout moment.',
+    fineprint:
+      '18+ · La liste France vient d’ouvrir. Confirmation par e-mail. Tu peux partir quand tu veux.',
+    privacy: 'Comment on utilise ton e-mail (en anglais).',
+  },
+};
+
+export function LaunchSignup({ market }: { market: Locale }) {
+  const t = copy[market];
+  const analytics = marketProperties(market);
   const [submissionState, setSubmissionState] =
     useState<SubmissionState>('idle');
   const [errorMessage, setErrorMessage] = useState('');
   const started = useRef(false);
 
   useEffect(() => {
-    trackTogetherEvent('landing_viewed');
-  }, []);
+    trackTogetherEvent('landing_viewed', marketProperties(market));
+  }, [market]);
 
   const recordStart = () => {
     if (started.current) {
@@ -33,7 +85,7 @@ export function LaunchSignup() {
     }
 
     started.current = true;
-    trackTogetherEvent('launch_interest_started');
+    trackTogetherEvent('launch_interest_started', analytics);
   };
 
   const submitInterest = async (event: FormEvent<HTMLFormElement>) => {
@@ -61,13 +113,10 @@ export function LaunchSignup() {
       const payload = (await response.json()) as RegistrationResponse;
 
       if (!response.ok) {
-        throw new Error(
-          payload.message ||
-            'We could not send the confirmation email. Please try again.',
-        );
+        throw new Error(payload.message || t.sendFailure);
       }
 
-      trackTogetherEvent('launch_interest_submitted');
+      trackTogetherEvent('launch_interest_submitted', analytics);
       setSubmissionState(
         payload.status === 'already-confirmed'
           ? 'already-confirmed'
@@ -75,9 +124,7 @@ export function LaunchSignup() {
       );
     } catch (error) {
       setErrorMessage(
-        error instanceof Error
-          ? error.message
-          : 'We could not send the confirmation email. Please try again.',
+        error instanceof Error ? error.message : t.sendFailure,
       );
       setSubmissionState('error');
     }
@@ -86,12 +133,9 @@ export function LaunchSignup() {
   if (submissionState === 'check-email') {
     return (
       <section className="signup-confirmation" aria-live="polite">
-        <p className="eyebrow">One more step</p>
-        <h2>Check your inbox.</h2>
-        <p>
-          Open the email from Together and confirm your place on the first
-          list.
-        </p>
+        <p className="eyebrow">{t.checkEyebrow}</p>
+        <h2>{t.checkTitle}</h2>
+        <p>{t.checkBody}</p>
       </section>
     );
   }
@@ -99,9 +143,9 @@ export function LaunchSignup() {
   if (submissionState === 'already-confirmed') {
     return (
       <section className="signup-confirmation" aria-live="polite">
-        <p className="eyebrow">You’re in</p>
-        <h2>You’re already on the list.</h2>
-        <p>We’ll write when Together is ready for its first real hello.</p>
+        <p className="eyebrow">{t.inEyebrow}</p>
+        <h2>{t.inTitle}</h2>
+        <p>{t.inBody}</p>
       </section>
     );
   }
@@ -115,7 +159,8 @@ export function LaunchSignup() {
       onFocusCapture={recordStart}
       onSubmit={submitInterest}
     >
-      <label htmlFor="launch-email">Be first to try Together</label>
+      <input name="market" type="hidden" value={market} />
+      <label htmlFor="launch-email">{t.label}</label>
       <div className="signup-email-row">
         <input
           id="launch-email"
@@ -123,7 +168,7 @@ export function LaunchSignup() {
           type="email"
           inputMode="email"
           autoComplete="email"
-          placeholder="Email address"
+          placeholder={t.email}
           required
           disabled={submissionState === 'submitting'}
         />
@@ -140,13 +185,13 @@ export function LaunchSignup() {
           type="submit"
           disabled={submissionState === 'submitting'}
         >
-          {submissionState === 'submitting' ? 'Joining…' : 'Join Together'}
+          {submissionState === 'submitting' ? t.submitting : t.submit}
         </button>
       </div>
 
       <div className="signup-phone-row">
         <label className="signup-phone-label" htmlFor="launch-phone">
-          Mobile number <span>Optional — for the first invitation by text</span>
+          {t.phone} <span>{t.phoneHint}</span>
         </label>
         <input
           id="launch-phone"
@@ -154,7 +199,7 @@ export function LaunchSignup() {
           type="tel"
           inputMode="tel"
           autoComplete="tel"
-          placeholder="+44 7700 900123"
+          placeholder={t.phonePlaceholder}
           disabled={submissionState === 'submitting'}
         />
         <label className="text-consent" htmlFor="sms-opt-in">
@@ -164,10 +209,7 @@ export function LaunchSignup() {
             type="checkbox"
             disabled={submissionState === 'submitting'}
           />
-          <span>
-            Send me occasional Together invitations and updates by text. Stop
-            anytime.
-          </span>
+          <span>{t.consent}</span>
         </label>
       </div>
 
@@ -178,8 +220,7 @@ export function LaunchSignup() {
       ) : null}
 
       <small>
-        18+ · London will be the first launch community. Confirm by email. You
-        can leave at any time. <a href="/privacy">How we use your email.</a>
+        {t.fineprint} <a href="/privacy">{t.privacy}</a>
       </small>
     </form>
   );

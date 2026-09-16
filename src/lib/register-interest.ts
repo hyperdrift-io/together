@@ -1,5 +1,6 @@
 import { resolve4, resolve6, resolveMx } from 'node:dns/promises';
 import { sendConfirmationEmail } from './confirmation-email';
+import type { Locale } from './locale';
 import {
   markConfirmationSent,
   startLaunchRegistration,
@@ -76,6 +77,7 @@ async function validateEmailDomain(email: string) {
 type RegistrationPreference = {
   phone?: string;
   smsOptIn?: boolean;
+  market?: Locale;
 };
 
 export async function registerInterest(
@@ -89,7 +91,11 @@ export async function registerInterest(
     return { status: 'already-confirmed' as const };
   }
 
-  await sendConfirmationEmail(registration.email, registration.token);
+  await sendConfirmationEmail(
+    registration.email,
+    registration.token,
+    preference.market ?? 'en',
+  );
   markConfirmationSent(registration.email);
 
   return { status: 'check-email' as const };

@@ -182,6 +182,74 @@ test('a visitor registers on the landing page, receives the confirmation email, 
   assert.equal(confirmed.sms_opt_in, 1);
 });
 
+test('a French visitor registers on /fr and stays on the separate French list', async () => {
+  const email = 'premier.bonjour@hyperdrift.io';
+  const landingResponse = await fetch(`${baseUrl}/fr`);
+  const landingHtml = await landingResponse.text();
+
+  assert.equal(landingResponse.status, 200);
+  assert.match(landingHtml, /Lève les yeux\./);
+  assert.match(landingHtml, /lang="fr-FR"/);
+  assert.match(landingHtml, /name="market" value="fr"/);
+  assert.match(landingHtml, /hrefLang="en-GB"|hreflang="en-GB"/i);
+  assert.match(landingHtml, /<b>0<\/b> sur 50 sur la liste française/);
+  assert.doesNotMatch(landingHtml, /<dialog[^>]*id="survey"/);
+
+  const registrationResponse = await fetch(`${baseUrl}/api/launch-interest`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams({ email, market: 'fr' }),
+    redirect: 'manual',
+  });
+
+  assert.equal(registrationResponse.status, 303);
+  assert.equal(
+    new URL(registrationResponse.headers.get('location')).pathname,
+    '/fr/check-email',
+  );
+
+  const outbox = (await readFile(outboxPath, 'utf8')).trim().split('\n');
+  const message = JSON.parse(outbox.at(-1));
+
+  assert.equal(message.to, email);
+  assert.equal(message.subject, 'Confirme ta place sur Together');
+  assert.match(message.confirmationUrl, /\/fr\/confirm\?/);
+  assert.match(message.leaveUrl, /\/fr\/leave\?/);
+
+  const confirmationUrl = new URL(message.confirmationUrl);
+  const confirmationPostResponse = await fetch(
+    `${baseUrl}/api/confirm-interest`,
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({
+        email: confirmationUrl.searchParams.get('email'),
+        token: confirmationUrl.searchParams.get('token'),
+      }),
+      redirect: 'manual',
+    },
+  );
+  const completionUrl = confirmationPostResponse.headers.get('location');
+  assert.equal(new URL(completionUrl).pathname, '/fr/confirm');
+
+  const completionHtml = await (await fetch(completionUrl)).text();
+  assert.match(completionHtml, /Tu es sur la liste France\./);
+  assert.doesNotMatch(completionHtml, /London area|naturally use Together/);
+
+  const db = new DatabaseSync(databasePath);
+  const registration = db
+    .prepare('SELECT status, market FROM launch_registrations WHERE email = ?')
+    .get(email);
+  db.close();
+  assert.equal(registration.status, 'confirmed');
+  assert.equal(registration.market, 'fr');
+
+  const frenchHtml = await (await fetch(`${baseUrl}/fr`)).text();
+  const englishHtml = await (await fetch(baseUrl)).text();
+  assert.match(frenchHtml, /<b>1<\/b> sur 50/);
+  assert.match(englishHtml, /<b>1<\/b> of 50/);
+});
+
 test('the registration API has an explicit method contract and JSON success path', async () => {
   const methodResponse = await fetch(`${baseUrl}/api/launch-interest`);
   const methodPayload = await methodResponse.json();

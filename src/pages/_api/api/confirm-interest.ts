@@ -1,4 +1,8 @@
-import { confirmLaunchRegistration } from '../../../lib/launch-registration';
+import {
+  confirmLaunchRegistration,
+  registrationMarket,
+} from '../../../lib/launch-registration';
+import { localePath } from '../../../lib/locale';
 
 export const POST = async (request: Request): Promise<Response> => {
   let email = '';
@@ -13,7 +17,10 @@ export const POST = async (request: Request): Promise<Response> => {
   }
 
   const result = confirmLaunchRegistration(email, token);
-  const target = new URL('/confirm', request.url);
+  const target = new URL(
+    localePath(registrationMarket(email), '/confirm'),
+    request.url,
+  );
   target.searchParams.set(
     'status',
     result === 'confirmed' || result === 'already-confirmed'

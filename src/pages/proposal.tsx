@@ -187,7 +187,7 @@ export default function ProposalPage() {
               you’ll be among the first to know.
             </p>
           </div>
-          <LaunchSignup />
+          <LaunchSignup market="en" />
         </section>
 
         <footer className="proposal-footer">

@@ -9,6 +9,7 @@ import type {
   LondonArea,
   PlaceType,
 } from './launch-qualification-schema';
+import { type Locale, parseLocale } from './locale';
 
 type RegistrationRow = {
   status: 'pending' | 'confirmed';
@@ -31,6 +32,7 @@ export type LaunchRegistrationAdminRow = {
 };
 
 export type LaunchRegistrationAdminData = {
+  market: Locale;
   total: number;
   pending: number;
   confirmed: number;
@@ -96,6 +98,7 @@ function getDatabase() {
         CHECK (sms_opt_in IN (0, 1)),
       sms_opted_in_at TEXT,
       consent_version TEXT NOT NULL,
+      market TEXT NOT NULL DEFAULT 'en' CHECK (market IN ('en', 'fr')),
       created_at TEXT NOT NULL
     );
     CREATE TABLE IF NOT EXISTS launch_qualifications (
@@ -181,6 +184,12 @@ function ensureRegistrationColumns(db: DatabaseSync) {
       'ALTER TABLE launch_registrations ADD COLUMN sms_opted_in_at TEXT',
     );
   }
+
+  if (!names.has('market')) {
+    db.exec(
+      "ALTER TABLE launch_registrations ADD COLUMN market TEXT NOT NULL DEFAULT 'en' CHECK (market IN ('en', 'fr'))",
+    );
+  }
 }
 
 function normalizedEmail(value: string) {
@@ -225,6 +234,7 @@ function hashesMatch(expected: string, actual: string) {
 type LaunchRegistrationPreference = {
   phone?: string;
   smsOptIn?: boolean;
+  market?: Locale;
 };
 
 export function startLaunchRegistration(
@@ -275,8 +285,9 @@ export function startLaunchRegistration(
       sms_opt_in,
       sms_opted_in_at,
       consent_version,
+      market,
       created_at
-    ) VALUES (?, 'pending', ?, ?, ?, ?, ?, '2026-07-24', ?)
+    ) VALUES (?, 'pending', ?, ?, ?, ?, ?, '2026-07-24', ?, ?)
     ON CONFLICT(email) DO UPDATE SET
       token_hash = excluded.token_hash,
       token_created_at = excluded.token_created_at,
@@ -293,6 +304,7 @@ export function startLaunchRegistration(
     phone || null,
     phone ? 1 : 0,
     phone ? now : null,
+    parseLocale(preference.market),
     now,
   );
 
@@ -600,17 +612,26 @@ export function saveLaunchPhonePreference(
   return 'saved' as const;
 }
 
-export function countConfirmedLaunchRegistrations() {
+export function countConfirmedLaunchRegistrations(market: Locale) {
   const row = getDatabase()
     .prepare(
-      "SELECT COUNT(*) AS confirmed FROM launch_registrations WHERE status = 'confirmed'",
+      "SELECT COUNT(*) AS confirmed FROM launch_registrations WHERE status = 'confirmed' AND market = ?",
     )
-    .get() as { confirmed: number };
+    .get(market) as { confirmed: number };
 
   return row.confirmed;
 }
 
+export function registrationMarket(rawEmail: string): Locale {
+  const row = getDatabase()
+    .prepare('SELECT market FROM launch_registrations WHERE email = ?')
+    .get(normalizedEmail(rawEmail)) as { market: string } | undefined;
+
+  return parseLocale(row?.market);
+}
+
 export function getLaunchRegistrationAdminData(
+  market: Locale,
   limit = 500,
 ): LaunchRegistrationAdminData {
   const db = getDatabase();
@@ -624,8 +645,9 @@ export function getLaunchRegistrationAdminData(
         SUM(CASE WHEN q.completed_at IS NOT NULL THEN 1 ELSE 0 END) AS qualified
       FROM launch_registrations AS r
       LEFT JOIN launch_qualifications AS q ON q.email = r.email
+      WHERE r.market = ?
     `)
-    .get() as {
+    .get(market) as {
     total: number;
     pending: number | null;
     confirmed: number | null;
@@ -647,10 +669,11 @@ export function getLaunchRegistrationAdminData(
         q.completed_at AS qualification_completed_at
       FROM launch_registrations AS r
       LEFT JOIN launch_qualifications AS q ON q.email = r.email
+      WHERE r.market = ?
       ORDER BY r.created_at DESC
       LIMIT ?
     `)
-    .all(safeLimit) as Array<{
+    .all(market, safeLimit) as Array<{
     email: string;
     status: 'pending' | 'confirmed';
     phone_number: string | null;
@@ -665,6 +688,7 @@ export function getLaunchRegistrationAdminData(
   }>;
 
   return {
+    market,
     total: counts.total,
     pending: counts.pending ?? 0,
     confirmed: counts.confirmed ?? 0,

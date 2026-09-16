@@ -25,6 +25,17 @@ confirmed registrations towards the first-room target of 50 on the homepage.
 The pilot URL lives in `src/lib/pilot-app.ts`; the target lives in
 `src/components/launch-progress.tsx`.
 
+Since 2026-09-16 the hero leads with a "Live now" badge and an "Already
+invited? Open the app" link, and the page has a French version at `/fr`
+(with `/fr/check-email`, `/fr/confirm`, `/fr/leave`). The user approved a
+separate FR market: every registration carries `market` (`en` | `fr`), each
+market has its own first-room counter and its own admin section, and analytics
+events carry `market`. Copy lives next to each component, keyed by locale
+(`src/lib/locale.ts`); French copy uses "tu". The London survey,
+qualification, and post-confirmation phone step stay English-only. The FR
+launch city is not decided yet, so FR copy names France only. The pilot app
+stays on Vercel; French in the app itself is a change in its own repository.
+
 The approved direction is:
 
 - Gather appetite before building the broader product
@@ -70,7 +81,7 @@ During appetite validation, do not add:
 - Automated matching
 - AI-labelled product features
 - Social-CRM functionality
-- Multi-city launch logic
+- Multi-city launch logic beyond the approved EN (London) and FR markets
 
 If a request would change the mission, initial audience, connection type,
 privacy boundary, safety model, or success metric, stop and ask one focused
