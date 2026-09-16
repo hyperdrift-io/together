@@ -29,7 +29,7 @@ const copy = {
     signIn: 'Sign in',
     switchLabel: 'Français',
     switchLang: 'fr',
-    switchHref: '/fr',
+    switchHref: '/fr?lang=fr',
     liveTag: 'Live now',
     liveBody:
       'A first small group is already using the app. The next invitations go to this list.',
@@ -58,7 +58,7 @@ const copy = {
     signIn: 'Se connecter',
     switchLabel: 'English',
     switchLang: 'en',
-    switchHref: '/',
+    switchHref: '/?lang=en',
     liveTag: 'Déjà en ligne',
     liveBody:
       'Un premier petit groupe utilise déjà l’appli. Les prochaines invitations partent de cette liste.',

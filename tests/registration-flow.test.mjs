@@ -195,6 +195,27 @@ test('a French visitor registers on /fr and stays on the separate French list', 
   assert.match(landingHtml, /<b>0<\/b> sur 50 sur la liste française/);
   assert.doesNotMatch(landingHtml, /<dialog[^>]*id="survey"/);
 
+  const frenchBrowser = { 'Accept-Language': 'fr-FR,fr;q=0.9,en;q=0.8' };
+  const redirected = await fetch(`${baseUrl}/?utm_source=test`, {
+    headers: frenchBrowser,
+    redirect: 'manual',
+  });
+  assert.equal(redirected.status, 302);
+  assert.equal(redirected.headers.get('location'), '/fr?utm_source=test');
+
+  const choseEnglish = await fetch(`${baseUrl}/?lang=en`, {
+    headers: frenchBrowser,
+    redirect: 'manual',
+  });
+  assert.equal(choseEnglish.status, 200);
+  assert.match(choseEnglish.headers.get('set-cookie'), /together_locale=en/);
+
+  const rememberedEnglish = await fetch(baseUrl, {
+    headers: { ...frenchBrowser, Cookie: 'together_locale=en' },
+    redirect: 'manual',
+  });
+  assert.equal(rememberedEnglish.status, 200);
+
   const registrationResponse = await fetch(`${baseUrl}/api/launch-interest`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },

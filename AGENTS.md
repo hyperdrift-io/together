@@ -35,6 +35,10 @@ events carry `market`. Copy lives next to each component, keyed by locale
 qualification, and post-confirmation phone step stay English-only. The FR
 launch city is not decided yet, so FR copy names France only. The pilot app
 stays on Vercel; French in the app itself is a change in its own repository.
+`/` sends browsers whose top language is French to `/fr`
+(`src/middleware/preferred-locale.ts`); the header language switch adds
+`?lang=`, which is saved in the `together_locale` cookie and wins over the
+browser. There is no location (GeoIP) detection.
 
 The approved direction is:
 
