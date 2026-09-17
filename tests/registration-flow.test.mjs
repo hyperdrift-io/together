@@ -34,8 +34,8 @@ async function waitForServer() {
 
 before(async () => {
   server = spawn(
-    'pnpm',
-    ['exec', 'waku', 'dev', '--host', '127.0.0.1', '--port', String(port)],
+    'npx',
+    ['waku', 'dev', '--host', '127.0.0.1', '--port', String(port)],
     {
       cwd: projectDirectory,
       env: {

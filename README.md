@@ -31,7 +31,7 @@ open so infrastructure noise does not reject a valid person.
 Local verification uses the file-backed test email transport:
 
 ```bash
-pnpm test
+npm test
 ```
 
 Production delivery uses SMTP and expects `SMTP_HOST`, `SMTP_PORT`,
