@@ -1,0 +1,10 @@
+# Together
+
+> Together helps two adults already in the same public place discover that the interest is mutual, then meet face to face. The meeting is the outcome; profiles, likes and messages are not. Starting in London, with a launch list open now.
+
+## Pages
+
+- [Together](https://together.hyperdrift.io/): how it works and the London launch list
+- [Together, en français](https://together.hyperdrift.io/fr): the same page in French
+- [The Together proposal](https://together.hyperdrift.io/proposal): the case for a more human way to meet
+- [Privacy](https://together.hyperdrift.io/privacy): what is collected and why
