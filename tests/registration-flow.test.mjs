@@ -33,9 +33,11 @@ async function waitForServer() {
 }
 
 before(async () => {
+  // Start the Waku CLI as the direct child: a wrapper (npx, a shell) would take
+  // the SIGTERM in after() and leave the dev server holding the pipes open.
   server = spawn(
-    'npx',
-    ['waku', 'dev', '--host', '127.0.0.1', '--port', String(port)],
+    process.execPath,
+    [join(projectDirectory, 'node_modules/waku/cli.js'), 'dev', '--host', '127.0.0.1', '--port', String(port)],
     {
       cwd: projectDirectory,
       env: {
