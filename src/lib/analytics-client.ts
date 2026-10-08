@@ -1,5 +1,7 @@
 import type { Locale } from './locale';
 
+type PostHogLike = { capture: (event: string, properties?: Record<string, unknown>) => void };
+
 const defaultProperties = {
   market: 'en',
   city: 'london',
@@ -11,22 +13,15 @@ export function marketProperties(market: Locale) {
   return market === 'fr' ? { market, city: null } : { market };
 }
 
-export function trackTogetherEvent(
-  event: string,
-  properties: Record<string, unknown> = {},
-) {
-  const eventProperties = {
-    ...defaultProperties,
-    ...properties,
-  };
-
-  if (window.gtag) {
-    window.gtag('event', event, eventProperties);
-    return;
+/** PostHog capture when the snippet is loaded; a silent no-op otherwise. Analytics never breaks the page. */
+export function trackTogetherEvent(event: string, properties: Record<string, unknown> = {}) {
+  if (typeof window === 'undefined') return;
+  try {
+    (window as Window & { posthog?: PostHogLike }).posthog?.capture(event, {
+      ...defaultProperties,
+      ...properties,
+    });
+  } catch {
+    // ignore
   }
-
-  window.dataLayer?.push({
-    event,
-    ...eventProperties,
-  });
 }
