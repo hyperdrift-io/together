@@ -32,7 +32,8 @@ invited? Open the app" link, and the page has a French version at `/fr`
 separate FR market: every registration carries `market` (`en` | `fr`), each
 market has its own first-room counter and its own admin section, and analytics
 events carry `market`. Copy lives next to each component, keyed by locale
-(`src/lib/locale.ts`); French copy uses "tu". The London survey,
+(`src/lib/locale.ts`). French copy is impersonal: no tu or vous. Current FR
+strings still use tu; they change through founder copy review. The London survey,
 qualification, and post-confirmation phone step stay English-only. The FR
 launch city is not decided yet, so FR copy names France only. The pilot app
 stays on Vercel; French in the app itself is a change in its own repository.
@@ -59,10 +60,8 @@ The approved direction is:
 - Keep the investor case excluded from indexing and the public sitemap
 
 The Passing Glance homepage and The Public Square proposal/investor direction
-are approved and recorded in `docs/LANDING_PAGE.md`. Material changes still
-follow the image-first design gate: generate three comparable concept boards,
-obtain explicit selection, and record the approved image before changing UI
-code.
+are approved and recorded in `docs/LANDING_PAGE.md`. Material UI changes: show
+the founder a preview in the real page and wait for his yes.
 
 Read `MISSION.md`, `docs/VALIDATION_PLAN.md`, `docs/LANDING_PAGE.md`, and
 `docs/SOURCE_REVIEW.md` before changing product scope or user-facing copy.
@@ -94,14 +93,8 @@ alignment question.
 
 ## Implementation boundary
 
-If Together becomes a standalone Hyperdrift app, use the own-stack:
-
-- Waku and React Server Components
-- Typed server functions
-- Semantic CSS with tokens in `:root`
-- Client islands only where interaction requires them
-- No Next.js, Tailwind, CSS-in-JS, or presentation inline styles
-- No new dependency without explicit approval
+Own-stack: Waku, typed server functions, semantic CSS. No new dependency
+without approval.
 
 The public appetite slice contains the measured landing proposition, one email
 registration with an optional consented mobile number for invitation updates,
@@ -122,12 +115,9 @@ registration-and-confirmation test is that approved exception. Otherwise use
 fast deploy-safety checks only: install, type-check, lint if configured, build,
 security scan, and migration dry-run where relevant.
 
-The user must review a local, development, or preview build before a production
-deployment. A push to `main` runs `.github/workflows/deploy.yml`: the
-registration-flow test on a GitHub-hosted runner, then `make deploy-local
-app=together` on the server's own runner, then a GitHub release. No local SSH
-is needed. Launch-readiness watches still run through Hyperdrift infra and
-follow the workspace asynchronous handoff rule.
+The founder reviews a preview first. Then push main and run `make deploy
+app=together` from a worktree of infra origin/main; the push workflow never
+gets a runner.
 
 ## Data and safety
 
